@@ -1,6 +1,6 @@
 import React from 'react'
-import { StyleSheet, ScrollView, ScrollViewBase } from 'react-native'
-import { ButtonOutline, Button } from './src/components/Buttons'
+import { StyleSheet, ScrollView } from 'react-native'
+import { ButtonOutline, Button, MiniButtonOutline, MiniButton } from './src/components/Buttons'
 
 const styles = StyleSheet.create({
   scrollView: {
@@ -14,8 +14,10 @@ export default function App({ }){
   const {scrollView} = styles
   return(
     <ScrollView style={scrollView}>
-    <Button title='button'/>
-    <ButtonOutline title='button'/>
+      <MiniButton title={'button'}/>
+      <MiniButtonOutline title={'button'}/>
+      <Button title={'button'}/>
+      <ButtonOutline title={'button'}/>
     </ScrollView>
   )
 }
