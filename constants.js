@@ -1,8 +1,0 @@
-export const white = '#F6F6F6'
-export const gray = '#ABB4BD'
-export const primary = '#EF3651'
-export const black = '#1E1F28'
-export const dark = '#2A2C36'
-export const sale = '#FF3E3E'
-export const error = '#FF2424'
-export const sucess = '#55D85A'
