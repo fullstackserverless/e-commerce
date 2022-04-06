@@ -6,7 +6,6 @@
 	objectVersion = 54;
 	objects = {
 
-
 /* Begin PBXBuildFile section */
 		00E356F31AD99517003FC87E /* eCommerceTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* eCommerceTests.m */; };
 		13B07FBC1A68108700A75B9A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.m */; };
@@ -15,6 +14,10 @@
 		6172F2D35A4C3AA820D92908 /* libPods-eCommerce.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6423831EA8574132BED9D8CC /* libPods-eCommerce.a */; };
 		7EF68E3733C33B6898317E18 /* libPods-eCommerce-eCommerceTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = ABFE59519B596E51CEFDCCC0 /* libPods-eCommerce-eCommerceTests.a */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
+		AEA0A480879642F4AD75F56E /* Metropolis-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 7B0D0F949E0245CF8D628D98 /* Metropolis-Bold.otf */; };
+		BA6788E0ABC14556AECEAAA1 /* Metropolis-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = DD02EFD27D2347BA971647FD /* Metropolis-Medium.otf */; };
+		F7994CF6273944508B75A3E0 /* Metropolis-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = E72C60D0DCF84A09B9EC26DC /* Metropolis-Regular.otf */; };
+		EFC6981467174506B81391CD /* Metropolis-SemiBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = E4219598A103453887EE00E1 /* Metropolis-SemiBold.otf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -45,6 +48,10 @@
 		C0A881CF5CF3F2B244570E2A /* Pods-eCommerce.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-eCommerce.debug.xcconfig"; path = "Target Support Files/Pods-eCommerce/Pods-eCommerce.debug.xcconfig"; sourceTree = "<group>"; };
 		D00AAFFCFCFDA5787532823F /* Pods-eCommerce.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-eCommerce.release.xcconfig"; path = "Target Support Files/Pods-eCommerce/Pods-eCommerce.release.xcconfig"; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
+		7B0D0F949E0245CF8D628D98 /* Metropolis-Bold.otf */ = {isa = PBXFileReference; name = "Metropolis-Bold.otf"; path = "../src/assets/fonts/Metropolis-Bold.otf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		DD02EFD27D2347BA971647FD /* Metropolis-Medium.otf */ = {isa = PBXFileReference; name = "Metropolis-Medium.otf"; path = "../src/assets/fonts/Metropolis-Medium.otf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		E72C60D0DCF84A09B9EC26DC /* Metropolis-Regular.otf */ = {isa = PBXFileReference; name = "Metropolis-Regular.otf"; path = "../src/assets/fonts/Metropolis-Regular.otf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		E4219598A103453887EE00E1 /* Metropolis-SemiBold.otf */ = {isa = PBXFileReference; name = "Metropolis-SemiBold.otf"; path = "../src/assets/fonts/Metropolis-SemiBold.otf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -123,6 +130,7 @@
 				83CBBA001A601CBA00E9B192 /* Products */,
 				2D16E6871FA4F8E400B85C8A /* Frameworks */,
 				E233CBF5F47BEE60B243DCF8 /* Pods */,
+				8FCC34E5D9604C839FE8C334 /* Resources */,
 			);
 			indentWidth = 2;
 			sourceTree = "<group>";
@@ -149,6 +157,18 @@
 			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
+		};
+		8FCC34E5D9604C839FE8C334 /* Resources */ = {
+			isa = "PBXGroup";
+			children = (
+				7B0D0F949E0245CF8D628D98 /* Metropolis-Bold.otf */,
+				DD02EFD27D2347BA971647FD /* Metropolis-Medium.otf */,
+				E72C60D0DCF84A09B9EC26DC /* Metropolis-Regular.otf */,
+				E4219598A103453887EE00E1 /* Metropolis-SemiBold.otf */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+			path = "";
 		};
 /* End PBXGroup section */
 
@@ -246,6 +266,10 @@
 			files = (
 				81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
+				AEA0A480879642F4AD75F56E /* Metropolis-Bold.otf in Resources */,
+				BA6788E0ABC14556AECEAAA1 /* Metropolis-Medium.otf in Resources */,
+				F7994CF6273944508B75A3E0 /* Metropolis-Regular.otf in Resources */,
+				EFC6981467174506B81391CD /* Metropolis-SemiBold.otf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
