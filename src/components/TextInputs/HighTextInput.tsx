@@ -4,11 +4,10 @@ import { useController, useFormContext } from 'react-hook-form'
 import { dark_c, gray_c, black_c, error_c, sucess_c, white_c } from '../../constants'
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons'
 import { HighTextInputProps }from './TextInputPropsType'
-import { s, vs, ms, mvs, scale } from 'react-native-size-matters'
+import { s, vs } from 'react-native-size-matters'
 
-export const HighTextInput = (props: HighTextInputProps) => {
+export const HighTextInput: React.FC<HighTextInputProps> = (props) => {
   const [isFocused, setIsFocused] = useState<boolean>(false)
-  const [cross, setCross] = useState<string>('null')
   const inputRef = useRef<any>()
   
   const { name, rules, resetField, label,
@@ -55,13 +54,10 @@ export const HighTextInput = (props: HighTextInputProps) => {
 
   useEffect(() => {
     if(isFocused) {
-      setCross('cross')
       startToTop()
     } else if (field.value?.length > 0) {
-      setCross('cross')
       startToTop()
     } else {
-      setCross('check')
       startToDown()
     }
   }, [field.value, isFocused])
@@ -98,7 +94,7 @@ export const HighTextInput = (props: HighTextInputProps) => {
         <Pressable style={{backgroundColor: 'transparent'}} 
         onPress={hasError ? handleReset : () => {}} >
           <Icon name={hasError ? 'close' : 'check'} 
-          color={hasError ? error_c : sucess_c} size={cross ? s(26) : s(26)} /> 
+          color={hasError ? error_c : sucess_c} size={s(26)} /> 
         </Pressable>
       </View>
       : <></>}

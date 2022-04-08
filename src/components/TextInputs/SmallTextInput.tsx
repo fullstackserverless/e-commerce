@@ -6,7 +6,7 @@ import Icon from 'react-native-vector-icons/MaterialCommunityIcons'
 import { TextInputProps }from './TextInputPropsType'
 import { s, vs } from 'react-native-size-matters'
 
-export const SmallTextInput = (props: TextInputProps) => {
+export const SmallTextInput: React.FC<TextInputProps> = (props) => {
   const [isFocused, setIsFocused] = useState<boolean>(false)
   const [cross, setCross] = useState<boolean>(false)
   const inputRef = useRef<any>()
