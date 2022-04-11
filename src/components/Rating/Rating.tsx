@@ -1,6 +1,7 @@
 import React, { useMemo, useState } from "react"
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons'
-import { StyleSheet, Text, View } from "react-native"
+import { StyleSheet, View } from "react-native"
+import { Text } from "../Text"
 import { s } from "react-native-size-matters"
 import { gray_c } from "../../constants"
 
@@ -38,7 +39,7 @@ export const Rating: React.FC<Irating> = ({
        style={star} name='star-outline' color='#FFBA49' size={starSize} />
     )}
     {showCount &&
-    <Text style={text}>{`(${ratingList.length})`}</Text>}
+    <Text textStyle='body2' style={text}>{`(${ratingList.length})`}</Text>}
   </View>
 }
 

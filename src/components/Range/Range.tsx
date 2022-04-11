@@ -1,5 +1,6 @@
 import React, { useState } from "react"
-import { View, StyleSheet, Text } from 'react-native'
+import { View, StyleSheet } from 'react-native'
+import { Text } from "../Text"
 import { vs, s } from "react-native-size-matters"
 import MultiSlider from '@ptomasroos/react-native-multi-slider'
 import { gray_c, primary_c, white_c, winWidth } from "../../constants"
@@ -16,8 +17,8 @@ export const Range: React.FC<Irange> = ({min, max, onChangeFinish}) => {
   
   return <View style={container}>
     <View style={costContainer}>
-      <Text style={costText}>{`$${values[0]}`}</Text>
-      <Text style={costText}>{`$${values[1]}`}</Text>
+      <Text textStyle={'title3'} style={costText}>{`$${values[0]}`}</Text>
+      <Text textStyle={'title3'} style={costText}>{`$${values[1]}`}</Text>
     </View>
     <MultiSlider
       min={min}

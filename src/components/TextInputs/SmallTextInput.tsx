@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react'
-import { View, TextInput as RNTextInput, StyleSheet, Pressable, Text, Animated } from 'react-native'
+import { View, TextInput as RNTextInput, StyleSheet, Pressable, Animated } from 'react-native'
+import { Text } from '../Text'
 import { useController, useFormContext } from 'react-hook-form'
 import { dark_c, gray_c, black_c, error_c, sucess_c, white_c } from '../../constants'
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons'
@@ -98,7 +99,7 @@ export const SmallTextInput: React.FC<TextInputProps> = (props) => {
     </View>
     {hasError &&
       <View style={errContainer}>
-        <Text style={errTxt}>{formState.errors[name].message}</Text>
+        <Text textStyle={'body4'} style={errTxt}>{formState.errors[name].message}</Text>
       </View>
     }
   </View>
@@ -154,7 +155,6 @@ const styles = StyleSheet.create({
   },
   errTxt: {
     color: error_c,
-    fontSize: vs(11),
     lineHeight: vs(16),
     letterSpacing: s(1)
   },

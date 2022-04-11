@@ -1,9 +1,11 @@
 import React, { useEffect, useRef, useState } from 'react'
-import {Text, View, StyleSheet, Animated, Pressable, ScrollView} from 'react-native'
+import { View, StyleSheet, Animated, Pressable, ScrollView} from 'react-native'
+import { Text } from '../Text'
 import { s, vs } from 'react-native-size-matters'
 import Icon from 'react-native-vector-icons/Fontisto'
 import { dark_c, gray_c, black_c, error_c, 
   sucess_c, white_c, primary_c } from '../../constants'
+
 
 interface IdropDown {
   list: string[],
@@ -72,7 +74,7 @@ export const DropDown: React.FC<IdropDown> = (props) => {
       setSelected(item)
       onSelect && onSelect(item)
     }}>
-      <Text style={[textEntry, selected === item && {color: dark_c}]}>{item}</Text>
+      <Text textStyle={'title3'} style={[textEntry, selected === item && {color: dark_c}]}>{item}</Text>
     </Pressable>
   }
 
@@ -85,7 +87,7 @@ export const DropDown: React.FC<IdropDown> = (props) => {
     ]}>
     <Pressable onPress={handlePress}
      onLayout={onAnimLayout} style={btnContainer}>
-      <Text style={textEntry}>{selected !== '' ? selected : label}</Text>
+      <Text textStyle={'title3'} style={textEntry}>{selected !== '' ? selected : label}</Text>
       <Animated.View style={{translateY: vs(2), transform: [{rotateZ}]}}>
         <Icon name='angle-down' color={gray_c} size={s(14)} />
       </Animated.View>
@@ -95,7 +97,7 @@ export const DropDown: React.FC<IdropDown> = (props) => {
       onLayout={onLayout}
     >
       {containerHeight >= vs(190) ?
-      <ScrollView style={{ height: vs(190) }}>
+      <ScrollView nestedScrollEnabled style={{ height: vs(190) }}>
         {list.map((a, id) => _renItem(a, id))}
         <View style={{height: vs(10)}} />
       </ScrollView> : <>
@@ -122,7 +124,6 @@ const styles = StyleSheet.create({
   },
   textEntry: {
     color: white_c,
-    fontSize: vs(18)
   },
   dropContainer: {
     paddingTop: vs(12),
