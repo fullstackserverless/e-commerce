@@ -2,7 +2,7 @@ import React from "react"
 import { StyleSheet, View } from "react-native"
 import { s } from "react-native-size-matters"
 import { black_c } from "../../constants"
-import { DropDown } from "./DropDown"
+import { DropDown } from "./"
 
 const dataList1 = ['one', 'two', 'three']
 const dataList2 = ['homework', 'school', 'park "Sarmat"', 
