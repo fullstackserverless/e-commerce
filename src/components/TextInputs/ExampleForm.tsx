@@ -4,6 +4,7 @@ import { SmallTextInput, HighTextInput } from '../'
 import { useForm, FormProvider, SubmitHandler, SubmitErrorHandler, FieldValues } from 'react-hook-form'
 import { yupResolver } from '@hookform/resolvers/yup'
 import * as yup from "yup"
+import { s } from 'react-native-size-matters'
 import { error_c, white_c } from '../../constants'
 
 const schema = yup.object().shape({
@@ -47,9 +48,9 @@ export const ExampleForm = () => {
         activeOpacity={.8}
         style={{borderRadius: 20, alignItems: 'center', 
          backgroundColor: error_c, padding: 10, width: '90%', 
-         alignSelf: 'center', paddingVertical: 20}}
+         alignSelf: 'center', paddingVertical: 15}}
         onPress={methods.handleSubmit(onSubmit, onError)} >
-        <Text style={{color: white_c}}>Submit form</Text>
+        <Text style={{color: white_c, fontSize: s(19)}}>Submit form</Text>
       </TouchableOpacity>
       </FormProvider>
     </View>
