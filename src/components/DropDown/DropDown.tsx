@@ -1,10 +1,12 @@
 import React, { useEffect, useRef, useState } from 'react'
-import { View, StyleSheet, Animated, Pressable, ScrollView} from 'react-native'
+import { View, StyleSheet, Animated, Pressable, ScrollView } from 'react-native'
 import { Text } from '../Text'
 import { s, vs } from 'react-native-size-matters'
 import Icon from 'react-native-vector-icons/Fontisto'
-import { dark_c, gray_c, black_c, error_c, 
-  sucess_c, white_c, primary_c } from '../../constants'
+import {
+  DARK, GRAY, BLACK, ERROR,
+  SUCCESS, WHITE, PRIMARY
+} from '../../constants'
 
 
 interface IdropDown {
@@ -36,7 +38,7 @@ export const DropDown: React.FC<IdropDown> = (props) => {
         duration: duration ? duration : 400,
         useNativeDriver: false
       }
-    ).start(({finished}) => {
+    ).start(({ finished }) => {
       if (finished) {
         isOpen ? onClose && onClose() : onOpen && onOpen()
         setIsOpen(pr => !pr)
@@ -69,27 +71,27 @@ export const DropDown: React.FC<IdropDown> = (props) => {
   })
 
   const _renItem = (item: string, id: number) => {
-    return <Pressable key={id.toString()} style={[dropItemContainer, selected === item && {backgroundColor: gray_c}]}
-    onPress={() => {
-      setSelected(item)
-      onSelect && onSelect(item)
-    }}>
-      <Text textStyle={'title3'} style={[textEntry, selected === item && {color: dark_c}]}>{item}</Text>
+    return <Pressable key={id.toString()} style={[dropItemContainer, selected === item && { backgroundColor: GRAY }]}
+      onPress={() => {
+        setSelected(item)
+        onSelect && onSelect(item)
+      }}>
+      <Text textStyle={'title3'} style={[textEntry, selected === item && { color: DARK }]}>{item}</Text>
     </Pressable>
   }
 
   return <Animated.View style={[
-      container,
-      {
-        height: slideAnim,
-        width:width
-      }
-    ]}>
+    container,
+    {
+      height: slideAnim,
+      width: width
+    }
+  ]}>
     <Pressable onPress={handlePress}
-     onLayout={onAnimLayout} style={btnContainer}>
+      onLayout={onAnimLayout} style={btnContainer}>
       <Text textStyle={'title3'} style={textEntry}>{selected !== '' ? selected : label}</Text>
-      <Animated.View style={{translateY: vs(2), transform: [{rotateZ}]}}>
-        <Icon name='angle-down' color={gray_c} size={s(14)} />
+      <Animated.View style={{ translateY: vs(2), transform: [{ rotateZ }] }}>
+        <Icon name='angle-down' color={GRAY} size={s(14)} />
       </Animated.View>
     </Pressable>
     <View
@@ -97,13 +99,13 @@ export const DropDown: React.FC<IdropDown> = (props) => {
       onLayout={onLayout}
     >
       {containerHeight >= vs(190) ?
-      <ScrollView nestedScrollEnabled style={{ height: vs(190) }}>
-        {list.map((a, id) => _renItem(a, id))}
-        <View style={{height: vs(10)}} />
-      </ScrollView> : <>
-      {list.map((a, id) => _renItem(a, id))}
-      <View style={{height: vs(5)}} />
-      </>}
+        <ScrollView nestedScrollEnabled style={{ height: vs(190) }}>
+          {list.map((a, id) => _renItem(a, id))}
+          <View style={{ height: vs(10) }} />
+        </ScrollView> : <>
+          {list.map((a, id) => _renItem(a, id))}
+          <View style={{ height: vs(5) }} />
+        </>}
     </View>
   </Animated.View>
 }
@@ -112,7 +114,7 @@ const styles = StyleSheet.create({
   container: {
     borderRadius: s(8),
     borderWidth: s(1),
-    borderColor: gray_c,
+    borderColor: GRAY,
     overflow: 'hidden',
   },
   btnContainer: {
@@ -123,16 +125,16 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   textEntry: {
-    color: white_c,
+    color: WHITE,
   },
   dropContainer: {
     paddingTop: vs(12),
   },
   dropItemContainer: {
-    width: '100%', 
+    width: '100%',
     paddingHorizontal: s(10),
     alignItems: 'center',
-    borderTopColor: gray_c,
+    borderTopColor: GRAY,
     borderTopWidth: vs(1),
     paddingVertical: vs(4)
   }

@@ -2,25 +2,25 @@ import React, { useEffect, useRef, useState } from 'react'
 import { View, TextInput as RNTextInput, StyleSheet, Pressable, Animated } from 'react-native'
 import { Text } from '../Text'
 import { useController, useFormContext } from 'react-hook-form'
-import { dark_c, gray_c, black_c, error_c, sucess_c, white_c } from '../../constants'
+import { DARK, GRAY, BLACK, ERROR, SUCCESS, WHITE } from '../../constants'
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons'
-import { TextInputProps }from './TextInputPropsType'
+import { TextInputProps } from './TextInputPropsType'
 import { s, vs } from 'react-native-size-matters'
 
 export const SmallTextInput: React.FC<TextInputProps> = (props) => {
   const [isFocused, setIsFocused] = useState<boolean>(false)
   const [cross, setCross] = useState<boolean>(false)
   const inputRef = useRef<any>()
-  
+
   const { name, rules, resetField,
     defaultValue, ...inputProps } = props
 
   const formContext = useFormContext()
 
   if (!formContext || !name) {
-    const msg = !formContext ? "TextInput должен быть обернут в FormProvider" 
-    : "Имя должно быть определено(textInput)"
-      console.error(msg)
+    const msg = !formContext ? "TextInput должен быть обернут в FormProvider"
+      : "Имя должно быть определено(textInput)"
+    console.error(msg)
     return null
   }
 
@@ -58,7 +58,7 @@ export const SmallTextInput: React.FC<TextInputProps> = (props) => {
   //console.log(`re-render ${countRender}`)
 
   useEffect(() => {
-    if(isFocused) {
+    if (isFocused) {
       setCross(true)
       startToCross()
     } else if (field.value?.length > 0) {
@@ -71,8 +71,8 @@ export const SmallTextInput: React.FC<TextInputProps> = (props) => {
 
   return <View style={container}>
     <View style={inputContainer}>
-      <Animated.View style={[inputBg, hasError && errBorder, 
-      {borderTopRightRadius: btnAnim, borderBottomRightRadius: btnAnim} ]} />
+      <Animated.View style={[inputBg, hasError && errBorder,
+        { borderTopRightRadius: btnAnim, borderBottomRightRadius: btnAnim }]} />
       <RNTextInput
         underlineColorAndroid='transparent'
         ref={inputRef}
@@ -86,15 +86,15 @@ export const SmallTextInput: React.FC<TextInputProps> = (props) => {
           setIsFocused(true)
         }}
         value={field.value}
-        placeholderTextColor={gray_c}
+        placeholderTextColor={GRAY}
         {...inputProps}
       />
-      <Pressable style={[circle, cross && 
-       {backgroundColor: 'transparent'},  
-       hasError && errCircle]} 
-       onPress={cross ? handleReset : handleFocus} >
-        <Icon name={cross ? 'close' : 'arrow-right'} 
-        color={cross ? (hasError && field?.value?.length>0) ? error_c : gray_c : dark_c} size={cross ? 24 : 19} /> 
+      <Pressable style={[circle, cross &&
+        { backgroundColor: 'transparent' },
+        hasError && errCircle]}
+        onPress={cross ? handleReset : handleFocus} >
+        <Icon name={cross ? 'close' : 'arrow-right'}
+          color={cross ? (hasError && field?.value?.length > 0) ? ERROR : GRAY : DARK} size={cross ? 24 : 19} />
       </Pressable>
     </View>
     {hasError &&
@@ -112,7 +112,7 @@ const styles = StyleSheet.create({
   },
   input: {
     backgroundColor: 'transparent',
-    color: white_c,
+    color: WHITE,
     paddingVertical: vs(12),
     paddingLeft: s(20),
     flex: 1,
@@ -121,7 +121,7 @@ const styles = StyleSheet.create({
     paddingRight: s(45)
   },
   inputBg: { // так сделано потому, что input-анимация ломает input
-    backgroundColor: dark_c,
+    backgroundColor: DARK,
     position: 'absolute',
     width: '100%',
     height: '100%',
@@ -129,7 +129,7 @@ const styles = StyleSheet.create({
     borderBottomLeftRadius: vs(8),
   },
   errBorder: {
-    borderColor: error_c,
+    borderColor: ERROR,
     borderWidth: 1,
   },
   inputContainer: {
@@ -141,7 +141,7 @@ const styles = StyleSheet.create({
     position: 'absolute',
     alignItems: 'center',
     justifyContent: 'center',
-    backgroundColor: gray_c,
+    backgroundColor: GRAY,
     right: s(-1),
     borderRadius: vs(30),
     zIndex: 2,
@@ -154,7 +154,7 @@ const styles = StyleSheet.create({
     right: s(0)
   },
   errTxt: {
-    color: error_c,
+    color: ERROR,
     lineHeight: vs(16),
     letterSpacing: s(1)
   },
@@ -163,5 +163,5 @@ const styles = StyleSheet.create({
     paddingLeft: s(20),
   }
 })
-const { container, input, inputContainer, errTxt, 
-  circle, errContainer, errBorder, errCircle, inputBg} = styles
+const { container, input, inputContainer, errTxt,
+  circle, errContainer, errBorder, errCircle, inputBg } = styles
