@@ -1,6 +1,6 @@
 import React, {FC, useEffect, useMemo, useState} from 'react'
 import {StyleSheet, Animated, Easing} from 'react-native'
-import {Check} from '../../icons'
+import {Check} from './icons'
 import {COLORS} from "../../theme";
 import {TouchableOpacity} from "../TouchableOpacity";
 
