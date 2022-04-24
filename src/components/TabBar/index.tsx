@@ -12,8 +12,9 @@ const icons = ['home', 'cart', 'shopping-bag', 'cards-heart', 'account-circle']
 export const TabBar: React.FC<BottomTabBarProps> = ({
     state, descriptors, navigation
 }) => {
-    const IconSize = (winWidth / 5) - s(10) - s(17)
-    return <View style={container}>
+    const IconSize = (winWidth / 5) - s(10) - s(24)
+
+    return <View style={[container, { paddingBottom: vs(17) }]}>
         {state.routes.map((route, id) => {
             const { options } = descriptors[route.key]
             const isFocused = state.index === id
@@ -27,7 +28,9 @@ export const TabBar: React.FC<BottomTabBarProps> = ({
 
                 if (!isFocused && !event.defaultPrevented) {
                     // Опция `merge: true` гарантирует, что параметры внутри экрана вкладки будут сохранены.
-                    navigation.navigate("MAIN", { screen: route.name, merge: true });
+                    navigation.navigate("MAIN", {
+                        screen: route.name, merge: true, title: options.title
+                    });
                 }
             }
 
@@ -50,14 +53,13 @@ export const TabBar: React.FC<BottomTabBarProps> = ({
 
 const styles = StyleSheet.create({
     container: {
-        height: vs(90),
-        paddingBottom: vs(30),
         backgroundColor: BLACK,
         width: '100%',
         flexDirection: 'row',
         borderTopLeftRadius: vs(12),
         borderTopRightRadius: vs(12),
         paddingTop: vs(10),
+        translateY: vs(2)
     },
     btnSection: {
         flex: 1,

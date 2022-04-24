@@ -54,8 +54,6 @@ export const SmallTextInput: React.FC<TextInputProps> = (props) => {
     resetField(name)
     inputRef.current.blur()
   }
-  //countRender += 1
-  //console.log(`re-render ${countRender}`)
 
   useEffect(() => {
     if (isFocused) {
