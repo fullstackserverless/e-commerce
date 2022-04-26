@@ -1,8 +1,8 @@
 import React, { useState } from 'react'
-import { Text } from 'react-native'
+import { ScrollView, Text } from 'react-native'
 import { StyleSheet, View } from 'react-native'
 import { DARK, WHITE } from './constants'
-import { Button, Space, Switch, CheckBox, ButtonPhoto } from './components'
+import { Button, Space, Switch, CheckBox, ButtonPhoto, ButtonReview } from './components'
 
 const styles = StyleSheet.create({
   container: {
@@ -30,6 +30,8 @@ export default function App({}){
 
   return(
     <View style={container}>
+      <ScrollView>
+      <Space height={30} />
       <Text style={textStyle}>{'Buttons'}</Text>
       <Button isOutline={true} isSmall={false} title='Push me'/>
       <Space height={15} />
@@ -52,6 +54,11 @@ export default function App({}){
       <Text style={textStyle}>{'ButtonPhoto'}</Text>
       <Space height={15} />
       <ButtonPhoto />
+      <Space height={30} />
+      <Text style={textStyle}>{'ButtonReview'}</Text>
+      <Space height={15} />
+      <ButtonReview />
+      </ScrollView>
     </View>
   )
 }
