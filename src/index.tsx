@@ -1,15 +1,15 @@
 import React, { useState } from 'react'
 import { ScrollView, Text } from 'react-native'
 import { StyleSheet, View } from 'react-native'
-import { DARK, WHITE } from './constants'
-import { Button, Space, Switch, CheckBox, ButtonPhoto, ButtonReview } from './components'
+import { WHITE, BLACK } from './constants'
+import { Button, Space, Switch, CheckBox, ButtonPhoto, ButtonReview, ButtonIcon } from './components'
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: DARK
+    backgroundColor: BLACK
   },
   textStyle: {
     color: WHITE,
@@ -58,6 +58,11 @@ export default function App({}){
       <Text style={textStyle}>{'ButtonReview'}</Text>
       <Space height={15} />
       <ButtonReview />
+      <Space height={30} />
+      <Text style={textStyle}>{'ButtonIcon'}</Text>
+      <Space height={15} />
+      <ButtonIcon isPrimary={false} isWhiteIcon={false}/>
+      <Space height={30} />
       </ScrollView>
     </View>
   )
