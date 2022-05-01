@@ -18,7 +18,7 @@ const styles = StyleSheet.create({
   }
 })
 
-export default function App({}){
+export default function App({}) {
   const { container, textStyle } = styles
   const [isEnabled, setIsEnabled] = useState(false)
   const [redCheckBoxValue, setRedCheckBoxValue] = useState(false)
@@ -28,41 +28,43 @@ export default function App({}){
   const toggleRedCheckBox = () => setRedCheckBoxValue(redCheckBoxValue => !redCheckBoxValue)
   const toggleWhiteCheckBox = () => setWhiteCheckBoxValue(whiteCheckBoxValue => !whiteCheckBoxValue)
 
-  return(
+  return (
     <View style={container}>
       <ScrollView>
-      <Space height={30} />
-      <Text style={textStyle}>{'Buttons'}</Text>
-      <Button isOutline={true} isSmall={false} title='Push me'/>
-      <Space height={15} />
-      <Button isOutline={false} isSmall={false} title='Push me'/>
-      <Space height={15} />
-      <Button isOutline={true} isSmall={true} title='Push me'/>
-      <Space height={15} />
-      <Button isOutline={false} isSmall={true} title='Push me'/>
-      <Space height={30} />
-      <Text style={textStyle}>{'Switch'}</Text>
-      <Space height={15} />
-      <Switch isValue={isEnabled} onValueChange={toggleSwitch}/>
-      <Space height={30} />
-      <Text style={textStyle}>{'CheckBox'}</Text>
-      <Space height={30} />
-      <CheckBox activeColor={'primary'} value={redCheckBoxValue} onToggle={toggleRedCheckBox} />
-      <Space height={30} />
-      <CheckBox activeColor={'white'} value={whiteCheckBoxValue} onToggle={toggleWhiteCheckBox} />
-      <Space height={30} />
-      <Text style={textStyle}>{'ButtonPhoto'}</Text>
-      <Space height={15} />
-      <ButtonPhoto />
-      <Space height={30} />
-      <Text style={textStyle}>{'ButtonReview'}</Text>
-      <Space height={15} />
-      <ButtonReview />
-      <Space height={30} />
-      <Text style={textStyle}>{'ButtonIcon'}</Text>
-      <Space height={15} />
-      <ButtonIcon isPrimary={false} isWhiteIcon={false}/>
-      <Space height={30} />
+        <Space height={30} />
+        <Text style={textStyle}>{'Buttons'}</Text>
+        <Button isOutline={true} isSmall={false} title="Push me" />
+        <Space height={15} />
+        <Button isOutline={false} isSmall={false} title="Push me" />
+        <Space height={15} />
+        <Button isOutline={true} isSmall={true} title="Push me" />
+        <Space height={15} />
+        <Button isOutline={false} isSmall={true} title="Push me" />
+        <Space height={30} />
+        <Text style={textStyle}>{'Switch'}</Text>
+        <Space height={15} />
+        <Switch isValue={isEnabled} onValueChange={toggleSwitch} />
+        <Space height={30} />
+        <Text style={textStyle}>{'CheckBox'}</Text>
+        <Space height={30} />
+        <CheckBox isPrimary={false} value={redCheckBoxValue} onToggle={toggleRedCheckBox} />
+        <Space height={30} />
+        <CheckBox isPrimary={true} value={whiteCheckBoxValue} onToggle={toggleWhiteCheckBox} />
+        <Space height={30} />
+        <Text style={textStyle}>{'ButtonPhoto'}</Text>
+        <Space height={15} />
+        <ButtonPhoto />
+        <Space height={30} />
+        <Text style={textStyle}>{'ButtonReview'}</Text>
+        <Space height={15} />
+        <ButtonReview />
+        <Space height={30} />
+        <Text style={textStyle}>{'ButtonIcon'}</Text>
+        <Space height={15} />
+        <ButtonIcon isPrimary={false} isWhiteIcon={false} />
+        <Space height={15} />
+        <ButtonIcon isPrimary={true} isWhiteIcon={true} />
+        <Space height={30} />
       </ScrollView>
     </View>
   )

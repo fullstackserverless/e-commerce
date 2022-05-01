@@ -34,8 +34,8 @@ function ButtonReview (){
             container
           ]}
         >
-          <Ionicons name='pencil' size={23} color={WHITE}/>
-          <Text style={textStyle}>Write a review</Text>
+          <Ionicons name='pencil' size={18} color={WHITE}/>
+          <Text style={textStyle}> Write a review</Text>
         </Pressable>
     )
 }
