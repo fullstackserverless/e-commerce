@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { ScrollView, Text } from 'react-native'
 import { StyleSheet, View } from 'react-native'
 import { WHITE, BLACK } from './constants'
-import { Button, Space, Switch, CheckBox, ButtonPhoto, ButtonReview, ButtonIcon } from './components'
+import { Button, Space, Switch, CheckBox, ButtonPhoto, ButtonReview, ButtonIcon, Tag } from './components'
 
 const styles = StyleSheet.create({
   container: {
@@ -64,6 +64,16 @@ export default function App({}) {
         <ButtonIcon isPrimary={false} isWhiteIcon={false} />
         <Space height={15} />
         <ButtonIcon isPrimary={true} isWhiteIcon={true} />
+        <Space height={30} />
+        <Text style={textStyle}>{'Tag'}</Text>
+        <Space height={15} />
+        <Tag title={'Tag'} isOutline={true} isSmall={false} isWhiteText={true} />
+        <Space height={15} />
+        <Tag title={'Tag'} isOutline={true} isSmall={true} isWhiteText={false} isWhiteButton={true} />
+        <Space height={15} />
+        <Tag title={'Tag'} isOutline={false} isSmall={false} />
+        <Space height={15} />
+        <Tag title={'Tag'} isOutline={false} isSmall={true} />
         <Space height={30} />
       </ScrollView>
     </View>
