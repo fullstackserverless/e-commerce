@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
 import { getFocusedRouteNameFromRoute, NavigationContainer } from '@react-navigation/native'
+import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs'
 import { createNativeStackNavigator, NativeStackNavigationProp } from '@react-navigation/native-stack'
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 
 import { RootStackParamList, RootTabParamList } from './types'
 import { Header, TabBar } from './components'
@@ -29,14 +29,14 @@ export const Navigation: React.FC<{}> = () => {
           }
         }}
       >
-        <Stack.Screen name="MAIN" component={TabNav} />
+        <Stack.Screen name="MAIN" component={TabNav} options={{ animation: 'none' }} />
         <Stack.Screen name="EXAMPLES" component={ExamplesScreen} />
       </Stack.Navigator>
     </NavigationContainer>
   )
 }
 
-const TabNavigator = createBottomTabNavigator<RootTabParamList>()
+const TabNavigator = createMaterialTopTabNavigator<RootTabParamList>()
 
 interface Itab {
   navigation: NativeStackNavigationProp<RootStackParamList, 'MAIN'>
@@ -45,11 +45,12 @@ interface Itab {
 const TabNav: React.FC<Itab> = () => {
   return (
     <TabNavigator.Navigator
-      initialRouteName={'TAB_HOME'}
-      tabBar={props => <TabBar {...props} />}
+      initialRouteName="TAB_SHOP"
       backBehavior="history"
+      tabBar={props => <TabBar {...props} />}
+      tabBarPosition="bottom"
       screenOptions={{
-        headerShown: false
+        swipeEnabled: false
       }}
     >
       <TabNavigator.Screen name="TAB_HOME" component={HomeScreen} options={{ title: 'Home' }} />
