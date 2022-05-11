@@ -31,8 +31,8 @@ const styles = StyleSheet.create({
 })
 
 interface ButtonT {
-  title: string,
-  isOutline: boolean,
+  title: string
+  isOutline: boolean
   isSmall: boolean
 }
 

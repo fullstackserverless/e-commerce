@@ -7,12 +7,15 @@
     "ios": "react-native run-ios",
     "start": "react-native start",
     "test": "jest",
-    "lint": "eslint . --ext .js,.jsx,.ts,.tsx"
+    "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
+    "pods": "cd ios && pod install",
+    "arm:pods": "cd ios && arch -x86_64 gem install ffi && arch -x86_64 pod install"
   },
   "dependencies": {
     "react": "17.0.2",
     "react-native": "0.67.4",
-    "react-native-svg": "^12.3.0"
+    "react-native-svg": "^12.3.0",
+    "react-native-vector-icons": "^9.1.0"
   },
   "devDependencies": {
     "@babel/core": "^7.12.9",
@@ -20,6 +23,7 @@
     "@react-native-community/eslint-config": "^2.0.0",
     "@types/jest": "^26.0.23",
     "@types/react-native": "^0.66.15",
+    "@types/react-native-vector-icons": "^6.4.10",
     "@types/react-test-renderer": "^17.0.1",
     "@typescript-eslint/eslint-plugin": "^5.7.0",
     "@typescript-eslint/parser": "^5.7.0",
