@@ -2,7 +2,6 @@ import React from 'react'
 import { StyleSheet, Pressable, Text } from 'react-native'
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons'
 import { PRIMARY, WHITE, DARK } from '../../constants'
-
 const styles = StyleSheet.create({
   container: {
     height: 36,
