@@ -1,12 +1,13 @@
 import React from 'react'
-import { StyleSheet, Pressable, Text } from 'react-native'
-import Ionicons from 'react-native-vector-icons/Ionicons'
+import { StyleSheet, Pressable } from 'react-native'
+import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons'
 import { PRIMARY, WHITE } from '../../constants'
+import { Text } from '../Text'
 
 const styles = StyleSheet.create({
   container: {
     height: 36,
-    width: 128,
+    width: 142,
     backgroundColor: PRIMARY,
     borderRadius: 25,
     flexDirection: 'row',
@@ -17,7 +18,7 @@ const styles = StyleSheet.create({
   },
   textStyle: {
     color: WHITE,
-    fontSize: 15
+    paddingLeft: 4
   }
 })
 
@@ -33,8 +34,8 @@ function ButtonReview() {
         container
       ]}
     >
-      <Ionicons name="pencil" size={18} color={WHITE} />
-      <Text style={textStyle}> Write a review</Text>
+      <MaterialCommunityIcons name="pencil" size={18} color={WHITE} />
+      <Text title="Write a review" h5 textStyle={textStyle} />
     </Pressable>
   )
 }

@@ -1,12 +1,14 @@
 import React from 'react'
-import { StyleSheet, Text, View } from 'react-native'
+import { StyleSheet, View } from 'react-native'
 import { PRIMARY, WHITE, BLACK } from '../../constants'
+import { Text } from '../'
 
 const styles = StyleSheet.create({
   containerBig: {
     width: 100,
     height: 40,
-    borderRadius: 8
+    borderRadius: 8,
+    justifyContent: 'center'
   },
   colorPrimary: {
     backgroundColor: PRIMARY
@@ -17,14 +19,13 @@ const styles = StyleSheet.create({
     color: 'white'
   },
   textStyle: {
-    alignSelf: 'center',
-    justifyContent: 'center',
-    fontSize: 25
+    alignSelf: 'center'
   },
   containerSmall: {
     width: 100,
     height: 30,
-    borderRadius: 29
+    borderRadius: 29,
+    justifyContent: 'center'
   },
   textColorBlack: {
     color: BLACK
@@ -62,7 +63,7 @@ function Tag({ title, isOutline, isSmall, isWhiteText, isWhiteButton }: TagT) {
   const whiteColor = isWhiteButton ? colorWhite : buttonColor
   return (
     <View style={[smallButtonOrBig, buttonColor, whiteColor]}>
-      <Text style={[textStyle, textColor]}>{title}</Text>
+      <Text title={title} h1 textStyle={[textStyle, textColor]} />
     </View>
   )
 }

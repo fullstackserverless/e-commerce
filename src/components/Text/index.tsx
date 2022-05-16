@@ -69,14 +69,14 @@ const Text = memo<TxtT>(({ h0, h1, h2, h3, h4, h5, h6, h7, title, textStyle, num
       ellipsizeMode={ellipsizeMode}
       style={[
         textStyle,
-        h0 && StyleSheet.flatten([h0Style]),
-        h1 && StyleSheet.flatten([h1Style]),
-        h2 && StyleSheet.flatten([h2Style]),
-        h3 && StyleSheet.flatten([h3Style]),
-        h4 && StyleSheet.flatten([h4Style]),
-        h5 && StyleSheet.flatten([h5Style]),
-        h6 && StyleSheet.flatten([h6Style]),
-        h7 && StyleSheet.flatten([h7Style])
+        h0 && StyleSheet.flatten([h0Style, textStyle]),
+        h1 && StyleSheet.flatten([h1Style, textStyle]),
+        h2 && StyleSheet.flatten([h2Style, textStyle]),
+        h3 && StyleSheet.flatten([h3Style, textStyle]),
+        h4 && StyleSheet.flatten([h4Style, textStyle]),
+        h5 && StyleSheet.flatten([h5Style, textStyle]),
+        h6 && StyleSheet.flatten([h6Style, textStyle]),
+        h7 && StyleSheet.flatten([h7Style, textStyle])
       ]}
     >
       {title}
