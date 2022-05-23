@@ -1,17 +1,17 @@
 import React from 'react'
-import { StyleSheet, Text, Pressable } from 'react-native'
+import { StyleSheet, Pressable } from 'react-native'
 import { PRIMARY, WHITE } from '../../constants'
+import { Text } from '../Text'
 
 const styles = StyleSheet.create({
   container: {
     justifyContent: 'center',
     height: 48,
     width: 343,
-    borderRadius: 25
+    borderRadius: 25,
+    alignItems: 'center'
   },
   textStyle: {
-    alignItems: 'center',
-    alignSelf: 'center',
     color: WHITE
   },
   color: {
@@ -26,7 +26,8 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     width: 160,
     height: 36,
-    borderRadius: 25
+    borderRadius: 25,
+    alignItems: 'center'
   }
 })
 
@@ -34,9 +35,10 @@ interface ButtonT {
   title: string
   isOutline: boolean
   isSmall: boolean
+  onPress: () => void
 }
 
-function Button({ isOutline, title, isSmall }: ButtonT) {
+function Button({ isOutline, title, isSmall, onPress }: ButtonT) {
   const { container, color, outlineStyle, textStyle, smallContainer } = styles
   const colorButton = isOutline ? outlineStyle : color
   const sizeButton = isSmall ? smallContainer : container
@@ -49,8 +51,9 @@ function Button({ isOutline, title, isSmall }: ButtonT) {
         colorButton,
         sizeButton
       ]}
+      onPress={onPress}
     >
-      <Text style={textStyle}>{title}</Text>
+      <Text title={title} h3 textStyle={textStyle} />
     </Pressable>
   )
 }

@@ -13,7 +13,6 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'center',
     lignItems: 'stretch',
-    alignSelf: 'stretch',
     alignItems: 'center'
   },
   textStyle: {

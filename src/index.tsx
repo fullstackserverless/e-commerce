@@ -2,7 +2,18 @@ import React, { useState } from 'react'
 import { ScrollView } from 'react-native'
 import { StyleSheet, View } from 'react-native'
 import { WHITE, BLACK } from './constants'
-import { Button, Space, Switch, CheckBox, ButtonPhoto, ButtonReview, ButtonIcon, Tag, Text } from './components'
+import {
+  Button,
+  Space,
+  Switch,
+  CheckBox,
+  ButtonPhoto,
+  ButtonReview,
+  ButtonIcon,
+  Tag,
+  Text,
+  Selector
+} from './components'
 
 const styles = StyleSheet.create({
   container: {
@@ -30,10 +41,13 @@ export default function App({}) {
 
   return (
     <View style={container}>
+      <Space height={30} />
+      <Text h0 title="Selector" />
+      <Space height={15} />
+      <Selector />
+      <Space height={30} />
       <ScrollView>
-        <Space height={30} />
         <Text h0 title="Buttons" />
-
         <Button isOutline={true} isSmall={false} title="Push me" />
         <Space height={15} />
         <Button isOutline={false} isSmall={false} title="Push me" />

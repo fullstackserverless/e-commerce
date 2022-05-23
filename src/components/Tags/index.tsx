@@ -63,7 +63,7 @@ function Tag({ title, isOutline, isSmall, isWhiteText, isWhiteButton }: TagT) {
   const whiteColor = isWhiteButton ? colorWhite : buttonColor
   return (
     <View style={[smallButtonOrBig, buttonColor, whiteColor]}>
-      <Text title={title} h1 textStyle={[textStyle, textColor]} />
+      <Text title={title} h3 textStyle={[textStyle, textColor]} />
     </View>
   )
 }
