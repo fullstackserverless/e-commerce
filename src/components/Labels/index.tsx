@@ -1,41 +1,41 @@
 import React from 'react'
 import { BLACK, SALE, WHITE } from '../../constants'
-import {StyleSheet, Text, View} from 'react-native'
+import { StyleSheet, View } from 'react-native'
+import { Text } from '../Text'
 
 const styles = StyleSheet.create({
-    container: {
-        width: 40,
-        height: 24,
-        borderRadius: 29
-    },
-    colorDark: {
-        backgroundColor: BLACK
-    },
-    color: {
-        backgroundColor: SALE    
-    },
-    textStyle: {
-        alignItems: 'center',
-        alignSelf: 'center',
-        color: WHITE,
-        fontSize: 15
-      }
+  container: {
+    width: 40,
+    height: 24,
+    borderRadius: 29,
+    alignItems: 'center',
+    justifyContent: 'center'
+  },
+  colorDark: {
+    backgroundColor: BLACK
+  },
+  color: {
+    backgroundColor: SALE
+  },
+  textStyle: {
+    color: WHITE
+  }
 })
 
 interface LabelsT {
-    isSaleOrNew: boolean,
-    title: string
+  isSaleOrNew: boolean
+  title: string
 }
 
-function Labels ({isSaleOrNew, title}: LabelsT){
-    const { container, colorDark, color, textStyle } = styles
-    const saleOrNew = isSaleOrNew ? color : colorDark
+function Labels({ isSaleOrNew, title }: LabelsT) {
+  const { container, colorDark, color, textStyle } = styles
+  const saleOrNew = isSaleOrNew ? color : colorDark
 
-    return (
-        <View style={[saleOrNew, container]}>
-            <Text style={textStyle}>{title}</Text>
-            </View>
-    )
+  return (
+    <View style={[saleOrNew, container]}>
+      <Text title={title} h5 textStyle={textStyle} />
+    </View>
+  )
 }
 
 export { Labels }
