@@ -3,13 +3,6 @@ import React, {useState} from 'react'
 import { View, Switch as Swi, StyleSheet } from "react-native"
 import { SUCCESS, GRAY, GRAY_OPACITY } from '../../constants'
 
-const styles = StyleSheet.create({
-  container: {
-    alignItems: "center",
-    justifyContent: "center"
-  }
-})
-
 interface SwitchT {
     isValue: boolean,
     isDisable?: boolean,
@@ -30,5 +23,12 @@ function Switch ({isValue, isDisable, onValueChange }: SwitchT){
       </View>
     )
   }
+  
+  const styles = StyleSheet.create({
+    container: {
+      alignItems: "center",
+      justifyContent: "center"
+    }
+  })
 
   export { Switch }

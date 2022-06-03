@@ -1,8 +1,7 @@
 import React, { useState } from 'react'
-import { Text } from 'react-native'
 import { StyleSheet, ScrollView, View } from 'react-native'
 import { DARK, WHITE } from './src/constants'
-import { Button, Space, Switch, Labels } from './src/components'
+import { Button, Space, Switch, Text } from './src/components'
 
 const styles = StyleSheet.create({
   container: {
@@ -13,38 +12,29 @@ const styles = StyleSheet.create({
   },
   textStyle: {
     color: WHITE,
-    fontSize: 25,
     paddingBottom: 10
   }
 })
 
-export default function App({}){
+export default function App({}) {
   const { container, textStyle } = styles
   const [isEnabled, setIsEnabled] = useState(false)
   const toggleSwitch = () => setIsEnabled(previousState => !previousState)
 
-  return(
+  return (
     <View style={container}>
-      <Text style={textStyle}>Buttons</Text>
-      <Button isOutline={true} isSmall={false} title='Push me'/>
+      <Text title="Buttons" h0 />
+      <Button isOutline={true} isSmall={false} title="Push me" />
       <Space height={15} />
-      <Button isOutline={false} isSmall={false} title='Push me'/>
+      <Button isOutline={false} isSmall={false} title="Push me" />
       <Space height={15} />
-      <Button isOutline={true} isSmall={true} title='Push me'/>
+      <Button isOutline={true} isSmall={true} title="Push me" />
       <Space height={15} />
-      <Button isOutline={false} isSmall={true} title='Push me'/>
+      <Button isOutline={false} isSmall={true} title="Push me" />
       <Space height={30} />
-      <Text style={textStyle}>Switch</Text>
+      <Text title="Switch" h0 />
       <Space height={15} />
-      <Switch isValue={isEnabled} onValueChange={toggleSwitch}/>
-      <Space height={30} />
-      <Text style={textStyle}>Labels</Text>
-      <Space height={15} />
-      <Labels isSaleOrNew={true} title='-20%'/>
-      <Space height={15} />
-      <Labels isSaleOrNew={false} title='NEW'/>
-      <Space height={15} />
-      <Labels isSaleOrNew={true} title='HOT'/>
+      <Switch isValue={isEnabled} onValueChange={toggleSwitch} />
       <Space height={30} />
     </View>
   )
