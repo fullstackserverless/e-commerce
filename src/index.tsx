@@ -1,14 +1,14 @@
 import React, { useState } from 'react'
 import { StyleSheet, View } from 'react-native'
-import { DARK, WHITE } from './constants'
-import { Space, Text, ButtonPhoto } from './components'
+import { BLACK, WHITE } from './constants'
+import { Space, Text, ButtonIcon } from './components'
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: DARK
+    backgroundColor: BLACK
   },
   textStyle: {
     color: WHITE,
@@ -24,9 +24,10 @@ export default function App({}) {
 
   return (
     <View style={container}>
-      <Text title="ButtonPhoto" h0 />
+      <Text title="ButtonIcon" h0 />
       <Space height={15} />
-      <ButtonPhoto />
+      <ButtonIcon isPrimary={true} isWhiteIcon={true} />
+      <ButtonIcon isPrimary={false} isWhiteIcon={false} />
     </View>
   )
 }
