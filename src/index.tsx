@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { StyleSheet, View } from 'react-native'
 import { DARK, WHITE } from './constants'
-import { Space, Labels, Text } from './components'
+import { Space, Text, ButtonPhoto } from './components'
 
 const styles = StyleSheet.create({
   container: {
@@ -24,11 +24,9 @@ export default function App({}) {
 
   return (
     <View style={container}>
-      <Text title="Labels" h0 />
+      <Text title="ButtonPhoto" h0 />
       <Space height={15} />
-      <Labels isSaleOrNew={true} title={'90%'} />
-      <Space height={15} />
-      <Labels isSaleOrNew={false} title={'90%'} />
+      <ButtonPhoto />
     </View>
   )
 }
