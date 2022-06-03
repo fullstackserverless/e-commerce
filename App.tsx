@@ -16,25 +16,25 @@ const styles = StyleSheet.create({
   }
 })
 
-export default function App({}){
+export default function App({}) {
   const { container, textStyle } = styles
   const [isEnabled, setIsEnabled] = useState(false)
   const toggleSwitch = () => setIsEnabled(previousState => !previousState)
 
-  return(
+  return (
     <View style={container}>
-      <Text textStyle={'title1'} style={styles.textStyle}>{'Buttons'}</Text>
-      <Button isOutline={true} isSmall={false} title='Push me'/>
+      <Text title="Buttons" h0 />
+      <Button isOutline={true} isSmall={false} title="Push me" />
       <Space height={15} />
-      <Button isOutline={false} isSmall={false} title='Push me'/>
+      <Button isOutline={false} isSmall={false} title="Push me" />
       <Space height={15} />
-      <Button isOutline={true} isSmall={true} title='Push me'/>
+      <Button isOutline={true} isSmall={true} title="Push me" />
       <Space height={15} />
-      <Button isOutline={false} isSmall={true} title='Push me'/>
+      <Button isOutline={false} isSmall={true} title="Push me" />
       <Space height={30} />
-      <Text textStyle={'body1'} style={styles.textStyle}>Switch</Text>
+      <Text title="Switch" h0 />
       <Space height={15} />
-      <Switch isValue={isEnabled} onValueChange={toggleSwitch}/>
+      <Switch isValue={isEnabled} onValueChange={toggleSwitch} />
       <Space height={30} />
     </View>
   )
