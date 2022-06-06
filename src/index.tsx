@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { StyleSheet, View } from 'react-native'
-import { DARK, WHITE } from './constants'
+import { BLACK, WHITE } from './constants'
 import { Space, Text, ButtonReview } from './components'
 
 const styles = StyleSheet.create({
@@ -8,7 +8,7 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: DARK
+    backgroundColor: BLACK
   },
   textStyle: {
     color: WHITE,
