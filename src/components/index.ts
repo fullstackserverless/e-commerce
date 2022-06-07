@@ -4,5 +4,7 @@ export * from './Text'
 export * from './Switch'
 export * from './Labels'
 export * from './ButtonPhoto'
-export * from './ButtonReview'
+export * from './CheckBox'
 export * from './ButtonIcon'
+export * from './ButtonReview'
+
