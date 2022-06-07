@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { StyleSheet, View } from 'react-native'
 import { BLACK, WHITE } from './constants'
-import { Space, Text, CheckBox } from './components'
+import { Space, Text, CheckBox, ButtonReview } from './components'
 
 const styles = StyleSheet.create({
   container: {
@@ -35,6 +35,9 @@ export default function App({}) {
       <Space height={30} />
       <CheckBox isPrimary={true} value={whiteCheckBoxValue} onToggle={toggleWhiteCheckBox} />
       <Space height={30} />
+      <Text title="ButtonReview" h0 />
+      <Space height={15} />
+      <ButtonReview />
     </View>
   )
 }
