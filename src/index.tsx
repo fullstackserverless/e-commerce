@@ -1,7 +1,8 @@
 import React, { useState } from 'react'
 import { StyleSheet, View } from 'react-native'
 import { BLACK, WHITE } from './constants'
-import { Space, Text, CheckBox, ButtonReview } from './components'
+import { Space, Text, CheckBox, ButtonReview, Tag } from './components'
+
 
 const styles = StyleSheet.create({
   container: {
@@ -29,6 +30,16 @@ export default function App({}) {
 
   return (
     <View style={container}>
+      <Text title="Tag" h0 />
+      <Space height={15} />
+      <Tag isOutline={true} isSmall={true} title="New" isWhiteText={true} />
+      <Space height={15} />
+      <Tag isOutline={true} isSmall={false} title="New" isWhiteButton={true} />
+      <Space height={15} />
+      <Tag isOutline={false} isSmall={true} title="New" />
+      <Space height={15} />
+      <Tag isOutline={false} isSmall={false} title="New" />
+      <Space height={15} />
       <Text h0 title="CheckBox" />
       <Space height={30} />
       <CheckBox isPrimary={false} value={redCheckBoxValue} onToggle={toggleRedCheckBox} />
