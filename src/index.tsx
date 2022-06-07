@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { StyleSheet, View } from 'react-native'
 import { BLACK, WHITE } from './constants'
-import { Space, Text, ButtonIcon } from './components'
+import { Space, Text, ButtonReview } from './components'
 
 const styles = StyleSheet.create({
   container: {
@@ -24,10 +24,9 @@ export default function App({}) {
 
   return (
     <View style={container}>
-      <Text title="ButtonIcon" h0 />
+      <Text title="ButtonReview" h0 />
       <Space height={15} />
-      <ButtonIcon isPrimary={true} isWhiteIcon={true} />
-      <ButtonIcon isPrimary={false} isWhiteIcon={false} />
+      <ButtonReview />
     </View>
   )
 }
