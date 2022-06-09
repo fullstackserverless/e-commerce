@@ -8,4 +8,4 @@ export * from './ButtonIcon'
 export * from './Tag'
 export * from './CheckBox'
 export * from './ButtonReview'
-
+export * from './Selector'
