@@ -31,12 +31,13 @@ const styles = StyleSheet.create({
 })
 
 interface ButtonT {
-  title: string,
-  isOutline: boolean,
+  title: string
+  isOutline: boolean
   isSmall: boolean
+  onPress: () => void
 }
 
-function Button({ isOutline, title, isSmall }: ButtonT) {
+function Button({ isOutline, title, isSmall, onPress }: ButtonT) {
   const { container, color, outlineStyle, textStyle, smallContainer } = styles
   const colorButton = isOutline ? outlineStyle : color
   const sizeButton = isSmall ? smallContainer : container
@@ -49,6 +50,7 @@ function Button({ isOutline, title, isSmall }: ButtonT) {
         colorButton,
         sizeButton
       ]}
+      onPress={onPress}
     >
       <Text style={textStyle}>{title}</Text>
     </Pressable>
