@@ -1,37 +1,24 @@
-import React, { useState } from 'react'
-import { StyleSheet, View } from 'react-native'
-import { BLACK, WHITE } from './constants'
-import { Space, Text, Selector } from './components'
+import React from 'react'
+import { NavigationContainer } from '@react-navigation/native'
+import { createNativeStackNavigator } from '@react-navigation/native-stack'
+import { PopUp } from './components'
+import { Home } from './UI'
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: BLACK
-  },
-  textStyle: {
-    color: WHITE,
-    fontSize: 25,
-    paddingBottom: 10
-  }
-})
+const Stack = createNativeStackNavigator()
 
-export default function App({}) {
-  const { container, textStyle } = styles
-  const [isEnabled, setIsEnabled] = useState(false)
-  const [redCheckBoxValue, setRedCheckBoxValue] = useState(false)
-  const [whiteCheckBoxValue, setWhiteCheckBoxValue] = useState(false)
-
-  const toggleSwitch = () => setIsEnabled(previousState => !previousState)
-  const toggleRedCheckBox = () => setRedCheckBoxValue(redCheckBoxValue => !redCheckBoxValue)
-  const toggleWhiteCheckBox = () => setWhiteCheckBoxValue(whiteCheckBoxValue => !whiteCheckBoxValue)
-
+function App() {
   return (
-    <View style={container}>
-      <Text title="Tag" h0 />
-      <Space height={15} />
-      <Selector />
-    </View>
+    <NavigationContainer>
+      <Stack.Navigator initialRouteName="HomeScreen" screenOptions={{ headerShown: false }}>
+        <Stack.Screen
+          component={PopUp}
+          name={'POPUP'}
+          options={{ presentation: 'transparentModal', animation: 'fade' }}
+        />
+        <Stack.Screen component={Home} name={'HomeScreen'} />
+      </Stack.Navigator>
+    </NavigationContainer>
   )
 }
+
+export default App
