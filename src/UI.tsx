@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { StyleSheet, View } from 'react-native'
 import { BLACK, WHITE } from './constants'
-import { Space, Text, Button, PopUp, CheckBox, CardOrder } from './components'
+import { Space, Text, Filter } from './components'
 
 const styles = StyleSheet.create({
   container: {
@@ -36,17 +36,9 @@ function Home({ navigation, route }: HomeT) {
 
   return (
     <View style={container}>
-      <Text title="CardOrder" h0 />
+      <Text title="Filter" h0 />
       <Space height={15} />
-      <CardOrder
-        TN="IW3475453455"
-        quantity="3"
-        amount="112"
-        isDelivered={true}
-        date="05-12-2019"
-        order="1947034"
-        details={() => {}}
-      />
+      <Filter onPressApps={() => {}} onPressFilter={() => {}} onPressPrice={() => {}} />
     </View>
   )
 }
