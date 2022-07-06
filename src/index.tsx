@@ -10,11 +10,11 @@ function App() {
   return (
     <NavigationContainer>
       <Stack.Navigator initialRouteName="HomeScreen" screenOptions={{ headerShown: false }}>
-        <Stack.Screen
+        {/* <Stack.Screen
           component={PopUp}
           name={'POPUP'}
           options={{ presentation: 'transparentModal', animation: 'fade' }}
-        />
+        /> */}
         <Stack.Screen component={Home} name={'HomeScreen'} />
       </Stack.Navigator>
     </NavigationContainer>

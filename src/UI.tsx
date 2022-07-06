@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { StyleSheet, View } from 'react-native'
 import { BLACK, WHITE } from './constants'
-import { Space, Text, Button, PopUp, CheckBox } from './components'
+import { Space, Text, Button, PopUp, CheckBox, CardOrder } from './components'
 
 const styles = StyleSheet.create({
   container: {
@@ -17,7 +17,12 @@ const styles = StyleSheet.create({
   }
 })
 
-function Home({ navigation, route }) {
+interface HomeT {
+  navigation: any
+  route: any
+}
+
+function Home({ navigation, route }: HomeT) {
   const { container, textStyle } = styles
   const [isEnabled, setIsEnabled] = useState(false)
   const [redCheckBoxValue, setRedCheckBoxValue] = useState(false)
@@ -31,9 +36,17 @@ function Home({ navigation, route }) {
 
   return (
     <View style={container}>
-      <Text title="PopUp" h0 />
+      <Text title="CardOrder" h0 />
       <Space height={15} />
-      <Button isOutline={false} isSmall={false} title="PopUp" onPress={openPopUp} />
+      <CardOrder
+        TN="IW3475453455"
+        quantity="3"
+        amount="112"
+        isDelivered={true}
+        date="05-12-2019"
+        order="1947034"
+        details={() => {}}
+      />
     </View>
   )
 }
