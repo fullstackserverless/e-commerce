@@ -1,5 +1,5 @@
 import React, { FC, useEffect, useMemo, useState } from 'react'
-import { StyleSheet, Animated, Easing, Pressable } from 'react-native'
+import { StyleSheet, Animated, Easing, Pressable, StyleProp, ViewStyle } from 'react-native'
 import { Check } from './icons/Check'
 import { GRAY, PRIMARY, WHITE, DARK } from '../../constants'
 
@@ -7,12 +7,13 @@ export interface CheckBoxProps {
   value: boolean
   isPrimary: boolean
   onToggle: (value: boolean) => void
+  CheckBoxStyle?: StyleProp<ViewStyle>
 }
 
 const animationToggle = (value: boolean) => new Animated.Value(value ? 1 : 0)
 
 export const CheckBox: FC<CheckBoxProps> = (props: CheckBoxProps) => {
-  const { value, onToggle, isPrimary } = props
+  const { value, onToggle, isPrimary, CheckBoxStyle } = props
   const [timer] = useState<Animated.Value>(animationToggle(value))
   const [previousValue, setPreviousValue] = useState<boolean>(value)
   const onToggleHandler = React.useMemo(() => () => onToggle && onToggle(!value), [onToggle, value])
@@ -57,7 +58,8 @@ export const CheckBox: FC<CheckBoxProps> = (props: CheckBoxProps) => {
             backgroundColor: animatedBgStyle,
             borderColor: animatedBorderColorStyle,
             borderWidth
-          }
+          },
+          CheckBoxStyle
         ]}
       >
         <Check color={iconColor} />
