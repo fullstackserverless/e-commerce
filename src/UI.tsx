@@ -3,6 +3,7 @@ import { StyleSheet, View } from 'react-native'
 import { BLACK, WHITE } from './constants'
 import { Space, Text, FilterBottom } from './components'
 
+
 const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -39,6 +40,7 @@ function Home({ navigation, route }: HomeT) {
       <Text title="Filter" h0 />
       <Space height={15} />
       <FilterBottom />
+
     </View>
   )
 }
