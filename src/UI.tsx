@@ -1,7 +1,8 @@
 import React, { useState } from 'react'
 import { StyleSheet, View } from 'react-native'
 import { BLACK, WHITE } from './constants'
-import { Space, Text, AdressCard } from './components'
+import { Space, Text, FilterBottom } from './components'
+
 
 const styles = StyleSheet.create({
   container: {
@@ -36,13 +37,10 @@ function Home({ navigation, route }: HomeT) {
 
   return (
     <View style={container}>
-      <Text title="CategoryCard" h0 />
+      <Text title="Filter" h0 />
       <Space height={15} />
-      <AdressCard
-        name="John Doe"
-        adress={`3 Newbridge Court\nChino Hills, CA 91709, United States`}
-        onPressEdit={() => {}}
-      />
+      <FilterBottom />
+
     </View>
   )
 }
