@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { StyleSheet, View } from 'react-native'
 import { BLACK, WHITE } from './constants'
-import { Space, Text, CardProductCover } from './components'
+import { Space, Text, CardProductBag, CardProductCatalog, CardProductOrderInfo } from './components'
 
 const styles = StyleSheet.create({
   container: {
@@ -11,9 +11,7 @@ const styles = StyleSheet.create({
     backgroundColor: BLACK
   },
   textStyle: {
-    color: WHITE,
-    fontSize: 25,
-    paddingBottom: 10
+    color: WHITE
   }
 })
 
@@ -36,22 +34,19 @@ function Home({ navigation, route }: HomeT) {
 
   return (
     <View style={container}>
-      <Text title="CardProductCover" h0 />
+      <Text title="CardProduct" h0 />
       <Space height={15} />
-      <CardProductCover
-        size="L"
-        color="Blue"
-        clothes="Shirt"
-        brand="LIME"
-        price="10"
-        imageUri="https://wallup.net/wp-content/uploads/2016/03/12/297274-Owari_No_Seraph-Hyakuya_Yuuichirou.jpg"
-        rating={[5, 5, 5, 5, 5, 5, 5, 5, 5, 5]}
-        isSoldOut={false}
-        onClose={() => {}}
-        isSaleOrNew={false}
-        titleLabel={'-30%'}
-        isLabelVision={true}
-      />
+      <Text title="CardProductBag" h1 textStyle={textStyle} />
+      <Space height={10} />
+      <CardProductBag />
+      <Space height={15} />
+      <Text title="CardProductCatalog" h1 textStyle={textStyle} />
+      <Space height={10} />
+      <CardProductCatalog />
+      <Space height={15} />
+      <Text title="CardProductOrderInfo" h1 textStyle={textStyle} />
+      <Space height={10} />
+      <CardProductOrderInfo />
     </View>
   )
 }

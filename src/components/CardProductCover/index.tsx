@@ -121,7 +121,7 @@ interface TwoColorTextT {
   style?: StyleProp<ViewStyle>
 }
 
-function TwoColorText({ leftText, rightText, style }: TwoColorTextT) {
+export function TwoColorText({ leftText, rightText, style }: TwoColorTextT) {
   const { twoColorTextStyle, leftTextStyle, rightTextStyle, twoColorTextContainer, soldOutStyle } = styles
   return (
     <View style={[twoColorTextStyle, style]}>
