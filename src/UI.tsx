@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { StyleSheet, View } from 'react-native'
 import { BLACK, WHITE } from './constants'
-import { Space, Text, CardProductBag, CardProductCatalog, CardProductOrderInfo } from './components'
+import { Space, Text, ReviewCard } from './components'
 
 const styles = StyleSheet.create({
   container: {
@@ -34,19 +34,9 @@ function Home({ navigation, route }: HomeT) {
 
   return (
     <View style={container}>
-      <Text title="CardProduct" h0 />
+      <Text title="ReviewCard" h0 />
       <Space height={15} />
-      <Text title="CardProductBag" h1 textStyle={textStyle} />
-      <Space height={10} />
-      <CardProductBag />
-      <Space height={15} />
-      <Text title="CardProductCatalog" h1 textStyle={textStyle} />
-      <Space height={10} />
-      <CardProductCatalog />
-      <Space height={15} />
-      <Text title="CardProductOrderInfo" h1 textStyle={textStyle} />
-      <Space height={10} />
-      <CardProductOrderInfo />
+      <ReviewCard />
     </View>
   )
 }
