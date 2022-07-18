@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { StyleSheet, View } from 'react-native'
 import { BLACK, WHITE } from './constants'
-import { Space, Text, ReviewCard } from './components'
+import { Space, Text, ReviewCard, Button } from './components'
 
 const styles = StyleSheet.create({
   container: {
@@ -31,12 +31,13 @@ function Home({ navigation, route }: HomeT) {
   const toggleRedCheckBox = () => setRedCheckBoxValue(redCheckBoxValue => !redCheckBoxValue)
   const toggleWhiteCheckBox = () => setWhiteCheckBoxValue(whiteCheckBoxValue => !whiteCheckBoxValue)
   const openPopUp = () => navigate('POPUP')
+  const openSuccess = () => navigate('SuccessScreen')
 
   return (
     <View style={container}>
-      <Text title="ReviewCard" h0 />
+      <Text title="SuccessScreen" h0 />
       <Space height={15} />
-      <ReviewCard />
+      <Button onPress={openSuccess} isOutline={false} isSmall={false} title={'Open SuccessScreen'} />
     </View>
   )
 }
