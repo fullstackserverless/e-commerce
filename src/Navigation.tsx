@@ -5,7 +5,15 @@ import { createNativeStackNavigator, NativeStackNavigationProp } from '@react-na
 
 import { RootStackParamList, RootTabParamList } from './types'
 import { Header, TabBar } from './components'
-import { ExamplesScreen, HomeScreen, BagScreen, ProfileScreen, FavoritesScreen, ShopScreen } from './screens'
+import {
+  ExamplesScreen,
+  HomeScreen,
+  BagScreen,
+  ProfileScreen,
+  FavoritesScreen,
+  ShopScreen,
+  SuccessScreen
+} from './screens'
 import { BLACK, GRAY } from './constants'
 import SystemNavigationBar from 'react-native-system-navigation-bar'
 
@@ -31,6 +39,7 @@ export const Navigation: React.FC<{}> = () => {
       >
         <Stack.Screen name="MAIN" component={TabNav} options={{ animation: 'none' }} />
         <Stack.Screen name="EXAMPLES" component={ExamplesScreen} />
+        {/* <Stack.Screen name="SUCCESS" component={SuccessScreen} /> */}
       </Stack.Navigator>
     </NavigationContainer>
   )
