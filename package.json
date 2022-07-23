@@ -29,6 +29,7 @@
     "react-native-svg": "^12.4.0",
     "react-native-system-navigation-bar": "^1.0.4",
     "react-native-tab-view": "^3.1.1",
+    "react-native-textinput-effects": "^0.6.2",
     "react-native-vector-icons": "^9.1.0",
     "yup": "^0.32.11"
   },
