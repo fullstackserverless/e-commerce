@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react'
-import { View, TextInput as RNTextInput, StyleSheet, Pressable, Animated } from 'react-native'
+import { View, TextInput as RNTextInput, StyleSheet, Pressable, Animated, LayoutChangeEvent } from 'react-native'
 import { Text } from '../Text'
 import { useController, useFormContext } from 'react-hook-form'
 import { DARK, GRAY, BLACK, ERROR, SUCCESS, WHITE } from '../../constants'
@@ -7,19 +7,17 @@ import Icon from 'react-native-vector-icons/MaterialCommunityIcons'
 import { TextInputProps } from './TextInputPropsType'
 import { s, vs } from 'react-native-size-matters'
 
-export const SmallTextInput: React.FC<TextInputProps> = (props) => {
+export const SmallTextInput: React.FC<TextInputProps> = props => {
   const [isFocused, setIsFocused] = useState<boolean>(false)
   const [cross, setCross] = useState<boolean>(false)
   const inputRef = useRef<any>()
 
-  const { name, rules, resetField,
-    defaultValue, ...inputProps } = props
+  const { name, rules, resetField, defaultValue, ...inputProps } = props
 
   const formContext = useFormContext()
 
   if (!formContext || !name) {
-    const msg = !formContext ? "TextInput должен быть обернут в FormProvider"
-      : "Имя должно быть определено(textInput)"
+    const msg = !formContext ? 'TextInput должен быть обернут в FormProvider' : 'Имя должно быть определено(textInput)'
     console.error(msg)
     return null
   }
@@ -45,7 +43,6 @@ export const SmallTextInput: React.FC<TextInputProps> = (props) => {
       useNativeDriver: true
     }).start(() => setCross(false))
   }
-  // *
 
   const handleFocus = (): void => {
     inputRef.current.focus()
@@ -67,40 +64,56 @@ export const SmallTextInput: React.FC<TextInputProps> = (props) => {
     }
   }, [field.value, isFocused])
 
-  return <View style={container}>
-    <View style={inputContainer}>
-      <Animated.View style={[inputBg, hasError && errBorder,
-        { borderTopRightRadius: btnAnim, borderBottomRightRadius: btnAnim }]} />
-      <RNTextInput
-        underlineColorAndroid='transparent'
-        ref={inputRef}
-        style={input}
-        onChangeText={field.onChange}
-        onBlur={() => {
-          setIsFocused(false)
-          field.onBlur()
-        }}
-        onFocus={() => {
-          setIsFocused(true)
-        }}
-        value={field.value}
-        placeholderTextColor={GRAY}
-        {...inputProps}
-      />
-      <Pressable style={[circle, cross &&
-        { backgroundColor: 'transparent' },
-        hasError && errCircle]}
-        onPress={cross ? handleReset : handleFocus} >
-        <Icon name={cross ? 'close' : 'arrow-right'}
-          color={cross ? (hasError && field?.value?.length > 0) ? ERROR : GRAY : DARK} size={cross ? 24 : 19} />
-      </Pressable>
-    </View>
-    {hasError &&
-      <View style={errContainer}>
-        <Text textStyle={'body4'} style={errTxt}>{formState.errors[name].message}</Text>
-      </View>
+  const [width, setWidth] = useState(0)
+
+  function onLayout(e: LayoutChangeEvent) {
+    const layoutWidth = e.nativeEvent.layout.width
+    if (layoutWidth > 10) {
+      setWidth(layoutWidth - 60)
+    } else {
+      setWidth(layoutWidth)
     }
-  </View>
+  }
+  return (
+    <View style={container} onLayout={onLayout}>
+      <View style={inputContainer}>
+        <Animated.View
+          style={[inputBg, hasError && errBorder, { borderTopRightRadius: btnAnim, borderBottomRightRadius: btnAnim }]}
+        />
+        <RNTextInput
+          underlineColorAndroid="transparent"
+          ref={inputRef}
+          style={input}
+          onChangeText={field.onChange}
+          onBlur={() => {
+            setIsFocused(false)
+            field.onBlur()
+          }}
+          onFocus={() => {
+            setIsFocused(true)
+          }}
+          value={field.value}
+          placeholderTextColor={GRAY}
+          {...inputProps}
+        />
+        <Pressable
+          style={[circle, cross && { backgroundColor: 'transparent' }, hasError && errCircle]}
+          onPress={cross ? handleReset : handleFocus}
+        >
+          <Icon
+            name={cross ? 'close' : 'arrow-right'}
+            color={cross ? (hasError && field?.value?.length > 0 ? ERROR : GRAY) : DARK}
+            size={cross ? 24 : 19}
+          />
+        </Pressable>
+      </View>
+      {hasError && (
+        <View style={errContainer}>
+          <Text h4 textStyle={[errTxt, { width }]} title={formState.errors[name]?.message} />
+        </View>
+      )}
+    </View>
+  )
 }
 
 const styles = StyleSheet.create({
@@ -118,23 +131,24 @@ const styles = StyleSheet.create({
     lineHeight: vs(20),
     paddingRight: s(45)
   },
-  inputBg: { // так сделано потому, что input-анимация ломает input
+  inputBg: {
+    // так сделано потому, что input-анимация ломает input
     backgroundColor: DARK,
     position: 'absolute',
     width: '100%',
     height: '100%',
     borderTopLeftRadius: vs(8),
-    borderBottomLeftRadius: vs(8),
+    borderBottomLeftRadius: vs(8)
   },
   errBorder: {
     borderColor: ERROR,
-    borderWidth: 1,
+    borderWidth: 1
   },
   inputContainer: {
-    height: vs(45),
+    height: vs(40)
   },
   circle: {
-    height: vs(45),
+    height: s(45),
     width: s(45),
     position: 'absolute',
     alignItems: 'center',
@@ -142,12 +156,12 @@ const styles = StyleSheet.create({
     backgroundColor: GRAY,
     right: s(-1),
     borderRadius: vs(30),
-    zIndex: 2,
+    zIndex: 2
   },
   errCircle: {
     marginVertical: 1,
     marginRight: 1,
-    height: vs(43),
+    height: s(43),
     width: s(43),
     right: s(0)
   },
@@ -159,7 +173,8 @@ const styles = StyleSheet.create({
   errContainer: {
     paddingVertical: vs(3),
     paddingLeft: s(20),
+    flexWrap: 'wrap',
+    width: '100%'
   }
 })
-const { container, input, inputContainer, errTxt,
-  circle, errContainer, errBorder, errCircle, inputBg } = styles
+const { container, input, inputContainer, errTxt, circle, errContainer, errBorder, errCircle, inputBg } = styles

@@ -11,6 +11,9 @@ const styles = StyleSheet.create({
     borderRadius: 8,
     backgroundColor: BLACK
   },
+  container1: {
+    left: 30
+  },
   imageStyle: {
     width: 163,
     height: 190,
@@ -58,8 +61,7 @@ const styles = StyleSheet.create({
   iconContainer: {
     justifyContent: 'flex-end',
     flexDirection: 'row',
-    bottom: 175,
-    right: 35
+    bottom: 210
   },
   soldOutStyle: {
     backgroundColor: GRAY_OPACITY,
@@ -97,7 +99,8 @@ const styles = StyleSheet.create({
     position: 'absolute',
     bottom: 190,
     left: 10
-  }
+  },
+  closeIconContainer: {}
 })
 
 interface CardProductCoverT {
@@ -166,6 +169,7 @@ function CardProductCover({
     soldOutTextColor,
     notSoldOutTextColor,
     soldOutTextContainer,
+    container1,
     labelContainer
   } = styles
 
@@ -188,10 +192,12 @@ function CardProductCover({
         </View>
         <View style={layerContainer}>
           <Rating ratingList={rating} />
-          <ButtonIcon isPrimary={ButtonIconStyle} isWhiteIcon={ButtonIconStyle} />
-          <Pressable onPress={onClose} style={({ pressed }) => [{ opacity: pressed ? 0.8 : 0.5 }, iconContainer]}>
-            <Ionicons name={'close'} style={[icon, iconStyle]} />
-          </Pressable>
+          <View style={container1}>
+            <ButtonIcon isPrimary={ButtonIconStyle} isWhiteIcon={ButtonIconStyle} />
+            <Pressable onPress={onClose} style={({ pressed }) => [{ opacity: pressed ? 0.8 : 0.5 }, iconContainer]}>
+              <Ionicons name={'close'} style={[icon, iconStyle]} />
+            </Pressable>
+          </View>
           <View style={labelContainer}>
             <Label />
           </View>

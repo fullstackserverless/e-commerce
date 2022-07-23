@@ -1,7 +1,7 @@
 import React from 'react'
-import { StyleSheet, Text, Pressable } from 'react-native'
-import { PRIMARY, WHITE } from '../../constants'
-
+import { StyleSheet, Pressable } from 'react-native'
+import { BLACK, PRIMARY, WHITE } from '../../constants'
+import { Text } from '../'
 const styles = StyleSheet.create({
   container: {
     justifyContent: 'center',
@@ -11,8 +11,7 @@ const styles = StyleSheet.create({
   },
   textStyle: {
     alignItems: 'center',
-    alignSelf: 'center',
-    color: WHITE
+    alignSelf: 'center'
   },
   color: {
     backgroundColor: PRIMARY
@@ -27,6 +26,12 @@ const styles = StyleSheet.create({
     width: 160,
     height: 36,
     borderRadius: 25
+  },
+  textColorOutline: {
+    color: WHITE
+  },
+  textColor: {
+    color: BLACK
   }
 })
 
@@ -38,9 +43,10 @@ interface ButtonT {
 }
 
 function Button({ isOutline, title, isSmall, onPress }: ButtonT) {
-  const { container, color, outlineStyle, textStyle, smallContainer } = styles
+  const { container, color, outlineStyle, textStyle, smallContainer, textColor, textColorOutline } = styles
   const colorButton = isOutline ? outlineStyle : color
   const sizeButton = isSmall ? smallContainer : container
+  const textColorButton = isOutline ? textColorOutline : textColor
   return (
     <Pressable
       style={({ pressed }) => [
@@ -52,7 +58,7 @@ function Button({ isOutline, title, isSmall, onPress }: ButtonT) {
       ]}
       onPress={onPress}
     >
-      <Text style={textStyle}>{title}</Text>
+      <Text textStyle={[textStyle, textColorButton]} title={title} h3 />
     </Pressable>
   )
 }

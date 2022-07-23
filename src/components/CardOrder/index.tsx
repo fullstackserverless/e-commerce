@@ -54,7 +54,7 @@ interface cardOrderT {
   quantity: string
   amount: string
   isDelivered: boolean
-  details: () => void
+  onDetails: () => void
 }
 
 interface TwoColorTextT {
@@ -82,7 +82,7 @@ function CardOrder({
   quantity = '0',
   amount = '0',
   isDelivered = true,
-  details
+  onDetails
 }: cardOrderT) {
   const { container, orderStyle, dateStyle, TNStyle, quantityStyle, amountStyle, deliveredStyle, container2 } = styles
 
@@ -104,7 +104,7 @@ function CardOrder({
       </View>
       <Space height={10} />
       <View style={container2}>
-        <Button isOutline={true} isSmall={true} title={'Details'} onPress={() => {}} />
+        <Button isOutline={true} isSmall={true} title={'Details'} onPress={onDetails} />
         <View style={deliveredStyle}>
           <Text title={isDelivered ? 'Delivered' : 'Undelivered'} textStyle={deliveredStyleColor} h5 />
         </View>

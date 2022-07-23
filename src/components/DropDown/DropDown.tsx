@@ -3,23 +3,19 @@ import { View, StyleSheet, Animated, Pressable, ScrollView } from 'react-native'
 import { Text } from '../Text'
 import { s, vs } from 'react-native-size-matters'
 import Icon from 'react-native-vector-icons/Fontisto'
-import {
-  DARK, GRAY, BLACK, ERROR,
-  SUCCESS, WHITE, PRIMARY
-} from '../../constants'
-
+import { DARK, GRAY, BLACK, ERROR, SUCCESS, WHITE, PRIMARY } from '../../constants'
 
 interface IdropDown {
-  list: string[],
-  width: number,
-  label: string,
-  onOpen?: () => void,
-  onClose?: () => void,
-  onSelect?: (el: string) => void,
+  list: string[]
+  width: number
+  label: string
+  onOpen?: () => void
+  onClose?: () => void
+  onSelect?: (el: string) => void
   duration?: number
 }
 
-export const DropDown: React.FC<IdropDown> = (props) => {
+export const DropDown: React.FC<IdropDown> = props => {
   const { list, width, label, duration, onOpen, onClose, onSelect } = props
   const [selected, setSelected] = useState<string>('')
   const [isOpen, setIsOpen] = useState<boolean>(false)
@@ -29,16 +25,12 @@ export const DropDown: React.FC<IdropDown> = (props) => {
   const slideAnim = useRef(new Animated.Value(0)).current
 
   const handleAnim = () => {
-    const finalValue = isOpen
-      ? headerHeight : containerHeight + headerHeight
-    Animated.timing(
-      slideAnim,
-      {
-        toValue: finalValue,
-        duration: duration ? duration : 400,
-        useNativeDriver: false
-      }
-    ).start(({ finished }) => {
+    const finalValue = isOpen ? headerHeight : containerHeight + headerHeight
+    Animated.timing(slideAnim, {
+      toValue: finalValue,
+      duration: duration ? duration : 400,
+      useNativeDriver: false
+    }).start(({ finished }) => {
       if (finished) {
         isOpen ? onClose && onClose() : onOpen && onOpen()
         setIsOpen(pr => !pr)
@@ -65,49 +57,62 @@ export const DropDown: React.FC<IdropDown> = (props) => {
   }
 
   const rotateZ = slideAnim.interpolate({
-    inputRange: [headerHeight, headerHeight + containerHeight - vs(10) > headerHeight ? containerHeight + headerHeight - vs(10) : containerHeight + headerHeight],
+    inputRange: [
+      headerHeight,
+      headerHeight + containerHeight - vs(10) > headerHeight
+        ? containerHeight + headerHeight - vs(10)
+        : containerHeight + headerHeight
+    ],
     outputRange: ['0deg', '180deg'],
     extrapolate: 'clamp'
   })
 
   const _renItem = (item: string, id: number) => {
-    return <Pressable key={id.toString()} style={[dropItemContainer, selected === item && { backgroundColor: GRAY }]}
-      onPress={() => {
-        setSelected(item)
-        onSelect && onSelect(item)
-      }}>
-      <Text textStyle={'title3'} style={[textEntry, selected === item && { color: DARK }]}>{item}</Text>
-    </Pressable>
+    return (
+      <Pressable
+        key={id.toString()}
+        style={[dropItemContainer, selected === item && { backgroundColor: GRAY }]}
+        onPress={() => {
+          setSelected(item)
+          onSelect && onSelect(item)
+        }}
+      >
+        <Text h3 textStyle={[textEntry, selected === item && { color: DARK }]} title={item} />
+      </Pressable>
+    )
   }
 
-  return <Animated.View style={[
-    container,
-    {
-      height: slideAnim,
-      width: width
-    }
-  ]}>
-    <Pressable onPress={handlePress}
-      onLayout={onAnimLayout} style={btnContainer}>
-      <Text textStyle={'title3'} style={textEntry}>{selected !== '' ? selected : label}</Text>
-      <Animated.View style={{ translateY: vs(2), transform: [{ rotateZ }] }}>
-        <Icon name='angle-down' color={GRAY} size={s(14)} />
-      </Animated.View>
-    </Pressable>
-    <View
-      style={dropContainer}
-      onLayout={onLayout}
+  return (
+    <Animated.View
+      style={[
+        container,
+        {
+          height: slideAnim,
+          width: width
+        }
+      ]}
     >
-      {containerHeight >= vs(190) ?
-        <ScrollView nestedScrollEnabled style={{ height: vs(190) }}>
-          {list.map((a, id) => _renItem(a, id))}
-          <View style={{ height: vs(10) }} />
-        </ScrollView> : <>
-          {list.map((a, id) => _renItem(a, id))}
-          <View style={{ height: vs(5) }} />
-        </>}
-    </View>
-  </Animated.View>
+      <Pressable onPress={handlePress} onLayout={onAnimLayout} style={btnContainer}>
+        <Text h3 textStyle={textEntry} title={selected !== '' ? selected : label} />
+        <Animated.View style={{ translateY: vs(2), transform: [{ rotateZ }] }}>
+          <Icon name="angle-down" color={GRAY} size={s(14)} />
+        </Animated.View>
+      </Pressable>
+      <View style={dropContainer} onLayout={onLayout}>
+        {containerHeight >= vs(190) ? (
+          <ScrollView nestedScrollEnabled style={{ height: vs(190) }}>
+            {list.map((a, id) => _renItem(a, id))}
+            <View style={{ height: vs(10) }} />
+          </ScrollView>
+        ) : (
+          <>
+            {list.map((a, id) => _renItem(a, id))}
+            <View style={{ height: vs(5) }} />
+          </>
+        )}
+      </View>
+    </Animated.View>
+  )
 }
 
 const styles = StyleSheet.create({
@@ -115,20 +120,20 @@ const styles = StyleSheet.create({
     borderRadius: s(8),
     borderWidth: s(1),
     borderColor: GRAY,
-    overflow: 'hidden',
+    overflow: 'hidden'
   },
   btnContainer: {
     paddingTop: vs(10),
     paddingHorizontal: s(12),
     flexDirection: 'row',
     justifyContent: 'space-between',
-    alignItems: 'center',
+    alignItems: 'center'
   },
   textEntry: {
-    color: WHITE,
+    color: WHITE
   },
   dropContainer: {
-    paddingTop: vs(12),
+    paddingTop: vs(12)
   },
   dropItemContainer: {
     width: '100%',
