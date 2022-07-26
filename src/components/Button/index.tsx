@@ -42,7 +42,7 @@ interface ButtonT {
   onPress: () => void
 }
 
-function Button({ isOutline, title, isSmall, onPress }: ButtonT) {
+function Button({ isOutline, title = 'DefaultTitle', isSmall, onPress }: ButtonT) {
   const { container, color, outlineStyle, textStyle, smallContainer, textColor, textColorOutline } = styles
   const colorButton = isOutline ? outlineStyle : color
   const sizeButton = isSmall ? smallContainer : container
