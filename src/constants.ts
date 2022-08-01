@@ -9,6 +9,7 @@ export const GRAY_OPACITY = 'rgba(171, 180, 189, 0.1)'
 export const SUCCESS = '#55D85A'
 export const ERROR = '#FF2424'
 export const SALE = '#FF3E3E'
+export const RED = '#FF3E3E'
 
 const winWidth = Dimensions.get('window').width
 const winHeight = Dimensions.get('window').height
