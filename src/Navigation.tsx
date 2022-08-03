@@ -62,11 +62,11 @@ const TabNav: React.FC<Itab> = () => {
         swipeEnabled: false
       }}
     >
-      <TabNavigator.Screen name="TAB_HOME" component={HomeScreen} options={{ title: 'Home' }} />
-      <TabNavigator.Screen name="TAB_SHOP" component={ShopScreen} options={{ title: 'Shop' }} />
-      <TabNavigator.Screen name="TAB_BAG" component={BagScreen} options={{ title: 'Bag' }} />
-      <TabNavigator.Screen name="TAB_FAVORITES" component={FavoritesScreen} options={{ title: 'Favorites' }} />
-      <TabNavigator.Screen name="TAB_PROFILE" component={ProfileScreen} options={{ title: 'Profile' }} />
+      <TabNavigator.Screen name="TAB_HOME" component={HomeScreen} />
+      <TabNavigator.Screen name="TAB_SHOP" component={ShopScreen} />
+      <TabNavigator.Screen name="TAB_BAG" component={BagScreen} />
+      <TabNavigator.Screen name="TAB_FAVORITES" component={FavoritesScreen} />
+      <TabNavigator.Screen name="TAB_PROFILE" component={ProfileScreen} />
     </TabNavigator.Navigator>
   )
 }
