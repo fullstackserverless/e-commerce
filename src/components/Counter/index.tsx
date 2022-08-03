@@ -1,8 +1,8 @@
 import React, { useState } from 'react'
 import { StyleSheet, View } from 'react-native'
-import { Text } from '../../index'
-import { TitleButton } from '../buttons/TitleButton'
-import { WHITE } from '../../../constants'
+import { Text } from '../index'
+import { TitleButton } from '../index'
+import { WHITE } from '../../constants'
 
 const styles = StyleSheet.create({
   counterContainer: {

@@ -3,7 +3,6 @@ import { StyleSheet, View, Image } from 'react-native'
 import { Text, Space, Rating } from '../index'
 import { TwoColorText } from '../CardProductCover'
 import { DARK, GRAY, WHITE } from '../../constants'
-import { HeartButton } from './buttons/HeartButton'
 
 const styles = StyleSheet.create({
   container: {

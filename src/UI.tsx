@@ -64,6 +64,7 @@ function Home({ navigation, route }: HomeT) {
   const openSuccess = () => navigate('SuccessScreen')
   const openAuth = () => navigate('SignUpScreen')
   const openFilterList = () => navigate('FiltersListScreen')
+  const openMyProfile = () => navigate('MyProfileScreen')
 
   return (
     <ScrollView style={container}>
@@ -246,6 +247,10 @@ function Home({ navigation, route }: HomeT) {
         <Text title="FiltersListScreen" h1 textStyle={textStyle} />
         <Space height={10} />
         <Button title={'Open FiltersListScreen!'} onPress={openFilterList} />
+        <Space height={25} />
+        <Text title="MyProfileScreen" h1 textStyle={textStyle} />
+        <Space height={10} />
+        <Button title={'Open MyProfile!'} onPress={openMyProfile} />
         <Space height={25} />
       </View>
     </ScrollView>

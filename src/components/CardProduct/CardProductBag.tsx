@@ -1,10 +1,9 @@
 import React from 'react'
 import { StyleSheet, View, Image } from 'react-native'
-import { Text, Space } from '../index'
+import { Text, Space, Counter } from '../index'
 import Ionicons from 'react-native-vector-icons/Ionicons'
 import { TwoColorText } from '../CardProductCover'
 import { DARK, GRAY, WHITE } from '../../constants'
-import { Counter } from './components/Counter'
 
 const styles = StyleSheet.create({
   container: {

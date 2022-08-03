@@ -1,9 +1,9 @@
 import React, { useState } from 'react'
 import { StyleSheet, View, Pressable, Image } from 'react-native'
-import { Text, Rating, Space } from '../../index'
+import { Text, Rating, Space } from '../index'
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons'
-import { TwoColorText } from '../../CardProductCover'
-import { BLACK, DARK, GRAY, PRIMARY, WHITE } from '../../../constants'
+import { TwoColorText } from '../CardProductCover'
+import { BLACK, DARK, GRAY, PRIMARY, WHITE } from '../../constants'
 
 const styles = StyleSheet.create({
   buttonContainer: {
