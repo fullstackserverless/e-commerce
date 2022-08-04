@@ -2,22 +2,20 @@ import React from 'react'
 import { StyleSheet, View, ImageBackground } from 'react-native'
 import { Text, Space, Button } from '../index'
 import { DARK, GRAY, WHITE, RED, BLACK } from '../../constants'
-import { s } from 'react-native-size-matters'
+import { s, vs } from 'react-native-size-matters'
 import { ButtonApply } from './buttons'
 
 const styles = StyleSheet.create({
   container: {
-    width: 343,
-    height: 80,
+    width: '90%',
+    height: vs(80),
     borderRadius: 8,
     backgroundColor: DARK,
-    flexDirection: 'row'
+    flexDirection: 'row',
+    overflow: 'hidden'
   },
   percentContainer: {
-    width: 80,
-    height: 80,
-    borderBottomLeftRadius: 8,
-    borderTopLeftRadius: 8,
+    width: s(80),
     backgroundColor: RED,
     flexDirection: 'row',
     alignItems: 'center',
@@ -25,10 +23,7 @@ const styles = StyleSheet.create({
   },
   percentImageContainer: {
     color: BLACK,
-    width: 80,
-    height: 80,
-    borderBottomLeftRadius: 8,
-    borderTopLeftRadius: 8,
+    width: s(80),
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center'
@@ -37,17 +32,18 @@ const styles = StyleSheet.create({
     flexDirection: 'column'
   },
   infoContainer: {
-    paddingHorizontal: s(10),
-    width: 252,
+    flex: 1,
+    marginHorizontal: s(5),
     flexDirection: 'row',
     justifyContent: 'space-around'
   },
   containerMid: {
+    flex: 1.3,
     flexDirection: 'column',
-    alignItems: 'center',
     justifyContent: 'center'
   },
   containerRight: {
+    flex: 1,
     flexDirection: 'column',
     alignItems: 'center',
     justifyContent: 'center'
@@ -81,9 +77,11 @@ const styles = StyleSheet.create({
   text: {
     color: 'white',
     fontSize: 12,
-    lineHeight: 84,
     fontWeight: 'bold',
     textAlign: 'center'
+  },
+  blackTextStyle: {
+    color: BLACK
   }
 })
 interface CardProductBagT {
@@ -93,28 +91,30 @@ interface CardProductBagT {
   imagePromo: string
 }
 
+const {
+  container,
+  percentContainer,
+  infoContainer,
+  containerMid,
+  containerRight,
+  percentNumberStyle,
+  percentTextStyle,
+  infoPercentAdded,
+  personalTextStyle,
+  prmocodeTextStyle,
+  remainTextStyle,
+  imageContainer,
+  percentImageContainer,
+  blackTextStyle
+} = styles
+
 function CardPromo({
   percentNumber = '10',
   promocodeText = 'mypromocode2020',
   daysRemainNumber = '6',
   imagePromo
 }: CardProductBagT) {
-  const {
-    container,
-    percentContainer,
-    infoContainer,
-    containerMid,
-    containerRight,
-    percentNumberStyle,
-    percentTextStyle,
-    infoPercentAdded,
-    personalTextStyle,
-    prmocodeTextStyle,
-    remainTextStyle,
-    imageContainer,
-    percentImageContainer
-  } = styles
-  // imagePromo = "https://demotivation.ru/wp-content/uploads/2020/05/255095-Sepik-2048x1383.jpg"
+  // imagePromo = 'https://demotivation.ru/wp-content/uploads/2020/05/255095-Sepik-2048x1383.jpg'
   const image = { uri: imagePromo }
 
   return (
@@ -122,10 +122,10 @@ function CardPromo({
       {imagePromo ? (
         <ImageBackground source={image} resizeMode="cover" style={imageContainer}>
           <View style={percentImageContainer}>
-            <Text title={`${percentNumber}`} textStyle={percentNumberStyle} />
+            <Text title={`${percentNumber}`} textStyle={[percentNumberStyle, blackTextStyle]} />
             <View style={infoPercentAdded}>
-              <Text title={'%'} textStyle={percentTextStyle} />
-              <Text title={'off'} textStyle={percentTextStyle} />
+              <Text title={'%'} textStyle={[percentTextStyle, blackTextStyle]} />
+              <Text title={'off'} textStyle={[percentTextStyle, blackTextStyle]} />
             </View>
           </View>
         </ImageBackground>
@@ -141,7 +141,7 @@ function CardPromo({
       <Space width={11} height={0} />
       <View style={infoContainer}>
         <View style={containerMid}>
-          <Text title={'Personal offer'} textStyle={personalTextStyle} />
+          <Text title={'Personal offer'} numberOfLines={1} textStyle={personalTextStyle} />
           <Space height={4} />
           <Text title={promocodeText} textStyle={prmocodeTextStyle} />
         </View>
@@ -149,10 +149,9 @@ function CardPromo({
         <View style={containerRight}>
           <Text title={`${daysRemainNumber} days remaining`} textStyle={remainTextStyle} />
           <Space height={10} />
-          <ButtonApply onPress={() => {}} isOutline={false} title={'Apply'} sizeWidth={93} sizeHeight={36} />
+          <ButtonApply onPress={() => {}} title={'Apply'} />
         </View>
       </View>
-      <Space width={11} height={0} />
     </View>
   )
 }

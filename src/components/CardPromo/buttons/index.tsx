@@ -1,39 +1,32 @@
 import React from 'react'
-import { StyleSheet, Text, Pressable } from 'react-native'
-import { PRIMARY, WHITE, winWidth } from '../../../constants'
+import { StyleSheet, Text, Pressable, StyleProp, ViewStyle } from 'react-native'
+import { s } from 'react-native-size-matters'
+import { PRIMARY, WHITE } from '../../../constants'
 
 const styles = StyleSheet.create({
   container: {
     justifyContent: 'center',
-    borderRadius: 25
+    borderRadius: s(25),
+    width: '80%',
+    height: s(28),
+    marginHorizontal: 20,
+    backgroundColor: PRIMARY
   },
   textStyle: {
     alignItems: 'center',
     alignSelf: 'center',
     color: WHITE
-  },
-  color: {
-    backgroundColor: PRIMARY
-  },
-  outlineStyle: {
-    borderWidth: 1.5,
-    borderColor: 'white',
-    color: 'white'
   }
 })
 
 interface ButtonT {
   title: string
-  sizeWidth: number
-  sizeHeight: number
-  isOutline: boolean
+  viewStyle?: StyleProp<ViewStyle>
   onPress: () => void
 }
 
-function ButtonApply({ isOutline, title, onPress, sizeWidth = winWidth - 50, sizeHeight = 48 }: ButtonT) {
-  const { container, color, outlineStyle, textStyle } = styles
-  const colorButton = isOutline ? outlineStyle : color
-  console.log('sizeWidth', container)
+function ButtonApply({ title, onPress, viewStyle }: ButtonT) {
+  const { container, textStyle } = styles
 
   return (
     <Pressable
@@ -41,10 +34,8 @@ function ButtonApply({ isOutline, title, onPress, sizeWidth = winWidth - 50, siz
         {
           opacity: pressed ? 0.9 : 1
         },
-        colorButton,
         container,
-        sizeWidth && { width: sizeWidth },
-        sizeHeight && { height: sizeHeight }
+        viewStyle
       ]}
       onPress={onPress}
     >
