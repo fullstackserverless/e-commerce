@@ -1,14 +1,13 @@
 import React, { useState } from 'react'
-import { StyleSheet, View, Pressable, Image } from 'react-native'
-import { Text, Rating, Space } from '../index'
+import { StyleSheet, Pressable } from 'react-native'
+import { vs } from 'react-native-size-matters'
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons'
-import { TwoColorText } from '../CardProductCover'
-import { BLACK, DARK, GRAY, PRIMARY, WHITE } from '../../constants'
+import { DARK, PRIMARY, WHITE } from '../../constants'
 
 const styles = StyleSheet.create({
   buttonContainer: {
-    height: 36,
-    width: 36,
+    height: vs(34),
+    width: vs(34),
     backgroundColor: DARK,
     borderRadius: 100,
     shadowColor: '#000',
@@ -18,7 +17,6 @@ const styles = StyleSheet.create({
     },
     shadowOpacity: 0.34,
     shadowRadius: 6.27,
-
     elevation: 10
   },
   buttonStyle: {
@@ -48,7 +46,7 @@ function HeartButton({ onPress }: HeartButtonT) {
         setActive(pr => !pr), onPress
       }}
     >
-      <MaterialCommunityIcons name="heart" size={20} color={isActive ? PRIMARY : WHITE} />
+      <MaterialCommunityIcons name="heart" size={vs(18)} color={isActive ? PRIMARY : WHITE} />
     </Pressable>
   )
 }

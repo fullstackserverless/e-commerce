@@ -1,27 +1,30 @@
 import React from 'react'
 import { StyleSheet, Pressable } from 'react-native'
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons'
-import { PRIMARY, WHITE } from '../../constants'
+import { PRIMARY, WHITE, BLACK, winWidth } from '../../constants'
 import { Text } from '../Text'
+import { vs } from 'react-native-size-matters'
 
 const styles = StyleSheet.create({
   container: {
-    height: 36,
-    width: 128,
+    height: vs(25),
+    width: winWidth * 0.4,
     backgroundColor: PRIMARY,
     borderRadius: 25,
     flexDirection: 'row',
     justifyContent: 'center',
-    lignItems: 'stretch',
-    alignSelf: 'stretch',
     alignItems: 'center'
   },
   textStyle: {
-    color: WHITE
+    color: BLACK
   }
 })
 
-function ButtonReview() {
+interface ButtonReviewT {
+  onPress: () => void
+}
+
+function ButtonReview({ onPress }: ButtonReviewT) {
   const { container, textStyle } = styles
 
   return (
@@ -32,9 +35,10 @@ function ButtonReview() {
         },
         container
       ]}
+      onPress={onPress}
     >
-      <MaterialCommunityIcons name="pencil" size={20} color={WHITE} />
-      <Text title="Write a review" textStyle={textStyle} h5 />
+      <MaterialCommunityIcons name="pencil" size={vs(17)} color={BLACK} />
+      <Text title="Write a review" textStyle={textStyle} h3 />
     </Pressable>
   )
 }

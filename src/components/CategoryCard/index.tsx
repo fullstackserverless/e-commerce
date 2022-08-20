@@ -1,19 +1,20 @@
 import React from 'react'
 import { Image, StyleSheet, View } from 'react-native'
-import { DARK, WHITE } from '../../constants'
+import { vs } from 'react-native-size-matters'
+import { DARK, WHITE, winWidth } from '../../constants'
 import { Text } from '../index'
 
 const styles = StyleSheet.create({
   container: {
-    width: 343,
-    height: 100,
-    borderRadius: 8,
+    width: winWidth * 0.8,
+    height: vs(96),
+    borderRadius: vs(6),
     backgroundColor: DARK,
     justifyContent: 'center',
     flexDirection: 'row'
   },
   textContainer: {
-    marginLeft: 20,
+    marginLeft: vs(18),
     width: '50%',
     justifyContent: 'center'
   },

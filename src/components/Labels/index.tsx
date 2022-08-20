@@ -1,13 +1,14 @@
 import React from 'react'
-import { BLACK, SALE, WHITE } from '../../constants'
+import { BLACK, SALE, WHITE, winWidth } from '../../constants'
 import { StyleSheet, View } from 'react-native'
 import { Text } from '../Text'
+import { vs } from 'react-native-size-matters'
 
 const styles = StyleSheet.create({
   container: {
-    width: 40,
-    height: 24,
-    borderRadius: 29,
+    width: winWidth * 0.1,
+    height: vs(22),
+    borderRadius: vs(27),
     alignItems: 'center',
     justifyContent: 'center'
   },

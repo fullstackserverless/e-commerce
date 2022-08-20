@@ -1,13 +1,14 @@
 import React from 'react'
-import { StyleSheet, View } from 'react-native'
-import { PRIMARY, WHITE, BLACK } from '../../constants'
+import { Pressable, StyleSheet, View } from 'react-native'
+import { PRIMARY, WHITE, BLACK, winWidth } from '../../constants'
 import { Text } from '../'
+import { vs } from 'react-native-size-matters'
 
 const styles = StyleSheet.create({
   containerBig: {
-    width: 100,
-    height: 40,
-    borderRadius: 8,
+    width: winWidth * 0.15,
+    height: vs(36),
+    borderRadius: vs(6),
     justifyContent: 'center'
   },
   colorPrimary: {
@@ -22,9 +23,9 @@ const styles = StyleSheet.create({
     alignSelf: 'center'
   },
   containerSmall: {
-    width: 100,
-    height: 30,
-    borderRadius: 29,
+    width: winWidth * 0.15,
+    height: vs(26),
+    borderRadius: vs(27),
     justifyContent: 'center'
   },
   textColorBlack: {
@@ -42,11 +43,12 @@ interface TagT {
   title: string
   isOutline: boolean
   isSmall: boolean
+  onPress: () => void
   isWhiteText?: boolean
   isWhiteButton?: boolean
 }
 
-function Tag({ title, isOutline, isSmall, isWhiteText, isWhiteButton }: TagT) {
+function Tag({ title, isOutline, isSmall, isWhiteText, isWhiteButton, onPress }: TagT) {
   const {
     containerBig,
     textStyle,
@@ -62,9 +64,12 @@ function Tag({ title, isOutline, isSmall, isWhiteText, isWhiteButton }: TagT) {
   const textColor = isWhiteText ? textColorWhite : textColorBlack
   const whiteColor = isWhiteButton ? colorWhite : buttonColor
   return (
-    <View style={[smallButtonOrBig, buttonColor, whiteColor]}>
+    <Pressable
+      style={({ pressed }) => [smallButtonOrBig, buttonColor, whiteColor, { opacity: pressed ? 0.85 : 1 }]}
+      onPress={onPress}
+    >
       <Text title={title} h1 textStyle={[textStyle, textColor]} />
-    </View>
+    </Pressable>
   )
 }
 

@@ -1,8 +1,9 @@
 import React from 'react'
 import { View, Button, StyleSheet, Pressable, Text } from 'react-native'
-import { GRAY } from '../../constants'
+import { GRAY, WHITE, winWidth } from '../../constants'
 import { BlurView } from '@react-native-community/blur'
 import { PRIMARY } from '../../constants'
+import { vs } from 'react-native-size-matters'
 
 const styles = StyleSheet.create({
   container: {
@@ -13,8 +14,8 @@ const styles = StyleSheet.create({
   },
   modalStyle: {
     backgroundColor: 'transparent',
-    width: 170,
-    height: 96,
+    width: winWidth * 0.5,
+    height: vs(92),
     borderRadius: 8
   },
   containerModal1: {
@@ -40,7 +41,10 @@ const styles = StyleSheet.create({
     borderRadius: 8
   },
   textStyle: {
-    fontSize: 20
+    fontSize: vs(16)
+  },
+  textColor: {
+    color: WHITE
   }
 })
 
@@ -50,7 +54,7 @@ interface PopUpT {
 }
 
 function PopUp({ navigation }: PopUpT) {
-  const { container, modalStyle, containerModal1, containerModal2, blurStyle, textStyle } = styles
+  const { container, modalStyle, containerModal1, containerModal2, blurStyle, textStyle, textColor } = styles
   return (
     <View style={container}>
       <BlurView blurType="dark" blurRadius={1} style={blurStyle} />
@@ -62,7 +66,11 @@ function PopUp({ navigation }: PopUpT) {
           </Pressable>
         </View>
         <View style={containerModal1}>
-          <Button onPress={navigation.goBack} title="Delete from the list" color={'white'} />
+          <Pressable onPress={navigation.goBack}>
+            {({ pressed }) => (
+              <Text style={[textStyle, textColor, { opacity: pressed ? 0.7 : 1 }]}>Delete from the list</Text>
+            )}
+          </Pressable>
         </View>
       </View>
     </View>

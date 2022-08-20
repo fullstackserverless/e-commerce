@@ -4,11 +4,12 @@ import Ionicons from 'react-native-vector-icons/Ionicons'
 import { BLACK, DARK, PRIMARY, WHITE, winWidth } from '../../constants'
 import { Space, Text, CheckBox, Button, Search, Header } from '../../components'
 import { SafeAreaView } from 'react-native-safe-area-context'
+import { vs, s } from 'react-native-size-matters'
 
 const styles = StyleSheet.create({
   containerView: {
     width: '100%',
-    height: 140,
+    height: vs(130),
     backgroundColor: BLACK
   },
   containerSearch: {
@@ -24,7 +25,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     width: '100%',
-    height: 16 * 3,
+    height: vs(42),
     alignItems: 'center',
     paddingLeft: 15,
     paddingRight: 15
@@ -35,7 +36,7 @@ const styles = StyleSheet.create({
   actionsContainer: {
     flexDirection: 'row',
     justifyContent: 'space-between',
-    paddingTop: (16 * 3) / 2,
+    paddingTop: vs(42) / 2,
     paddingLeft: 20,
     paddingRight: 20
   },
@@ -47,7 +48,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row'
   },
   headerTextContainer: {
-    paddingLeft: winWidth / 2 - 90
+    paddingLeft: winWidth / 2 - s(50)
   },
   bottomViewContainer: {
     width: '100%',
@@ -116,7 +117,7 @@ function FiltersListScreen({ navigation }: FiltersListScreenT) {
             ]}
             onPress={navigation.goBack}
           >
-            <Ionicons name={'chevron-back'} size={30} color={WHITE} />
+            <Ionicons name={'chevron-back'} size={vs(26)} color={WHITE} />
           </Pressable>
           <View style={headerTextContainer}>
             <Text title="Brand" h1 textStyle={textStyle} />

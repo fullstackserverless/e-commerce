@@ -1,22 +1,22 @@
 import React from 'react'
 import { StyleSheet, View, Image } from 'react-native'
 import { Text, Space, Rating, HeartButton } from '../index'
-import { TwoColorText } from '../CardProductCover'
-import { DARK, GRAY, WHITE } from '../../constants'
+import { DARK, GRAY, WHITE, winWidth } from '../../constants'
+import { vs } from 'react-native-size-matters'
 
 const styles = StyleSheet.create({
   container: {
-    width: 343,
-    height: 114,
-    borderRadius: 8,
+    width: winWidth * 0.9,
+    height: vs(110),
+    borderRadius: vs(6),
     backgroundColor: DARK,
     flexDirection: 'row'
   },
   imageStyle: {
-    width: 104,
-    height: 114,
-    borderBottomLeftRadius: 8,
-    borderTopLeftRadius: 8
+    width: winWidth * 0.2,
+    height: vs(110),
+    borderBottomLeftRadius: vs(6),
+    borderTopLeftRadius: vs(6)
   },
   cardProductTextStyle: {
     color: WHITE
@@ -34,11 +34,13 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between'
   },
   buttonContainer: {
-    top: 20
+    top: vs(18),
+    position: 'absolute',
+    left: winWidth * 0.6
   },
   priceTextStyle: {
     color: WHITE,
-    marginRight: 8
+    marginRight: vs(6)
   },
   brandTextStyle: {
     color: GRAY
@@ -55,9 +57,7 @@ interface CardProductCatalogT {
 }
 
 function CardProductCatalog({
-  color = 'Undefined',
   clothes = 'Undefined',
-  size = '0',
   price = '0',
   brand = 'Undefined',
   ratingList = [4, 4, 4]
@@ -79,21 +79,20 @@ function CardProductCatalog({
         style={imageStyle}
         source={{ uri: 'https://demotivation.ru/wp-content/uploads/2020/05/255095-Sepik-2048x1383.jpg' }}
       />
-      <Space width={11} height={0} />
+      <Space width={winWidth * 0.015} height={0} />
       <View style={infoContainer}>
-        <Space height={10} />
+        <Space height={vs(8)} />
         <Text title={clothes} h2 textStyle={clothesTextStyle} />
         <Text title={brand} h6 textStyle={brandTextStyle} />
         <Rating ratingList={ratingList} />
-        <Space height={6} />
+        <Space height={vs(4)} />
         <View style={container1}>
           <Text title={`${price}$`} h2 textStyle={priceTextStyle} />
-          <Space width={161} height={0} />
           <View style={buttonContainer}>
             <HeartButton onPress={() => {}} />
           </View>
         </View>
-        <Space height={6} />
+        <Space height={vs(4)} />
       </View>
     </View>
   )

@@ -1,9 +1,10 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { Animated, TextInput, TouchableWithoutFeedback, View, StyleSheet } from 'react-native'
-import { BLACK, DARK } from '../../constants'
+import { BLACK, DARK, winHeight, winWidth } from '../../constants'
 
 import BaseInput from './BaseInput'
+import { vs } from 'react-native-size-matters'
 
 class Fumi extends BaseInput {
   static propTypes = {
@@ -32,11 +33,11 @@ class Fumi extends BaseInput {
   }
 
   static defaultProps = {
-    height: 48,
+    height: vs(44),
     iconColor: '#00aeef',
-    iconSize: 20,
-    iconWidth: 40,
-    inputPadding: 16,
+    iconSize: vs(14),
+    iconWidth: winWidth * 0.05,
+    inputPadding: vs(15),
     passiveIconColor: '#a3a3a3',
     animationDuration: 300
   }
@@ -96,7 +97,7 @@ class Fumi extends BaseInput {
             styles.separator,
             {
               height: inputHeight,
-              left: iconWidth + 8
+              left: iconWidth + vs(15)
             }
           ]}
         />
@@ -104,7 +105,7 @@ class Fumi extends BaseInput {
           <Animated.View
             style={{
               position: 'absolute',
-              left: iconWidth + inputPadding,
+              left: iconWidth + inputPadding + vs(10),
               height: inputHeight,
               top: focusedAnim.interpolate({
                 inputRange: [0, 0.5, 0.51, 0.7, 1],
@@ -125,7 +126,8 @@ class Fumi extends BaseInput {
                     outputRange: ['#696969', '#a3a3a3']
                   })
                 },
-                labelStyle
+                labelStyle,
+                { fontSize: vs(12) }
               ]}
             >
               {label}
@@ -157,25 +159,25 @@ class Fumi extends BaseInput {
 const styles = StyleSheet.create({
   container: {
     overflow: 'hidden',
-    paddingTop: 16,
+    paddingTop: vs(14),
     backgroundColor: DARK
   },
   label: {
-    fontSize: 18,
+    fontSize: vs(14),
     fontWeight: 'bold'
   },
   textInput: {
     flex: 1,
     color: 'black',
-    fontSize: 18,
-    padding: 7,
-    paddingLeft: 0
+    fontSize: vs(14),
+    padding: vs(3),
+    paddingLeft: vs(10)
   },
   separator: {
     position: 'absolute',
     width: 1,
     backgroundColor: BLACK,
-    top: 8
+    top: vs(4)
   }
 })
 

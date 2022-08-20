@@ -1,22 +1,25 @@
 import React from 'react'
 import { Image, StyleSheet, View, StyleProp, ViewStyle, Pressable } from 'react-native'
+import { vs, s } from 'react-native-size-matters'
 import Ionicons from 'react-native-vector-icons/Ionicons'
-import { BLACK, DARK, GRAY_OPACITY, WHITE, GRAY } from '../../constants'
+import { BLACK, GRAY_OPACITY, WHITE, GRAY, winWidth } from '../../constants'
 import { Text, ButtonIcon, Space, Rating, Labels } from '../index'
 
 const styles = StyleSheet.create({
   container: {
-    width: 164,
-    height: 300,
-    borderRadius: 8,
+    width: winWidth * 0.47,
+    height: vs(296),
+    borderRadius: vs(6),
     backgroundColor: BLACK
   },
   container1: {
-    left: 30
+    left: winWidth * 0.39,
+    top: vs(5),
+    position: 'absolute'
   },
   imageStyle: {
-    width: 163,
-    height: 190,
+    width: winWidth * 0.47,
+    height: vs(188),
     borderRadius: 8
   },
   view: {
@@ -30,10 +33,8 @@ const styles = StyleSheet.create({
   },
   layerContainer: {
     position: 'absolute',
-    top: 178,
-    left: 0,
-    right: 0,
-    bottom: 85,
+    top: vs(176),
+    bottom: vs(83),
     flexDirection: 'row'
   },
   twoColorTextContainer: {
@@ -47,10 +48,10 @@ const styles = StyleSheet.create({
   },
   rightTextStyle: {
     color: WHITE,
-    marginRight: 10
+    marginRight: vs(8)
   },
   iconStyle: {
-    fontSize: 30
+    fontSize: vs(27)
   },
   iconColor: {
     color: BLACK
@@ -59,9 +60,7 @@ const styles = StyleSheet.create({
     color: WHITE
   },
   iconContainer: {
-    justifyContent: 'flex-end',
-    flexDirection: 'row',
-    bottom: 210
+    bottom: vs(208)
   },
   soldOutStyle: {
     backgroundColor: GRAY_OPACITY,
@@ -72,12 +71,12 @@ const styles = StyleSheet.create({
   },
   soldOutTextBackground: {
     position: 'absolute',
-    top: 155,
+    top: vs(154.7),
     width: '100%',
-    height: 36,
+    height: vs(34),
     opacity: 0.8,
-    borderBottomLeftRadius: 8,
-    borderBottomRightRadius: 8
+    borderBottomLeftRadius: vs(6),
+    borderBottomRightRadius: vs(6)
   },
   soldOutTextBackgroundColor: {
     backgroundColor: BLACK
@@ -97,8 +96,8 @@ const styles = StyleSheet.create({
   },
   labelContainer: {
     position: 'absolute',
-    bottom: 190,
-    left: 10
+    bottom: vs(186),
+    left: vs(8)
   },
   closeIconContainer: {}
 })
@@ -202,7 +201,7 @@ function CardProductCover({
             <Label />
           </View>
         </View>
-        <Space height={35} />
+        <Space height={vs(32)} />
         <Text title={brand} h5 textStyle={textStyleBrand} />
         <Text title={clothes} h2 textStyle={textStyle} />
         <View style={view}>
