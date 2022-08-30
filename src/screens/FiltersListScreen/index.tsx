@@ -1,8 +1,8 @@
-import React, { useState } from 'react'
-import { View, ScrollView, StyleSheet, Pressable } from 'react-native'
+import React, { useState, useMemo } from 'react'
+import { View, ScrollView, StyleSheet, Pressable, FlatList } from 'react-native'
 import Ionicons from 'react-native-vector-icons/Ionicons'
-import { BLACK, DARK, PRIMARY, WHITE, winWidth } from '../../constants'
-import { Space, Text, CheckBox, Button, Search, Header } from '../../components'
+import { BLACK, PRIMARY, WHITE, winWidth } from '../../constants'
+import { Text, CheckBox, Button, SearchExample, Search } from '../../components'
 import { SafeAreaView } from 'react-native-safe-area-context'
 import { vs, s } from 'react-native-size-matters'
 
@@ -13,7 +13,7 @@ const styles = StyleSheet.create({
     backgroundColor: BLACK
   },
   containerSearch: {
-    paddingTop: 30
+    paddingTop: vs(24)
   },
   activeTextStyle: {
     color: PRIMARY
@@ -27,8 +27,8 @@ const styles = StyleSheet.create({
     width: '100%',
     height: vs(42),
     alignItems: 'center',
-    paddingLeft: 15,
-    paddingRight: 15
+    paddingLeft: vs(11),
+    paddingRight: vs(11)
   },
   containerName: {
     justifyContent: 'center'
@@ -37,8 +37,8 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     paddingTop: vs(42) / 2,
-    paddingLeft: 20,
-    paddingRight: 20
+    paddingLeft: vs(16),
+    paddingRight: vs(16)
   },
   safeAreaViewStyle: {
     flex: 1,
@@ -52,11 +52,11 @@ const styles = StyleSheet.create({
   },
   bottomViewContainer: {
     width: '100%',
-    height: 100,
+    height: vs(94),
     backgroundColor: BLACK
   },
   pressableContainer: {
-    paddingLeft: 20
+    paddingLeft: vs(16)
   }
 })
 
@@ -71,6 +71,12 @@ interface FiltersListScreenT {
   navigation: any
 }
 
+const brandArray = [
+  { name: 'adidas', id: 'one' },
+  { name: 'nike', id: 'two' },
+  { name: 'puma', id: 'three' }
+]
+let countCalls = 0
 function FiltersListScreen({ navigation }: FiltersListScreenT) {
   const {
     containerView,
@@ -86,13 +92,13 @@ function FiltersListScreen({ navigation }: FiltersListScreenT) {
     bottomViewContainer,
     pressableContainer
   } = styles
-  const [redCheckBoxValue1, setRedCheckBoxValue1] = useState(false)
   const [redCheckBoxValue, setRedCheckBoxValue] = useState<CheckBoxValueT>({
     one: false,
     two: false,
     three: false,
     four: false
   })
+  const [searchText, setSearchText] = useState('')
 
   const getTextColor = (value: keyof CheckBoxValueT) => {
     return redCheckBoxValue[value] ? activeTextStyle : textStyle
@@ -104,6 +110,30 @@ function FiltersListScreen({ navigation }: FiltersListScreenT) {
         [value]: !prevState[value]
       }
     })
+  const onSubmit = (text: string) => {
+    setSearchText(text)
+  }
+  const filterData = useMemo(() => {
+    console.log(countCalls)
+    ++countCalls
+    return brandArray.filter(i => i.name.toLowerCase().includes(searchText.toLowerCase()))
+  }, [searchText])
+  const renderItem = ({ item }: any) => {
+    return (
+      <View style={containerBrand}>
+        <View style={containerName}>
+          <Text title={item.name} h3 textStyle={getTextColor(item.id)} />
+        </View>
+        <CheckBox
+          value={redCheckBoxValue[item.id]}
+          isPrimary={true}
+          onToggle={() => {
+            toggleRedCheckBox(item.id)
+          }}
+        />
+      </View>
+    )
+  }
   return (
     <SafeAreaView style={safeAreaViewStyle}>
       <View style={containerView}>
@@ -124,35 +154,10 @@ function FiltersListScreen({ navigation }: FiltersListScreenT) {
           </View>
         </View>
         <View style={containerSearch}>
-          <Search />
+          <Search onSearch={onSubmit} defaultValue={searchText} />
         </View>
       </View>
-      <ScrollView style={[, { backgroundColor: BLACK }]}>
-        <View style={containerBrand}>
-          <View style={containerName}>
-            <Text title={'adidas'} h3 textStyle={getTextColor('one')} />
-          </View>
-          <CheckBox
-            value={redCheckBoxValue.one}
-            isPrimary={true}
-            onToggle={() => {
-              toggleRedCheckBox('one')
-            }}
-          />
-        </View>
-        <View style={containerBrand}>
-          <View style={containerName}>
-            <Text title={'adidas'} h3 textStyle={getTextColor('two')} />
-          </View>
-          <CheckBox
-            value={redCheckBoxValue.two}
-            isPrimary={true}
-            onToggle={() => {
-              toggleRedCheckBox('two')
-            }}
-          />
-        </View>
-      </ScrollView>
+      <FlatList data={filterData} renderItem={renderItem} keyExtractor={item => item.id} />
       <View style={bottomViewContainer}>
         <View style={actionsContainer}>
           <Button isSmall={true} isOutline={true} title={'Discard'} onPress={() => {}} />

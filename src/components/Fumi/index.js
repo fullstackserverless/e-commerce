@@ -97,7 +97,7 @@ class Fumi extends BaseInput {
             styles.separator,
             {
               height: inputHeight,
-              left: iconWidth + vs(15)
+              left: iconWidth + winWidth * 0.03
             }
           ]}
         />

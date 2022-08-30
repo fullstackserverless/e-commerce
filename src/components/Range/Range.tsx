@@ -67,7 +67,8 @@ const styles = StyleSheet.create({
     flexDirection: 'row'
   },
   costText: {
-    color: WHITE
+    color: WHITE,
+    marginBottom: vs(20)
   }
 })
 const { container, line, slider, selectedSlider, costContainer, costText } = styles

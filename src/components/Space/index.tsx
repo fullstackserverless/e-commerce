@@ -2,7 +2,7 @@ import React, { memo } from 'react'
 import { View } from 'react-native'
 
 interface SpaceT {
-  height: number
+  height?: number
   width?: number
 }
 

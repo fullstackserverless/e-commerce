@@ -1,5 +1,6 @@
-import React, { useState } from 'react'
+import React, { useState, useRef } from 'react'
 import { StyleSheet, View, ScrollView } from 'react-native'
+import { Modalize } from 'react-native-modalize'
 import { BLACK, WHITE, PRIMARY, DARK } from './constants'
 import {
   Space,
@@ -191,10 +192,6 @@ function Home({ navigation, route }: HomeT) {
         <Space height={10} />
         <Filter onPressFilter={() => {}} onPressApps={() => {}} onPressPrice={() => {}} />
         <Space height={25} />
-        <Text title="FilterBottom" h1 textStyle={textStyle} />
-        <Space height={10} />
-        <FilterBottom />
-        <Space height={25} />
         <Text title="Labels" h1 textStyle={textStyle} />
         <Space height={10} />
         <Labels isSaleOrNew={true} title={'-30%'} />
@@ -227,7 +224,7 @@ function Home({ navigation, route }: HomeT) {
         <Space height={25} />
         <Text title="Switch" h1 textStyle={textStyle} />
         <Space height={10} />
-        <Switch onValueChange={toggleSwitch} isDisable={false} isValue={false} />
+        <Switch onValueChange={toggleSwitch} isValue={isEnabled} />
         <Space height={25} />
         <Text title="Tag" h1 textStyle={textStyle} />
         <Space height={10} />

@@ -5,6 +5,7 @@ import Ionicons from 'react-native-vector-icons/Ionicons'
 import { BLACK, PRIMARY, WHITE, winWidth } from '../../constants'
 import { Text, Fumi, Button, Header } from '../../components'
 import { vs } from 'react-native-size-matters'
+import { SafeAreaView } from 'react-native-safe-area-context'
 
 const styles = StyleSheet.create({
   textStyleEmail: {
@@ -87,6 +88,9 @@ const styles = StyleSheet.create({
   },
   headerContainer: {
     paddingBottom: vs(161)
+  },
+  safeAreaViewStyle: {
+    backgroundColor: BLACK
   }
 })
 
@@ -106,50 +110,53 @@ function PasswordScreen({ navigation, onPress }: PasswordScreenT) {
     buttonContainer,
     textStyleEmail,
     emailTextContainer,
-    headerContainer
+    headerContainer,
+    safeAreaViewStyle
   } = styles
 
   return (
-    <View style={container}>
-      <View style={headerContainer}>
-        <Header h1 onPress={navigation.goBack} title={'Forgot password'} />
+    <SafeAreaView style={safeAreaViewStyle}>
+      <View style={container}>
+        <View style={headerContainer}>
+          <Header h1 onPress={navigation.goBack} title={'Forgot password'} />
+        </View>
+        <View style={emailTextContainer}>
+          <Text
+            textStyle={textStyleEmail}
+            h4
+            title="Please, enter your email address. You will receive a link to create a new password via email."
+          />
+        </View>
+        <Fumi label="Email" iconName={'mail'} iconClass={Ionicons} labelStyle={labelStyle} iconColor={PRIMARY} />
+        <View style={buttonContainer}>
+          <Button onPress={onPress} title={'SIGN UP'} isOutline={false} isSmall={false} />
+        </View>
+        <View style={container1}>
+          <Pressable
+            style={({ pressed }) => [
+              {
+                opacity: pressed ? 0.8 : 1
+              },
+              googleIconContainer
+            ]}
+            onPress={() => {}}
+          >
+            <FontAwesome5 name={'google'} style={iconStyle} />
+          </Pressable>
+          <Pressable
+            style={({ pressed }) => [
+              {
+                opacity: pressed ? 0.8 : 1
+              },
+              facebookIconContainer
+            ]}
+            onPress={() => {}}
+          >
+            <FontAwesome5 name={'facebook'} style={iconStyle} />
+          </Pressable>
+        </View>
       </View>
-      <View style={emailTextContainer}>
-        <Text
-          textStyle={textStyleEmail}
-          h4
-          title="Please, enter your email address. You will receive a link to create a new password via email."
-        />
-      </View>
-      <Fumi label="Email" iconName={'mail'} iconClass={Ionicons} labelStyle={labelStyle} iconColor={PRIMARY} />
-      <View style={buttonContainer}>
-        <Button onPress={onPress} title={'SIGN UP'} isOutline={false} isSmall={false} />
-      </View>
-      <View style={container1}>
-        <Pressable
-          style={({ pressed }) => [
-            {
-              opacity: pressed ? 0.8 : 1
-            },
-            googleIconContainer
-          ]}
-          onPress={() => {}}
-        >
-          <FontAwesome5 name={'google'} style={iconStyle} />
-        </Pressable>
-        <Pressable
-          style={({ pressed }) => [
-            {
-              opacity: pressed ? 0.8 : 1
-            },
-            facebookIconContainer
-          ]}
-          onPress={() => {}}
-        >
-          <FontAwesome5 name={'facebook'} style={iconStyle} />
-        </Pressable>
-      </View>
-    </View>
+    </SafeAreaView>
   )
 }
 

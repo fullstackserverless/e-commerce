@@ -10,7 +10,8 @@ const styles = StyleSheet.create({
     height: vs(110),
     borderRadius: vs(6),
     backgroundColor: DARK,
-    flexDirection: 'row'
+    flexDirection: 'row',
+    marginBottom: vs(20)
   },
   imageStyle: {
     width: winWidth * 0.2,

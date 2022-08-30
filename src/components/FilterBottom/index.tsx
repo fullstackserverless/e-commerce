@@ -1,7 +1,8 @@
 import React, { useRef } from 'react'
 import { Pressable, StyleSheet, View } from 'react-native'
 import { Modalize } from 'react-native-modalize'
-import { BLACK, DARK, PRIMARY, WHITE } from '../../constants'
+import { vs } from 'react-native-size-matters'
+import { BLACK, DARK, PRIMARY, WHITE, winWidth } from '../../constants'
 import { Text, Filter, Space } from '../index'
 
 const styles = StyleSheet.create({
@@ -18,12 +19,12 @@ const styles = StyleSheet.create({
     alignSelf: 'flex-start'
   },
   pressableContainer: {
-    height: 40,
+    height: vs(36),
     justifyContent: 'center',
-    width: 500
+    width: '100%'
   },
   textStylePressable: {
-    marginLeft: 10
+    marginLeft: winWidth * 0.015
   }
 })
 
@@ -41,12 +42,12 @@ function FilterBottom() {
 
   return (
     <>
-      <Filter onPressApps={() => {}} onPressPrice={onOpen} onPressFilter={() => {}} />
-      <Modalize modalStyle={modalStyle} modalHeight={300} ref={modalizeRef}>
+      <Filter onPressApps={() => {}} onPressFilter={onOpen} onPressPrice={() => {}} />
+      <Modalize modalStyle={modalStyle} modalHeight={vs(296)} ref={modalizeRef}>
         <View style={container}>
-          <Space height={10} />
+          <Space height={vs(6)} />
           <Text title="Sort by" h2 textStyle={textStyle} />
-          <Space height={10} />
+          <Space height={vs(6)} />
           <View style={container2}>
             <Pressable
               onPressOut={onClose}

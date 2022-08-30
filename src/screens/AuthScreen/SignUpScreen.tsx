@@ -6,80 +6,9 @@ import MaterialCommmunityIcons from 'react-native-vector-icons/MaterialCommunity
 import { BLACK, PRIMARY, WHITE, winWidth } from '../../constants'
 import { Text, Fumi, Button, Header } from '../../components'
 import { vs } from 'react-native-size-matters'
+import { SafeAreaView } from 'react-native-safe-area-context'
 
 const styles = StyleSheet.create({
-  // container: {
-  //   backgroundColor: BLACK,
-  //   width: '100%',
-  //   height: '100%',
-  //   justifyContent: 'center'
-  // },
-  // iconStyle: {
-  //   fontSize: 30,
-  //   color: PRIMARY
-  // },
-  // googleIconContainer: {
-  //   width: 92,
-  //   height: 64,
-  //   borderRadius: 24,
-  //   backgroundColor: WHITE,
-  //   justifyContent: 'center',
-  //   alignItems: 'center'
-  // },
-  // facebookIconContainer: {
-  //   width: 92,
-  //   height: 64,
-  //   borderRadius: 24,
-  //   backgroundColor: WHITE,
-  //   justifyContent: 'center',
-  //   alignItems: 'center'
-  // },
-  // container1: {
-  //   flexDirection: 'row',
-  //   justifyContent: 'space-between',
-  //   alignItems: 'flex-end',
-  //   paddingLeft: 88,
-  //   paddingRight: 88,
-  //   paddingTop: 10
-  // },
-  // textStyle: {
-  //   color: WHITE,
-  //   paddingLeft: 10,
-  //   paddingBottom: 100,
-  //   paddingTop: 30
-  // },
-  // arrowStyle: {
-  //   color: PRIMARY,
-  //   fontSize: 30
-  // },
-  // chevronStyle: {
-  //   color: WHITE,
-  //   fontSize: 40
-  // },
-  // labelStyle: {
-  //   color: PRIMARY
-  // },
-  // buttonContainer: {
-  //   alignItems: 'center',
-  //   paddingTop: 28
-  // },
-  // textStyleAcc: {
-  //   color: WHITE
-  // },
-  // textContainer: {
-  //   alignItems: 'center',
-  //   paddingTop: 120
-  // },
-  // rowContainer: {
-  //   flexDirection: 'row',
-  //   alignItems: 'center',
-  //   justifyContent: 'flex-end',
-  //   paddingRight: 5,
-  //   paddingTop: 28
-  // },
-  // headerContainer: {
-  //   paddingBottom: 135
-  // }
   container: {
     backgroundColor: BLACK,
     width: '100%',
@@ -151,6 +80,9 @@ const styles = StyleSheet.create({
   },
   headerContainer: {
     paddingBottom: vs(161)
+  },
+  safeAreaViewStyle: {
+    backgroundColor: BLACK
   }
 })
 
@@ -165,68 +97,69 @@ function SignUpScreen({ navigation }: SignUpScreenT) {
     facebookIconContainer,
     googleIconContainer,
     container1,
-    textStyle,
     arrowStyle,
-    chevronStyle,
     labelStyle,
     buttonContainer,
     textStyleAcc,
     textContainer,
     rowContainer,
-    headerContainer
+    headerContainer,
+    safeAreaViewStyle
   } = styles
   const { navigate } = navigation
 
   const openLogin = () => navigate('LoginScreen')
   return (
-    <View style={container}>
-      <View style={headerContainer}>
-        <Header title={'Sign up'} onPress={navigation.goBack} h1 />
-      </View>
-      <Fumi label="Name" iconName={'person'} iconClass={Ionicons} labelStyle={labelStyle} iconColor={PRIMARY} />
-      <Fumi label="Email" iconName={'mail'} iconClass={Ionicons} labelStyle={labelStyle} iconColor={PRIMARY} />
-      <Fumi
-        label="Password"
-        iconName={'lock-closed'}
-        iconClass={Ionicons}
-        labelStyle={labelStyle}
-        iconColor={PRIMARY}
-      />
-      <Pressable style={({ pressed }) => [{ opacity: pressed ? 0.7 : 1 }, rowContainer]} onPress={openLogin}>
-        <Text title={'Already have an account?'} h4 textStyle={textStyleAcc} />
-        <MaterialCommmunityIcons name={'arrow-right-thin'} style={arrowStyle} />
-      </Pressable>
-      <View style={buttonContainer}>
-        <Button onPress={() => {}} title={'SIGN UP'} isOutline={false} isSmall={false} />
-      </View>
-      <View style={textContainer}>
-        <Text textStyle={textStyleAcc} h4 title={'Or sign up with social account'} />
-      </View>
-      <View style={container1}>
-        <Pressable
-          style={({ pressed }) => [
-            {
-              opacity: pressed ? 0.8 : 1
-            },
-            googleIconContainer
-          ]}
-          onPress={() => {}}
-        >
-          <FontAwesome5 name={'google'} style={iconStyle} />
+    <SafeAreaView style={safeAreaViewStyle}>
+      <View style={container}>
+        <View style={headerContainer}>
+          <Header title={'Sign up'} onPress={navigation.goBack} h1 />
+        </View>
+        <Fumi label="Name" iconName={'person'} iconClass={Ionicons} labelStyle={labelStyle} iconColor={PRIMARY} />
+        <Fumi label="Email" iconName={'mail'} iconClass={Ionicons} labelStyle={labelStyle} iconColor={PRIMARY} />
+        <Fumi
+          label="Password"
+          iconName={'lock-closed'}
+          iconClass={Ionicons}
+          labelStyle={labelStyle}
+          iconColor={PRIMARY}
+        />
+        <Pressable style={({ pressed }) => [{ opacity: pressed ? 0.7 : 1 }, rowContainer]} onPress={openLogin}>
+          <Text title={'Already have an account?'} h4 textStyle={textStyleAcc} />
+          <MaterialCommmunityIcons name={'arrow-right-thin'} style={arrowStyle} />
         </Pressable>
-        <Pressable
-          style={({ pressed }) => [
-            {
-              opacity: pressed ? 0.8 : 1
-            },
-            facebookIconContainer
-          ]}
-          onPress={() => {}}
-        >
-          <FontAwesome5 name={'facebook'} style={iconStyle} />
-        </Pressable>
+        <View style={buttonContainer}>
+          <Button onPress={() => {}} title={'SIGN UP'} isOutline={false} isSmall={false} />
+        </View>
+        <View style={textContainer}>
+          <Text textStyle={textStyleAcc} h4 title={'Or sign up with social account'} />
+        </View>
+        <View style={container1}>
+          <Pressable
+            style={({ pressed }) => [
+              {
+                opacity: pressed ? 0.8 : 1
+              },
+              googleIconContainer
+            ]}
+            onPress={() => {}}
+          >
+            <FontAwesome5 name={'google'} style={iconStyle} />
+          </Pressable>
+          <Pressable
+            style={({ pressed }) => [
+              {
+                opacity: pressed ? 0.8 : 1
+              },
+              facebookIconContainer
+            ]}
+            onPress={() => {}}
+          >
+            <FontAwesome5 name={'facebook'} style={iconStyle} />
+          </Pressable>
+        </View>
       </View>
-    </View>
+    </SafeAreaView>
   )
 }
 
