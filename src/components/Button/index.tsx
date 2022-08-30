@@ -1,13 +1,15 @@
 import React from 'react'
 import { StyleSheet, Pressable } from 'react-native'
-import { BLACK, PRIMARY, WHITE } from '../../constants'
+import { BLACK, PRIMARY, WHITE, winWidth } from '../../constants'
 import { Text } from '../'
+import { vs } from 'react-native-size-matters'
+
 const styles = StyleSheet.create({
   container: {
     justifyContent: 'center',
-    height: 48,
-    width: 343,
-    borderRadius: 25
+    height: vs(30),
+    width: winWidth * 0.8,
+    borderRadius: vs(75)
   },
   textStyle: {
     alignItems: 'center',
@@ -23,8 +25,8 @@ const styles = StyleSheet.create({
   },
   smallContainer: {
     justifyContent: 'center',
-    width: 160,
-    height: 36,
+    width: winWidth * 0.4,
+    height: vs(25),
     borderRadius: 25
   },
   textColorOutline: {

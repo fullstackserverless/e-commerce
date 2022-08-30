@@ -3,6 +3,7 @@ import { StyleSheet, View } from 'react-native'
 import { Text } from '../index'
 import { TitleButton } from '../index'
 import { WHITE } from '../../constants'
+import { vs } from 'react-native-size-matters'
 
 const styles = StyleSheet.create({
   counterContainer: {
@@ -13,8 +14,8 @@ const styles = StyleSheet.create({
   },
   counterNumberStyle: {
     justifyContent: 'center',
-    marginLeft: 16,
-    marginRight: 16
+    marginLeft: vs(14),
+    marginRight: vs(14)
   }
 })
 function Counter() {

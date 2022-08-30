@@ -1,15 +1,16 @@
 import React from 'react'
 import { Text } from '../Text'
-import { BLACK, DARK, GRAY, PRIMARY, SUCCESS, WHITE } from '../../constants'
+import { BLACK, DARK, GRAY, PRIMARY, SUCCESS, WHITE, winWidth } from '../../constants'
 import { StyleSheet, View, StyleProp, ViewStyle } from 'react-native'
 import { Button } from '../Button'
 import { Space } from '../Space'
+import { vs } from 'react-native-size-matters'
 
 const styles = StyleSheet.create({
   container: {
-    height: 164,
-    width: 343,
-    borderRadius: 8,
+    height: vs(160),
+    width: winWidth * 0.8,
+    borderRadius: vs(6),
     backgroundColor: DARK
   },
   orderStyle: {
@@ -20,10 +21,8 @@ const styles = StyleSheet.create({
     alignSelf: 'flex-end'
   },
   TNStyle: {
-    marginLeft: 20
+    marginLeft: vs(18)
   },
-  quantityStyle: {},
-  amountStyle: {},
   deliveredStyle: {
     justifyContent: 'center'
   },
@@ -42,8 +41,8 @@ const styles = StyleSheet.create({
   container2: {
     flexDirection: 'row',
     justifyContent: 'space-between',
-    marginLeft: 20,
-    marginRight: 20
+    marginLeft: vs(18),
+    marginRight: vs(18)
   }
 })
 
@@ -60,7 +59,7 @@ interface cardOrderT {
 interface TwoColorTextT {
   leftText: string
   rightText: string
-  style: StyleProp<ViewStyle>
+  style?: StyleProp<ViewStyle>
 }
 
 function TwoColorText({ leftText, rightText, style }: TwoColorTextT) {
@@ -84,25 +83,25 @@ function CardOrder({
   isDelivered = true,
   onDetails
 }: cardOrderT) {
-  const { container, orderStyle, dateStyle, TNStyle, quantityStyle, amountStyle, deliveredStyle, container2 } = styles
+  const { container, orderStyle, dateStyle, TNStyle, deliveredStyle, container2 } = styles
 
   const deliveredStyleColor = isDelivered ? { color: SUCCESS } : { color: PRIMARY }
 
   return (
     <View style={container}>
-      <Space height={20} />
+      <Space height={vs(18)} />
       <View style={container2}>
         <Text title={`Order №${order}`} textStyle={orderStyle} h3 />
         <Text title={date} textStyle={dateStyle} h6 />
       </View>
-      <Space height={10} />
+      <Space height={vs(8)} />
       <TwoColorText leftText="Tracking number: " rightText={TN} style={TNStyle} />
-      <Space height={5} />
+      <Space height={vs(3)} />
       <View style={container2}>
-        <TwoColorText leftText="Quantity: " rightText={quantity} style={quantityStyle} />
-        <TwoColorText leftText="Total Amount: " rightText={`${amount}$`} style={amountStyle} />
+        <TwoColorText leftText="Quantity: " rightText={quantity} />
+        <TwoColorText leftText="Total Amount: " rightText={`${amount}$`} />
       </View>
-      <Space height={10} />
+      <Space height={vs(8)} />
       <View style={container2}>
         <Button isOutline={true} isSmall={true} title={'Details'} onPress={onDetails} />
         <View style={deliveredStyle}>

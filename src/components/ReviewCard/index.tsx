@@ -1,41 +1,42 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Image, Pressable, StyleSheet, View } from 'react-native'
+import { vs } from 'react-native-size-matters'
 import MateralCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons'
-import { DARK, GRAY, WHITE } from '../../constants'
+import { DARK, GRAY, WHITE, winHeight, winWidth } from '../../constants'
 import { Rating, Text, Space } from '../index'
 
 const styles = StyleSheet.create({
   container: {
-    width: 311,
-    height: 297,
-    borderRadius: 8,
+    width: winWidth * 0.75,
+    height: vs(293),
+    borderRadius: vs(6),
     backgroundColor: DARK
   },
   imageStyle: {
-    width: 32,
-    height: 32,
-    borderRadius: 100
+    width: vs(28),
+    height: vs(28),
+    borderRadius: vs(96)
   },
   imageContainer: {
     alignSelf: 'flex-start',
-    bottom: 15,
-    right: 15
+    bottom: vs(12),
+    right: vs(12)
   },
   textStyleReview: {
     color: WHITE,
     alignSelf: 'flex-start',
-    marginLeft: 24
+    marginLeft: winWidth * 0.017
   },
   textStyleName: {
     color: WHITE,
     alignSelf: 'flex-start',
-    marginLeft: 24
+    marginLeft: winWidth * 0.02
   },
   container1: {
     flexDirection: 'row',
     justifyContent: 'space-between',
-    paddingRight: 24,
-    paddingLeft: 24
+    paddingRight: winWidth * 0.02,
+    paddingLeft: winWidth * 0.02
   },
   textStyleDate: {
     color: GRAY
@@ -45,7 +46,7 @@ const styles = StyleSheet.create({
   },
   iconStyle: {
     color: GRAY,
-    fontSize: 20
+    fontSize: vs(16)
   },
   helpfulTextContainer: {
     justifyContent: 'center'
@@ -53,8 +54,15 @@ const styles = StyleSheet.create({
   helpfulContainer: {
     flexDirection: 'row',
     justifyContent: 'flex-end',
-    paddingTop: 160,
-    paddingRight: 24
+    paddingTop: vs(156),
+    paddingRight: winWidth * 0.02
+  },
+  textStyleHelpfulWhite: {
+    color: WHITE
+  },
+  iconStyleWhite: {
+    fontSize: vs(16),
+    color: WHITE
   }
 })
 
@@ -86,9 +94,12 @@ function ReviewCard({
     iconStyle,
     helpfulTextContainer,
     imageContainer,
-    helpfulContainer
+    helpfulContainer,
+    textStyleHelpfulWhite,
+    iconStyleWhite
   } = styles
 
+  const [isActive, setActive] = useState(false)
   const filterName = name.slice(0, 300)
   return (
     <View style={container}>
@@ -98,15 +109,20 @@ function ReviewCard({
       <Text title={filterName} textStyle={textStyleName} h3 />
       <View style={container1}>
         <Rating ratingList={ratingList} />
-        <Text title={date} textStyle={textStyleDate} />
+        <Text title={date} textStyle={textStyleDate} h7 />
       </View>
       <Text title={review} h6 textStyle={textStyleReview} />
-      <Pressable onPress={onPress} style={helpfulContainer}>
+      <Pressable
+        onPress={() => {
+          setActive(pr => !pr), onPress
+        }}
+        style={helpfulContainer}
+      >
         <View style={helpfulTextContainer}>
-          <Text title={'Helpful'} textStyle={textStyleHelpful} h6 />
+          <Text title={'Helpful'} textStyle={isActive ? textStyleHelpfulWhite : textStyleHelpful} h6 />
         </View>
-        <Space width={10} height={0} />
-        <MateralCommunityIcons name="thumb-up" style={iconStyle} />
+        <Space width={winWidth * 0.015} height={0} />
+        <MateralCommunityIcons name="thumb-up" style={isActive ? iconStyleWhite : iconStyle} />
       </Pressable>
     </View>
   )

@@ -1,14 +1,13 @@
-import React, { useState } from 'react'
-import { StyleSheet, View, Pressable, Image } from 'react-native'
-import { Text, Rating, Space } from '../index'
-import Ionicons from 'react-native-vector-icons/Ionicons'
-import { TwoColorText } from '../CardProductCover'
-import { BLACK, DARK, GRAY, PRIMARY, WHITE } from '../../constants'
+import React from 'react'
+import { StyleSheet, Pressable } from 'react-native'
+import { Text } from '../index'
+import { DARK, GRAY } from '../../constants'
+import { vs } from 'react-native-size-matters'
 
 const styles = StyleSheet.create({
   buttonContainer: {
-    height: 36,
-    width: 36,
+    height: vs(34),
+    width: vs(34),
     backgroundColor: DARK,
     borderRadius: 100,
     shadowColor: '#000',
@@ -26,8 +25,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center'
   },
   textStyle: {
-    color: GRAY,
-    fontSize: 30
+    color: GRAY
   }
 })
 

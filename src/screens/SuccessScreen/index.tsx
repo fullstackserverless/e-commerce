@@ -1,7 +1,8 @@
 import React from 'react'
 import { StyleSheet, View, Image } from 'react-native'
-import { BLACK, DARK, WHITE } from '../../constants'
+import { BLACK, DARK, WHITE, winWidth } from '../../constants'
 import { Text, Space, Button } from '../../components'
+import { vs } from 'react-native-size-matters'
 
 const styles = StyleSheet.create({
   container: {
@@ -12,18 +13,19 @@ const styles = StyleSheet.create({
     alignItems: 'center'
   },
   imageStyle: {
-    width: 218,
-    height: 210
+    width: winWidth * 0.6,
+    height: vs(290)
   },
   textStyle: {
-    color: WHITE
+    color: WHITE,
+    alignItems: 'center'
   },
   buttonContainer: {
-    paddingTop: 163,
-    paddingBottom: 59
+    paddingTop: vs(120),
+    paddingBottom: vs(55)
   },
   bagsContainer: {
-    paddingTop: 195
+    paddingTop: vs(100)
   },
   textContainer: {
     alignSelf: 'center'
@@ -40,12 +42,18 @@ function SuccessScreen({ navigation }: SuccessScreenT) {
     <View style={container}>
       <View style={bagsContainer}>
         <Image style={imageStyle} source={require('./bagssuccess-bags.png')} />
-        <Space height={50} />
+        <Space height={vs(46)} />
         <View style={textContainer}>
           <Text title={'Success!'} h1 textStyle={textStyle} />
         </View>
-        <Space height={12} />
-        <Text title={'Your order will be delivered soon.\nThank you for choosing our app!'} textStyle={textStyle} />
+        <Space height={vs(8)} />
+        <View style={textContainer}>
+          <Text
+            title={'Your order will be delivered soon.\nThank you for choosing our app!'}
+            textStyle={textStyle}
+            h6
+          />
+        </View>
       </View>
       <View style={buttonContainer}>
         <Button onPress={navigation.goBack} title={'CONTINUE SHOPPING'} isOutline={false} isSmall={false} />

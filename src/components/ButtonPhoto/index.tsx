@@ -1,12 +1,13 @@
 import React from 'react'
 import { StyleSheet, Pressable } from 'react-native'
 import Ionicons from 'react-native-vector-icons/Ionicons'
-import { PRIMARY, WHITE } from '../../constants'
+import { BLACK, PRIMARY, WHITE } from '../../constants'
+import { vs } from 'react-native-size-matters'
 
 const styles = StyleSheet.create({
   container: {
-    height: 52,
-    width: 52,
+    height: vs(48),
+    width: vs(48),
     backgroundColor: PRIMARY,
     borderRadius: 100
   },
@@ -29,7 +30,7 @@ function ButtonPhoto() {
         iconStyle
       ]}
     >
-      <Ionicons name="camera" size={30} color={WHITE} />
+      <Ionicons name="camera" size={vs(30)} color={BLACK} />
     </Pressable>
   )
 }

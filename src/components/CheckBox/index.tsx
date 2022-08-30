@@ -2,6 +2,7 @@ import React, { FC, useEffect, useMemo, useState } from 'react'
 import { StyleSheet, Animated, Easing, Pressable, StyleProp, ViewStyle } from 'react-native'
 import { Check } from './icons/Check'
 import { GRAY, PRIMARY, WHITE, DARK } from '../../constants'
+import { vs } from 'react-native-size-matters'
 
 export interface CheckBoxProps {
   value: boolean
@@ -47,7 +48,7 @@ export const CheckBox: FC<CheckBoxProps> = (props: CheckBoxProps) => {
     outputRange: [GRAY, 'transparent']
   })
   const borderWidth = value ? 0 : 1
-  const iconColor = !value ? 'transparent' : activeColor === PRIMARY ? WHITE : DARK
+  const iconColor = !value ? 'transparent' : DARK
 
   return (
     <Pressable onPress={onToggleHandler}>
@@ -70,8 +71,8 @@ export const CheckBox: FC<CheckBoxProps> = (props: CheckBoxProps) => {
 
 const styles = StyleSheet.create({
   container: {
-    width: 20,
-    height: 20,
+    width: vs(16),
+    height: vs(16),
     borderRadius: 4,
     alignItems: 'center',
     justifyContent: 'center'

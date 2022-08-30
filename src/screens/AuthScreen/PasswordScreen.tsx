@@ -2,11 +2,20 @@ import React from 'react'
 import { StyleSheet, View, Pressable } from 'react-native'
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5'
 import Ionicons from 'react-native-vector-icons/Ionicons'
-import MaterialCommmunityIcons from 'react-native-vector-icons/MaterialCommunityIcons'
-import { BLACK, DARK, PRIMARY, WHITE } from '../../constants'
-import { Text, Space, Fumi, Button } from '../../components'
+import { BLACK, PRIMARY, WHITE, winWidth } from '../../constants'
+import { Text, Fumi, Button, Header } from '../../components'
+import { vs } from 'react-native-size-matters'
+import { SafeAreaView } from 'react-native-safe-area-context'
 
 const styles = StyleSheet.create({
+  textStyleEmail: {
+    color: WHITE,
+    width: winWidth * 0.8,
+    paddingBottom: vs(51)
+  },
+  emailTextContainer: {
+    alignItems: 'center'
+  },
   container: {
     backgroundColor: BLACK,
     width: '100%',
@@ -14,21 +23,21 @@ const styles = StyleSheet.create({
     justifyContent: 'center'
   },
   iconStyle: {
-    fontSize: 30,
+    fontSize: vs(26),
     color: PRIMARY
   },
   googleIconContainer: {
-    width: 92,
-    height: 64,
-    borderRadius: 24,
+    width: winWidth * 0.2,
+    height: vs(60),
+    borderRadius: vs(20),
     backgroundColor: WHITE,
     justifyContent: 'center',
     alignItems: 'center'
   },
   facebookIconContainer: {
-    width: 92,
-    height: 64,
-    borderRadius: 24,
+    width: winWidth * 0.2,
+    height: vs(60),
+    borderRadius: vs(20),
     backgroundColor: WHITE,
     justifyContent: 'center',
     alignItems: 'center'
@@ -37,126 +46,117 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'flex-end',
-    paddingLeft: 88,
-    paddingRight: 88,
-    paddingTop: 130
+    paddingLeft: winWidth * 0.15,
+    paddingRight: winWidth * 0.15,
+    paddingTop: vs(10)
   },
   textStyle: {
     color: WHITE,
-    paddingLeft: 10,
-    paddingBottom: 180,
-    paddingTop: 30
+    paddingLeft: winWidth * 0.01,
+    paddingBottom: vs(176),
+    paddingTop: vs(24)
   },
   arrowStyle: {
     color: PRIMARY,
-    fontSize: 30
+    fontSize: vs(26)
   },
   chevronStyle: {
     color: WHITE,
-    fontSize: 40
+    fontSize: vs(36)
   },
   labelStyle: {
     color: PRIMARY
   },
   buttonContainer: {
     alignItems: 'center',
-    paddingTop: 56
+    paddingTop: vs(30),
+    paddingBottom: vs(100)
   },
   textStyleAcc: {
     color: WHITE
   },
   textContainer: {
     alignItems: 'center',
-    paddingTop: 120
+    paddingTop: vs(100)
   },
   rowContainer: {
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'flex-end',
-    paddingRight: 5,
-    paddingTop: 28
+    paddingRight: winWidth * 0.005,
+    paddingTop: vs(24)
   },
-  textStyleEmail: {
-    color: WHITE,
-    width: 343,
-    paddingBottom: 55
+  headerContainer: {
+    paddingBottom: vs(161)
   },
-  emailTextContainer: {
-    alignItems: 'center'
+  safeAreaViewStyle: {
+    backgroundColor: BLACK
   }
 })
 
 interface PasswordScreenT {
   navigation: any
+  onPress: () => void
 }
 
-function PasswordScreen({ navigation }: PasswordScreenT) {
+function PasswordScreen({ navigation, onPress }: PasswordScreenT) {
   const {
     container,
     iconStyle,
     facebookIconContainer,
     googleIconContainer,
     container1,
-    textStyle,
-    arrowStyle,
-    chevronStyle,
     labelStyle,
     buttonContainer,
-    textStyleAcc,
-    textContainer,
     textStyleEmail,
-    emailTextContainer
+    emailTextContainer,
+    headerContainer,
+    safeAreaViewStyle
   } = styles
 
   return (
-    <View style={container}>
-      <Pressable
-        onPress={navigation.goBack}
-        style={({ pressed }) => [
-          {
-            opacity: pressed ? 0.7 : 1
-          }
-        ]}
-      >
-        <Ionicons name="chevron-back" style={chevronStyle} />
-      </Pressable>
-      <Text title={'Forgot password'} h0 textStyle={textStyle} />
-      <View style={emailTextContainer}>
-        <Text
-          textStyle={textStyleEmail}
-          h4
-          title="Please, enter your email address. You will receive a link to create a new password via email."
-        />
+    <SafeAreaView style={safeAreaViewStyle}>
+      <View style={container}>
+        <View style={headerContainer}>
+          <Header h1 onPress={navigation.goBack} title={'Forgot password'} />
+        </View>
+        <View style={emailTextContainer}>
+          <Text
+            textStyle={textStyleEmail}
+            h4
+            title="Please, enter your email address. You will receive a link to create a new password via email."
+          />
+        </View>
+        <Fumi label="Email" iconName={'mail'} iconClass={Ionicons} labelStyle={labelStyle} iconColor={PRIMARY} />
+        <View style={buttonContainer}>
+          <Button onPress={onPress} title={'SIGN UP'} isOutline={false} isSmall={false} />
+        </View>
+        <View style={container1}>
+          <Pressable
+            style={({ pressed }) => [
+              {
+                opacity: pressed ? 0.8 : 1
+              },
+              googleIconContainer
+            ]}
+            onPress={() => {}}
+          >
+            <FontAwesome5 name={'google'} style={iconStyle} />
+          </Pressable>
+          <Pressable
+            style={({ pressed }) => [
+              {
+                opacity: pressed ? 0.8 : 1
+              },
+              facebookIconContainer
+            ]}
+            onPress={() => {}}
+          >
+            <FontAwesome5 name={'facebook'} style={iconStyle} />
+          </Pressable>
+        </View>
       </View>
-      <Fumi label="Email" iconName={'mail'} iconClass={Ionicons} labelStyle={labelStyle} iconColor={PRIMARY} />
-      <View style={buttonContainer}>
-        <Button onPress={() => {}} title={'SIGN UP'} isOutline={false} isSmall={false} />
-      </View>
-      <View style={container1}>
-        <Pressable
-          style={({ pressed }) => [
-            {
-              opacity: pressed ? 0.8 : 1
-            },
-            googleIconContainer
-          ]}
-          onPress={() => {}}
-        >
-          <FontAwesome5 name={'google'} style={iconStyle} />
-        </Pressable>
-        <Pressable
-          style={({ pressed }) => [
-            {
-              opacity: pressed ? 0.8 : 1
-            },
-            facebookIconContainer
-          ]}
-          onPress={() => {}}
-        >
-          <FontAwesome5 name={'facebook'} style={iconStyle} />
-        </Pressable>
-      </View>
-    </View>
+    </SafeAreaView>
   )
 }
 

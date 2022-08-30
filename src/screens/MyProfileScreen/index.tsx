@@ -4,6 +4,7 @@ import { SafeAreaView } from 'react-native-safe-area-context'
 import Ionicons from 'react-native-vector-icons/Ionicons'
 import { BLACK, WHITE } from '../../constants'
 import { Text, Space, PressableNavigation, NameCard } from '../../components'
+import { vs } from 'react-native-size-matters'
 
 const styles = StyleSheet.create({
   safeAreaViewStyle: {
@@ -16,10 +17,13 @@ const styles = StyleSheet.create({
   },
   pressableContainer: {
     alignItems: 'flex-end',
-    paddingRight: 20
+    paddingRight: vs(16)
   },
   textStyle: {
     paddingLeft: 20
+  },
+  absoluteContainer: {
+    position: 'absolute'
   }
 })
 
@@ -62,7 +66,7 @@ function MyProfileScreen({
   return (
     <SafeAreaView style={safeAreaViewStyle}>
       <Pressable style={({ pressed }) => [{ opacity: pressed ? 0.7 : 1 }, pressableContainer]} onPress={onPressSearch}>
-        <Ionicons name={'search'} color={WHITE} size={30} />
+        <Ionicons name={'search'} color={WHITE} size={vs(26)} />
       </Pressable>
       <Text title={'My profile'} h0 textStyle={textStyle} />
       <NameCard imageUri={imageUri} nameTitle={nameTitle} mailTitle={mailTitle} />

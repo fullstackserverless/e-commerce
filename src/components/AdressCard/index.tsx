@@ -1,12 +1,13 @@
 import React, { useState } from 'react'
 import { Pressable, StyleSheet, View } from 'react-native'
-import { DARK, PRIMARY, WHITE } from '../../constants'
+import { DARK, PRIMARY, WHITE, winWidth } from '../../constants'
 import { Text, CheckBox, Space } from '../index'
+import { s, vs } from 'react-native-size-matters'
 
 const styles = StyleSheet.create({
   container: {
-    width: 343,
-    height: 140,
+    width: winWidth * 0.8,
+    height: vs(110),
     borderRadius: 8,
     backgroundColor: DARK
   },
@@ -19,13 +20,13 @@ const styles = StyleSheet.create({
   viewContainer1: {
     flexDirection: 'row',
     justifyContent: 'space-between',
-    marginTop: 15,
-    marginLeft: 20,
-    marginRight: 20
+    marginTop: vs(13),
+    marginLeft: s(18),
+    marginRight: s(18)
   },
   viewContainer2: {
-    marginLeft: 20,
-    marginTop: 10
+    marginLeft: s(18),
+    marginTop: vs(8)
   },
   viewContainer3: {
     flexDirection: 'row',
@@ -58,7 +59,7 @@ function AdressCard({ name, adress, onPressEdit }: AdressCardT) {
       </View>
       <Space height={20} />
       <View style={viewContainer3}>
-        <Space height={0} width={20} />
+        <Space height={0} width={s(18)} />
         <CheckBox isPrimary={false} onToggle={toggleRedCheckBox} value={redCheckBoxValue} />
         <Text title={'   Use as the shipping adress'} textStyle={textStyle} h4 />
       </View>

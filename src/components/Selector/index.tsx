@@ -1,6 +1,7 @@
 import React, { useRef } from 'react'
 import { View, StyleSheet } from 'react-native'
 import { Modalize } from 'react-native-modalize'
+import { vs } from 'react-native-size-matters'
 import { Button, Text, Space, Tag } from '../../components'
 import { BLACK, WHITE, GRAY } from '../../constants'
 
@@ -25,7 +26,7 @@ const styles = StyleSheet.create({
     borderTopWidth: 1,
     borderBottomWidth: 1,
     borderColor: GRAY,
-    padding: 20,
+    padding: vs(16),
     justifyContent: 'space-between',
     flexDirection: 'row'
   },
@@ -44,7 +45,7 @@ function Selector() {
   return (
     <>
       <Button isOutline={false} isSmall={false} title="Select size" onPress={onOpen} />
-      <Modalize modalStyle={selectorStyle} modalHeight={450} ref={modalizeRef}>
+      <Modalize modalStyle={selectorStyle} modalHeight={vs(446)} ref={modalizeRef}>
         <Space height={10} />
         <Text title={'Select size'} textStyle={textStyle} h1 />
         <Space height={10} />

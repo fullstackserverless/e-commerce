@@ -1,12 +1,13 @@
 import React from 'react'
 import { StyleSheet, Pressable, Text } from 'react-native'
+import { vs } from 'react-native-size-matters'
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons'
-import { PRIMARY, WHITE, DARK } from '../../constants'
+import { PRIMARY, WHITE, DARK, BLACK } from '../../constants'
 
 const styles = StyleSheet.create({
   container: {
-    height: 36,
-    width: 36,
+    height: vs(32),
+    width: vs(32),
     borderRadius: 100
   },
   iconStyle: {
@@ -23,7 +24,7 @@ const styles = StyleSheet.create({
     color: PRIMARY
   },
   colorIconWhite: {
-    color: WHITE
+    color: BLACK
   }
 })
 
@@ -46,7 +47,7 @@ function ButtonIcon({ isPrimary, isWhiteIcon }: ButtonIconT) {
         iconStyle
       ]}
     >
-      <MaterialCommunityIcons style={colorIcon} name="shopping" size={20} color={WHITE} />
+      <MaterialCommunityIcons style={colorIcon} name="shopping" size={vs(16)} color={WHITE} />
     </Pressable>
   )
 }

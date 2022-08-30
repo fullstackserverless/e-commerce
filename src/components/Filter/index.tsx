@@ -3,12 +3,12 @@ import { Pressable, StyleSheet, View } from 'react-native'
 import { Text } from '../index'
 import IonIcons from 'react-native-vector-icons/Ionicons'
 import { DARK, WHITE } from '../../constants'
-import { textStyles } from 'src/theme'
+import { vs } from 'react-native-size-matters'
 
 const styles = StyleSheet.create({
   container: {
     width: '100%',
-    height: 30,
+    height: vs(28),
     flexDirection: 'row',
     justifyContent: 'space-around',
     backgroundColor: DARK,
@@ -25,11 +25,11 @@ const styles = StyleSheet.create({
 
   textStyle: {
     color: WHITE,
-    paddingLeft: 5
+    paddingLeft: vs(3)
   },
   iconStyle: {
     color: WHITE,
-    fontSize: 25
+    fontSize: vs(22)
   }
 })
 

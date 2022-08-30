@@ -3,21 +3,22 @@ import { StyleSheet, View, Image } from 'react-native'
 import { Text, Space, Counter } from '../index'
 import Ionicons from 'react-native-vector-icons/Ionicons'
 import { TwoColorText } from '../CardProductCover'
-import { DARK, GRAY, WHITE } from '../../constants'
+import { DARK, GRAY, WHITE, winWidth } from '../../constants'
+import { s, vs } from 'react-native-size-matters'
 
 const styles = StyleSheet.create({
   container: {
-    width: 343,
-    height: 114,
-    borderRadius: 8,
+    width: winWidth * 0.9,
+    height: vs(106),
+    borderRadius: vs(6),
     backgroundColor: DARK,
     flexDirection: 'row'
   },
   imageStyle: {
-    width: 104,
-    height: 114,
-    borderBottomLeftRadius: 8,
-    borderTopLeftRadius: 8
+    width: winWidth * 0.2,
+    height: vs(106),
+    borderBottomLeftRadius: vs(6),
+    borderTopLeftRadius: vs(6)
   },
   counterContainer: {
     flexDirection: 'row'
@@ -39,11 +40,21 @@ const styles = StyleSheet.create({
   },
   iconStyle: {
     color: GRAY,
-    fontSize: 20
+    fontSize: vs(18)
   },
   priceTextStyle: {
     color: WHITE,
-    marginRight: 8
+    marginRight: vs(4)
+  },
+  containerAbsolute: {
+    position: 'absolute',
+    left: winWidth * 0.6,
+    bottom: vs(10)
+  },
+  containerAbsoluteText: {
+    position: 'absolute',
+    left: winWidth * 0.575,
+    bottom: vs(10)
   }
 })
 
@@ -63,7 +74,9 @@ function CardProductBag({ color = 'Undefined', clothes = 'Undefined', size = '0'
     counterContainer,
     container1,
     iconStyle,
-    priceTextStyle
+    priceTextStyle,
+    containerAbsolute,
+    containerAbsoluteText
   } = styles
 
   return (
@@ -72,24 +85,27 @@ function CardProductBag({ color = 'Undefined', clothes = 'Undefined', size = '0'
         style={imageStyle}
         source={{ uri: 'https://demotivation.ru/wp-content/uploads/2020/05/255095-Sepik-2048x1383.jpg' }}
       />
-      <Space width={11} height={0} />
+      <Space width={winWidth * 0.015} height={0} />
       <View style={infoContainer}>
-        <Space height={3} />
+        <Space height={vs(2)} />
         <View style={container1}>
           <Text title={clothes} h2 textStyle={clothesTextStyle} />
-          <Space width={110} height={0} />
-          <Ionicons name={'ellipsis-vertical'} style={iconStyle} />
+          <View style={containerAbsolute}>
+            <Ionicons name={'ellipsis-vertical'} style={iconStyle} />
+          </View>
         </View>
         <View style={counterContainer}>
           <TwoColorText leftText="Color: " rightText={color} />
           <TwoColorText leftText="Size: " rightText={size} />
         </View>
-        <Space height={6} />
+        <Space height={vs(4)} />
         <View style={container1}>
           <Counter />
-          <Text title={`${price}$`} h2 textStyle={priceTextStyle} />
+          <View style={containerAbsoluteText}>
+            <Text title={`${price}$`} h2 textStyle={priceTextStyle} />
+          </View>
         </View>
-        <Space height={6} />
+        <Space height={vs(4)} />
       </View>
     </View>
   )

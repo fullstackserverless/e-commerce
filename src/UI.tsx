@@ -1,6 +1,7 @@
-import React, { useState } from 'react'
+import React, { useState, useRef } from 'react'
 import { StyleSheet, View, ScrollView } from 'react-native'
-import { BLACK, WHITE } from './constants'
+import { Modalize } from 'react-native-modalize'
+import { BLACK, WHITE, PRIMARY, DARK } from './constants'
 import {
   Space,
   Text,
@@ -27,10 +28,11 @@ import {
   Search,
   Selector,
   Switch,
-  TabBar,
   Tag,
-  ExampleForm
+  Fumi,
+  Header
 } from './components'
+import Ionicons from 'react-native-vector-icons/Ionicons'
 
 const styles = StyleSheet.create({
   container: {
@@ -42,6 +44,12 @@ const styles = StyleSheet.create({
   },
   textStyle: {
     color: WHITE
+  },
+  labelStyle: {
+    color: PRIMARY
+  },
+  fumiStyle: {
+    flex: 1
   }
 })
 
@@ -51,7 +59,7 @@ interface HomeT {
 }
 
 function Home({ navigation, route }: HomeT) {
-  const { container, textStyle, layoutContainer } = styles
+  const { container, textStyle, layoutContainer, labelStyle } = styles
   const [isEnabled, setIsEnabled] = useState(false)
   const [redCheckBoxValue, setRedCheckBoxValue] = useState(false)
   const [whiteCheckBoxValue, setWhiteCheckBoxValue] = useState(false)
@@ -184,11 +192,7 @@ function Home({ navigation, route }: HomeT) {
         <Space height={10} />
         <Filter onPressFilter={() => {}} onPressApps={() => {}} onPressPrice={() => {}} />
         <Space height={25} />
-        <Text title="FilterBottom" h1 textStyle={textStyle} />
-        <Space height={10} />
-        <FilterBottom />
-        <Space height={25} />
-        <Text title="FilterBottom" h1 textStyle={textStyle} />
+        <Text title="Labels" h1 textStyle={textStyle} />
         <Space height={10} />
         <Labels isSaleOrNew={true} title={'-30%'} />
         <Space height={15} />
@@ -220,7 +224,7 @@ function Home({ navigation, route }: HomeT) {
         <Space height={25} />
         <Text title="Switch" h1 textStyle={textStyle} />
         <Space height={10} />
-        <Switch />
+        <Switch onValueChange={toggleSwitch} isValue={isEnabled} />
         <Space height={25} />
         <Text title="Tag" h1 textStyle={textStyle} />
         <Space height={10} />
@@ -231,10 +235,6 @@ function Home({ navigation, route }: HomeT) {
         <Tag title={'Tag'} isOutline={true} isSmall={false} isWhiteText={false} isWhiteButton={true} />
         <Space height={10} />
         <Tag title={'Tag'} isOutline={false} isSmall={true} isWhiteText={false} />
-        <Space height={25} />
-        <Text title="TextInputs" h1 textStyle={textStyle} />
-        <Space height={10} />
-        <ExampleForm />
         <Space height={25} />
         <Text title="SuccessScreen" h1 textStyle={textStyle} />
         <Space height={10} />
@@ -252,6 +252,28 @@ function Home({ navigation, route }: HomeT) {
         <Space height={10} />
         <Button title={'Open MyProfile!'} onPress={openMyProfile} />
         <Space height={25} />
+        <Text title="Fumi" h1 textStyle={textStyle} />
+        <Space height={10} />
+      </View>
+      <Fumi label="Email" iconName={'mail'} iconClass={Ionicons} labelStyle={labelStyle} iconColor={PRIMARY} />
+      <Space height={25} />
+      <View style={layoutContainer}>
+        <Text title="Header" h1 textStyle={textStyle} />
+        <Space height={10} />
+        <Text title="h0" h1 textStyle={textStyle} />
+        <Space height={10} />
+        <Header h0 />
+        <Space height={10} />
+        <Text title="h1" h1 textStyle={textStyle} />
+        <Space height={10} />
+        <Header h1 />
+        <Space height={10} />
+        <Text title="h2" h1 textStyle={textStyle} />
+        <Space height={10} />
+        <Header h2 />
+        <Space height={25} />
+        <Text title="" h1 textStyle={textStyle} />
+        <Space height={10} />
       </View>
     </ScrollView>
   )

@@ -1,66 +1,36 @@
 import React from 'react'
-import { NativeStackHeaderProps } from '@react-navigation/native-stack'
-import { Pressable, StatusBar, StyleSheet, View } from 'react-native'
-import { BLACK, WHITE } from '../../constants'
-import Icon from 'react-native-vector-icons/Entypo'
-import { s, vs } from 'react-native-size-matters'
-import { Text } from '../Text'
-import { getHeaderProp } from './headerHelper'
-
-const Header: React.FC<NativeStackHeaderProps> = ({ options, route, navigation }) => {
-  const { title, size, visible } = getHeaderProp(options.title ? options.title : route.name)
-  return (
-    <>
-      {visible && (
-        <View style={[container, size === 'big' ? bigContainer : smallContainer]}>
-          <StatusBar backgroundColor={BLACK} barStyle="light-content" />
-          {navigation.canGoBack() && (
-            <Pressable onPress={() => navigation.goBack()} style={size === 'big' ? goBackBtnBig : goBackBtnSmall}>
-              <Icon name="chevron-thin-left" color={WHITE} size={vs(20)} />
-            </Pressable>
-          )}
-          <Text style={[{ color: WHITE }]} textStyle={size === 'big' ? 'title1' : 'title3'}>
-            {title}
-          </Text>
-        </View>
-      )}
-      <StatusBar backgroundColor={BLACK} barStyle="light-content" showHideTransition={'slide'} hidden={!visible} />
-    </>
-  )
-}
+import { StyleSheet } from 'react-native'
+import { WHITE } from '../../constants'
+import { Text } from '../'
+import { IconHeader } from './IconHeader'
+import { SmallTextHeader } from './SmallTextHeader'
+import { BigTextHeader } from './BigTextHeader'
 
 const styles = StyleSheet.create({
-  container: {
-    backgroundColor: BLACK,
-    width: '100%',
-    paddingBottom: vs(14),
-    paddingTop: vs(14),
-    paddingHorizontal: s(10)
-  },
-  smallContainer: {
-    flexDirection: 'row',
-    justifyContent: 'center'
-  },
-  bigContainer: {
-    alignItems: 'flex-start'
-  },
-  goBackBtnBig: {
-    margin: s(5),
-    paddingHorizontal: s(10),
-    paddingTop: vs(5),
-    paddingBottom: vs(15),
-    alignSelf: 'flex-start'
-  },
-  goBackBtnSmall: {
-    margin: s(5),
-    paddingHorizontal: s(10),
-    paddingVertical: vs(5),
-    position: 'absolute',
-    left: 0
+  textStyle: {
+    color: WHITE
   }
 })
+interface HeaderT {
+  h0?: boolean
+  h1?: boolean
+  h2?: boolean
+  onPress: () => void
+  title: string
+}
 
-const { container, smallContainer, goBackBtnBig, goBackBtnSmall, bigContainer } = styles
+function Header({ h0, h1, h2, onPress, title }: HeaderT) {
+  const { textStyle } = styles
+  if (h0 === true) {
+    return <IconHeader onPress={onPress} />
+  }
+  if (h1 === true) {
+    return <BigTextHeader onPress={onPress} title={title} />
+  }
+  if (h2 === true) {
+    return <SmallTextHeader onPress={onPress} title={title} />
+  }
+  return <Text title="BUG" h0 textStyle={textStyle} />
+}
 
 export { Header }
-export * from './headerHelper'

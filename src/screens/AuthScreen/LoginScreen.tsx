@@ -3,8 +3,10 @@ import { StyleSheet, View, Pressable } from 'react-native'
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5'
 import Ionicons from 'react-native-vector-icons/Ionicons'
 import MaterialCommmunityIcons from 'react-native-vector-icons/MaterialCommunityIcons'
-import { BLACK, DARK, PRIMARY, WHITE } from '../../constants'
-import { Text, Space, Fumi, Button } from '../../components'
+import { BLACK, PRIMARY, WHITE, winWidth } from '../../constants'
+import { Text, Fumi, Button, Header } from '../../components'
+import { vs } from 'react-native-size-matters'
+import { SafeAreaView } from 'react-native-safe-area-context'
 
 const styles = StyleSheet.create({
   container: {
@@ -14,21 +16,21 @@ const styles = StyleSheet.create({
     justifyContent: 'center'
   },
   iconStyle: {
-    fontSize: 30,
+    fontSize: vs(26),
     color: PRIMARY
   },
   googleIconContainer: {
-    width: 92,
-    height: 64,
-    borderRadius: 24,
+    width: winWidth * 0.2,
+    height: vs(60),
+    borderRadius: vs(20),
     backgroundColor: WHITE,
     justifyContent: 'center',
     alignItems: 'center'
   },
   facebookIconContainer: {
-    width: 92,
-    height: 64,
-    borderRadius: 24,
+    width: winWidth * 0.2,
+    height: vs(60),
+    borderRadius: vs(20),
     backgroundColor: WHITE,
     justifyContent: 'center',
     alignItems: 'center'
@@ -37,52 +39,59 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'flex-end',
-    paddingLeft: 88,
-    paddingRight: 88,
-    paddingTop: 10
+    paddingLeft: winWidth * 0.15,
+    paddingRight: winWidth * 0.15,
+    paddingTop: vs(10)
   },
   textStyle: {
     color: WHITE,
-    paddingLeft: 10,
-    paddingBottom: 180,
-    paddingTop: 30
+    paddingLeft: winWidth * 0.01,
+    paddingBottom: vs(176),
+    paddingTop: vs(24)
   },
   arrowStyle: {
     color: PRIMARY,
-    fontSize: 30
+    fontSize: vs(26)
   },
   chevronStyle: {
     color: WHITE,
-    fontSize: 40
+    fontSize: vs(36)
   },
   labelStyle: {
     color: PRIMARY
   },
   buttonContainer: {
     alignItems: 'center',
-    paddingTop: 28
+    paddingTop: vs(24)
   },
   textStyleAcc: {
     color: WHITE
   },
   textContainer: {
     alignItems: 'center',
-    paddingTop: 120
+    paddingTop: vs(70)
   },
   rowContainer: {
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'flex-end',
-    paddingRight: 5,
-    paddingTop: 28
+    paddingRight: winWidth * 0.005,
+    paddingTop: vs(24)
+  },
+  headerContainer: {
+    paddingBottom: vs(161)
+  },
+  safeAreaViewStyle: {
+    backgroundColor: BLACK
   }
 })
 
 interface LoginScreenT {
   navigation: any
+  onPress: () => void
 }
 
-function LoginScreen({ navigation }: LoginScreenT) {
+function LoginScreen({ navigation, onPress }: LoginScreenT) {
   const {
     container,
     iconStyle,
@@ -96,67 +105,63 @@ function LoginScreen({ navigation }: LoginScreenT) {
     buttonContainer,
     textStyleAcc,
     textContainer,
-    rowContainer
+    rowContainer,
+    headerContainer,
+    safeAreaViewStyle
   } = styles
   const { navigate } = navigation
 
   const openPassword = () => navigate('PasswordScreen')
   return (
-    <View style={container}>
-      <Pressable
-        onPress={navigation.goBack}
-        style={({ pressed }) => [
-          {
-            opacity: pressed ? 0.7 : 1
-          }
-        ]}
-      >
-        <Ionicons name="chevron-back" style={chevronStyle} />
-      </Pressable>
-      <Text title={'Login'} h0 textStyle={textStyle} />
-      <Fumi label="Email" iconName={'mail'} iconClass={Ionicons} labelStyle={labelStyle} iconColor={PRIMARY} />
-      <Fumi
-        label="Password"
-        iconName={'lock-closed'}
-        iconClass={Ionicons}
-        labelStyle={labelStyle}
-        iconColor={PRIMARY}
-      />
-      <Pressable onPress={openPassword} style={({ pressed }) => [{ opacity: pressed ? 0.7 : 1 }, rowContainer]}>
-        <Text title={'Forgot your password?'} h4 textStyle={textStyleAcc} />
-        <MaterialCommmunityIcons name={'arrow-right-thin'} style={arrowStyle} />
-      </Pressable>
-      <View style={buttonContainer}>
-        <Button onPress={() => {}} title={'SIGN UP'} isOutline={false} isSmall={false} />
-      </View>
-      <View style={textContainer}>
-        <Text textStyle={textStyleAcc} h4 title={'Or login with social account'} />
-      </View>
-      <View style={container1}>
-        <Pressable
-          style={({ pressed }) => [
-            {
-              opacity: pressed ? 0.8 : 1
-            },
-            googleIconContainer
-          ]}
-          onPress={() => {}}
-        >
-          <FontAwesome5 name={'google'} style={iconStyle} />
+    <SafeAreaView style={safeAreaViewStyle}>
+      <View style={container}>
+        <View style={headerContainer}>
+          <Header h1 onPress={navigation.goBack} title={'Login'} />
+        </View>
+        <Fumi label="Email" iconName={'mail'} iconClass={Ionicons} labelStyle={labelStyle} iconColor={PRIMARY} />
+        <Fumi
+          label="Password"
+          iconName={'lock-closed'}
+          iconClass={Ionicons}
+          labelStyle={labelStyle}
+          iconColor={PRIMARY}
+        />
+        <Pressable onPress={openPassword} style={({ pressed }) => [{ opacity: pressed ? 0.7 : 1 }, rowContainer]}>
+          <Text title={'Forgot your password?'} h4 textStyle={textStyleAcc} />
+          <MaterialCommmunityIcons name={'arrow-right-thin'} style={arrowStyle} />
         </Pressable>
-        <Pressable
-          style={({ pressed }) => [
-            {
-              opacity: pressed ? 0.8 : 1
-            },
-            facebookIconContainer
-          ]}
-          onPress={() => {}}
-        >
-          <FontAwesome5 name={'facebook'} style={iconStyle} />
-        </Pressable>
+        <View style={buttonContainer}>
+          <Button onPress={() => {}} title={'SIGN UP'} isOutline={false} isSmall={false} />
+        </View>
+        <View style={textContainer}>
+          <Text textStyle={textStyleAcc} h4 title={'Or login with social account'} />
+        </View>
+        <View style={container1}>
+          <Pressable
+            style={({ pressed }) => [
+              {
+                opacity: pressed ? 0.8 : 1
+              },
+              googleIconContainer
+            ]}
+            onPress={() => {}}
+          >
+            <FontAwesome5 name={'google'} style={iconStyle} />
+          </Pressable>
+          <Pressable
+            style={({ pressed }) => [
+              {
+                opacity: pressed ? 0.8 : 1
+              },
+              facebookIconContainer
+            ]}
+            onPress={() => {}}
+          >
+            <FontAwesome5 name={'facebook'} style={iconStyle} />
+          </Pressable>
+        </View>
       </View>
-    </View>
+    </SafeAreaView>
   )
 }
 
