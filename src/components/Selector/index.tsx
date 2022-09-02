@@ -1,8 +1,8 @@
-import React, { useRef } from 'react'
-import { View, StyleSheet } from 'react-native'
+import React, { useRef, useState } from 'react'
+import { View, StyleSheet, Pressable } from 'react-native'
 import { Modalize } from 'react-native-modalize'
 import { vs } from 'react-native-size-matters'
-import { Button, Text, Space, Tag } from '../../components'
+import { Button, Text, Space, TagBig } from '../../components'
 import { BLACK, WHITE, GRAY } from '../../constants'
 
 const styles = StyleSheet.create({
@@ -34,14 +34,39 @@ const styles = StyleSheet.create({
     alignItems: 'center'
   }
 })
+
+interface ColorFilterValueT {
+  one: false
+  two: false
+  three: false
+  four: false
+  five: false
+  six: false
+}
+
 function Selector() {
   const { selectorStyle, textStyle, container, sizeInfo, styleSize, buttonStyle } = styles
   const modalizeRef = useRef<Modalize>(null)
+  const [isActiveBorder, setActiveBorder] = useState<ColorFilterValueT>({
+    one: false,
+    two: false,
+    three: false,
+    four: false,
+    five: false,
+    six: false
+  })
 
   function onOpen() {
     modalizeRef.current?.open()
   }
 
+  const toggleColorFilter = (value: keyof ColorFilterValueT) =>
+    setActiveBorder(prevState => {
+      return {
+        ...prevState,
+        [value]: !prevState[value]
+      }
+    })
   return (
     <>
       <Button isOutline={false} isSmall={false} title="Select size" onPress={onOpen} />
@@ -51,24 +76,32 @@ function Selector() {
         <Space height={10} />
         <View style={container}>
           <View>
-            <Tag isOutline={true} isSmall={false} title={'XS'} isWhiteText={true} />
+            <TagBig title={'XS'} onToggle={() => toggleColorFilter('one')} isInvisibleBorder={isActiveBorder['one']} />
             <Space height={10} />
-            <Tag isOutline={true} isSmall={false} title={'L'} isWhiteText={true} />
+            <TagBig title={'L'} onToggle={() => toggleColorFilter('two')} isInvisibleBorder={isActiveBorder['two']} />
           </View>
           <View>
-            <Tag isOutline={true} isSmall={false} title={'S'} isWhiteText={true} />
+            <TagBig
+              title={'S'}
+              onToggle={() => toggleColorFilter('three')}
+              isInvisibleBorder={isActiveBorder['three']}
+            />
             <Space height={10} />
-            <Tag isOutline={true} isSmall={false} title={'XL'} isWhiteText={true} />
+            <TagBig
+              title={'XL'}
+              onToggle={() => toggleColorFilter('four')}
+              isInvisibleBorder={isActiveBorder['four']}
+            />
             <Space height={15} />
           </View>
           <View>
-            <Tag isOutline={true} isSmall={false} title={'M'} isWhiteText={true} />
+            <TagBig title={'M'} onToggle={() => toggleColorFilter('five')} isInvisibleBorder={isActiveBorder['five']} />
           </View>
         </View>
-        <View style={sizeInfo}>
+        <Pressable style={({ pressed }) => [sizeInfo, { opacity: pressed ? 0.8 : 1 }]}>
           <Text title={'Size info'} h4 textStyle={styleSize} />
           <Text title={'>'} h4 textStyle={styleSize} />
-        </View>
+        </Pressable>
         <Space height={15} />
         <View style={buttonStyle}>
           <Button isOutline={false} isSmall={false} title="Select size" onPress={onOpen} />

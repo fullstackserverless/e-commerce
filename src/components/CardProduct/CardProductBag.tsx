@@ -63,9 +63,16 @@ interface CardProductBagT {
   clothes: string
   size: string
   price: string
+  imageUri: string
 }
 
-function CardProductBag({ color = 'Undefined', clothes = 'Undefined', size = '0', price = '0' }: CardProductBagT) {
+function CardProductBag({
+  color = 'Undefined',
+  imageUri,
+  clothes = 'Undefined',
+  size = '0',
+  price = '0'
+}: CardProductBagT) {
   const {
     container,
     imageStyle,
@@ -81,10 +88,7 @@ function CardProductBag({ color = 'Undefined', clothes = 'Undefined', size = '0'
 
   return (
     <View style={container}>
-      <Image
-        style={imageStyle}
-        source={{ uri: 'https://demotivation.ru/wp-content/uploads/2020/05/255095-Sepik-2048x1383.jpg' }}
-      />
+      <Image style={imageStyle} source={{ uri: imageUri }} />
       <Space width={winWidth * 0.015} height={0} />
       <View style={infoContainer}>
         <Space height={vs(2)} />

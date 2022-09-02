@@ -28,9 +28,10 @@ import {
   Search,
   Selector,
   Switch,
-  Tag,
+  TagBig,
   Fumi,
-  Header
+  Header,
+  TagSmall
 } from './components'
 import Ionicons from 'react-native-vector-icons/Ionicons'
 
@@ -63,16 +64,21 @@ function Home({ navigation, route }: HomeT) {
   const [isEnabled, setIsEnabled] = useState(false)
   const [redCheckBoxValue, setRedCheckBoxValue] = useState(false)
   const [whiteCheckBoxValue, setWhiteCheckBoxValue] = useState(false)
+  const [isInvisibleBorder, setIsInvisibleBorder] = useState(false)
+  const [isVisibleBorder, setIsVisibleBorder] = useState(false)
   const { navigate } = navigation
 
   const toggleSwitch = () => setIsEnabled(previousState => !previousState)
   const toggleRedCheckBox = () => setRedCheckBoxValue(redCheckBoxValue => !redCheckBoxValue)
   const toggleWhiteCheckBox = () => setWhiteCheckBoxValue(whiteCheckBoxValue => !whiteCheckBoxValue)
+  const toggleTagBig = () => setIsInvisibleBorder(previousState => !previousState)
+  const toggleTagSmall = () => setIsVisibleBorder(previousState => !previousState)
   const openPopUp = () => navigate('POPUP')
   const openSuccess = () => navigate('SuccessScreen')
   const openAuth = () => navigate('SignUpScreen')
   const openFilterList = () => navigate('FiltersListScreen')
   const openMyProfile = () => navigate('MyProfileScreen')
+  const openFiltersScreen = () => navigate('FiltersScreen')
 
   return (
     <ScrollView style={container}>
@@ -106,7 +112,7 @@ function Home({ navigation, route }: HomeT) {
         <Space height={25} />
         <Text title="ButtonReview" h1 textStyle={textStyle} />
         <Space height={10} />
-        <ButtonReview />
+        <ButtonReview onPress={() => {}} />
         <Space height={25} />
         <Text title="CardImage" h1 textStyle={textStyle} />
         <Space height={10} />
@@ -136,11 +142,33 @@ function Home({ navigation, route }: HomeT) {
         <Space height={25} />
         <Text title="CardProduct" h1 textStyle={textStyle} />
         <Space height={10} />
-        <CardProductBag />
+        <CardProductBag
+          price={'10'}
+          color={'example'}
+          imageUri={'https://demotivation.ru/wp-content/uploads/2020/05/255095-Sepik-2048x1383.jpg'}
+          clothes={'example'}
+          size={'example'}
+        />
         <Space height={10} />
-        <CardProductCatalog />
+        <CardProductCatalog
+          color={'example'}
+          clothes={'example'}
+          size={'example'}
+          price={'10'}
+          brand={'example'}
+          ratingList={[3, 3, 3]}
+          imageUri={'https://demotivation.ru/wp-content/uploads/2020/05/255095-Sepik-2048x1383.jpg'}
+        />
         <Space height={20} />
-        <CardProductOrderInfo />
+        <CardProductOrderInfo
+          color={'example'}
+          clothes={'example'}
+          size={'example'}
+          price={'10'}
+          brand={'example'}
+          units={'1'}
+          imageUri={'https://demotivation.ru/wp-content/uploads/2020/05/255095-Sepik-2048x1383.jpg'}
+        />
         <Space height={25} />
         <Text title="CardProductCover" h1 textStyle={textStyle} />
         <Space height={10} />
@@ -212,7 +240,14 @@ function Home({ navigation, route }: HomeT) {
         <Space height={25} />
         <Text title="ReviewCard" h1 textStyle={textStyle} />
         <Space height={10} />
-        <ReviewCard />
+        <ReviewCard
+          name={'example'}
+          review={'example'}
+          date={'example'}
+          onPress={() => {}}
+          ratingList={[3, 3, 3]}
+          avatarUri={'https://mediasole.ru/data/images/74/74212/150-1.jpg'}
+        />
         <Space height={25} />
         <Text title="Search" h1 textStyle={textStyle} />
         <Space height={10} />
@@ -228,29 +263,25 @@ function Home({ navigation, route }: HomeT) {
         <Space height={25} />
         <Text title="Tag" h1 textStyle={textStyle} />
         <Space height={10} />
-        <Tag title={'Tag'} isOutline={true} isSmall={true} isWhiteText={true} />
+        <TagBig title={'Tag'} onToggle={toggleTagBig} isInvisibleBorder={isInvisibleBorder} />
         <Space height={10} />
-        <Tag title={'Tag'} isOutline={true} isSmall={false} isWhiteText={true} />
-        <Space height={10} />
-        <Tag title={'Tag'} isOutline={true} isSmall={false} isWhiteText={false} isWhiteButton={true} />
-        <Space height={10} />
-        <Tag title={'Tag'} isOutline={false} isSmall={true} isWhiteText={false} />
+        <TagSmall title={'Tag'} onToggle={toggleTagSmall} isVisibleBorder={isVisibleBorder} />
         <Space height={25} />
         <Text title="SuccessScreen" h1 textStyle={textStyle} />
         <Space height={10} />
-        <Button onPress={openSuccess} title={'Open SuccessScreen!'} />
+        <Button isOutline={false} isSmall={false} onPress={openSuccess} title={'Open SuccessScreen!'} />
         <Space height={25} />
         <Text title="AuthScreen" h1 textStyle={textStyle} />
         <Space height={10} />
-        <Button title={'Open AuthScreen!'} onPress={openAuth} />
+        <Button isOutline={false} isSmall={false} title={'Open AuthScreen!'} onPress={openAuth} />
         <Space height={25} />
         <Text title="FiltersListScreen" h1 textStyle={textStyle} />
         <Space height={10} />
-        <Button title={'Open FiltersListScreen!'} onPress={openFilterList} />
+        <Button isOutline={false} isSmall={false} title={'Open FiltersListScreen!'} onPress={openFilterList} />
         <Space height={25} />
         <Text title="MyProfileScreen" h1 textStyle={textStyle} />
         <Space height={10} />
-        <Button title={'Open MyProfile!'} onPress={openMyProfile} />
+        <Button isOutline={false} isSmall={false} title={'Open MyProfile!'} onPress={openMyProfile} />
         <Space height={25} />
         <Text title="Fumi" h1 textStyle={textStyle} />
         <Space height={10} />
@@ -262,15 +293,19 @@ function Home({ navigation, route }: HomeT) {
         <Space height={10} />
         <Text title="h0" h1 textStyle={textStyle} />
         <Space height={10} />
-        <Header h0 />
+        <Header h0 onPress={() => {}} title={'Header'} />
         <Space height={10} />
         <Text title="h1" h1 textStyle={textStyle} />
         <Space height={10} />
-        <Header h1 />
+        <Header h1 onPress={() => {}} title={'Header'} />
         <Space height={10} />
         <Text title="h2" h1 textStyle={textStyle} />
         <Space height={10} />
-        <Header h2 />
+        <Header h2 onPress={() => {}} title={'Header'} />
+        <Space height={25} />
+        <Text title="FiltersScreen" h1 textStyle={textStyle} />
+        <Space height={10} />
+        <Button isOutline={false} isSmall={false} onPress={openFiltersScreen} title={'Open FiltersScreen!'} />
         <Space height={25} />
         <Text title="" h1 textStyle={textStyle} />
         <Space height={10} />

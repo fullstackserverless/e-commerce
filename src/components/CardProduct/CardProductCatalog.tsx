@@ -55,13 +55,15 @@ interface CardProductCatalogT {
   price: string
   brand: string
   ratingList: number[]
+  imageUri: string
 }
 
 function CardProductCatalog({
   clothes = 'Undefined',
   price = '0',
   brand = 'Undefined',
-  ratingList = [4, 4, 4]
+  ratingList = [4, 4, 4],
+  imageUri
 }: CardProductCatalogT) {
   const {
     container,
@@ -76,10 +78,7 @@ function CardProductCatalog({
 
   return (
     <View style={container}>
-      <Image
-        style={imageStyle}
-        source={{ uri: 'https://demotivation.ru/wp-content/uploads/2020/05/255095-Sepik-2048x1383.jpg' }}
-      />
+      <Image style={imageStyle} source={{ uri: imageUri }} />
       <Space width={winWidth * 0.015} height={0} />
       <View style={infoContainer}>
         <Space height={vs(8)} />

@@ -2,7 +2,7 @@ import React, { useState, useMemo } from 'react'
 import { View, ScrollView, StyleSheet, Pressable, FlatList } from 'react-native'
 import Ionicons from 'react-native-vector-icons/Ionicons'
 import { BLACK, PRIMARY, WHITE, winWidth } from '../../constants'
-import { Text, CheckBox, Button, SearchExample, Search } from '../../components'
+import { Text, CheckBox, Button, Search, Header } from '../../components'
 import { SafeAreaView } from 'react-native-safe-area-context'
 import { vs, s } from 'react-native-size-matters'
 
@@ -13,7 +13,7 @@ const styles = StyleSheet.create({
     backgroundColor: BLACK
   },
   containerSearch: {
-    paddingTop: vs(24)
+    paddingTop: vs(5)
   },
   activeTextStyle: {
     color: PRIMARY
@@ -137,22 +137,7 @@ function FiltersListScreen({ navigation }: FiltersListScreenT) {
   return (
     <SafeAreaView style={safeAreaViewStyle}>
       <View style={containerView}>
-        <View style={headerContainer}>
-          <Pressable
-            style={({ pressed }) => [
-              {
-                opacity: pressed ? 0.7 : 1
-              },
-              pressableContainer
-            ]}
-            onPress={navigation.goBack}
-          >
-            <Ionicons name={'chevron-back'} size={vs(26)} color={WHITE} />
-          </Pressable>
-          <View style={headerTextContainer}>
-            <Text title="Brand" h1 textStyle={textStyle} />
-          </View>
-        </View>
+        <Header title={'Brand'} onPress={navigation.goBack} h2 />
         <View style={containerSearch}>
           <Search onSearch={onSubmit} defaultValue={searchText} />
         </View>

@@ -53,6 +53,7 @@ interface CardProductOrderInfoT {
   price: string
   brand: string
   units: string
+  imageUri: string
 }
 
 function CardProductOrderInfo({
@@ -61,7 +62,8 @@ function CardProductOrderInfo({
   brand = 'Undefined',
   color = 'undefined',
   size = 'L',
-  units = '1'
+  units = '1',
+  imageUri
 }: CardProductOrderInfoT) {
   const {
     container,
@@ -76,10 +78,7 @@ function CardProductOrderInfo({
 
   return (
     <View style={container}>
-      <Image
-        style={imageStyle}
-        source={{ uri: 'https://demotivation.ru/wp-content/uploads/2020/05/255095-Sepik-2048x1383.jpg' }}
-      />
+      <Image style={imageStyle} source={{ uri: imageUri }} />
       <Space width={winWidth * 0.015} height={0} />
       <View style={infoContainer}>
         <Space height={vs(8)} />
