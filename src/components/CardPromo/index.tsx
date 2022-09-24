@@ -50,33 +50,33 @@ const styles = StyleSheet.create({
   },
   percentNumberStyle: {
     color: WHITE,
-    fontSize: 34
+    fontSize: vs(32)
   },
   percentTextStyle: {
     color: WHITE,
-    fontSize: 14
+    fontSize: vs(12)
   },
   personalTextStyle: {
     color: WHITE,
-    fontSize: 14,
+    fontSize: vs(12),
     fontWeight: 'bold'
   },
   prmocodeTextStyle: {
     color: WHITE,
-    fontSize: 11
+    fontSize: vs(9)
   },
   remainTextStyle: {
     color: GRAY,
-    fontSize: 11
+    fontSize: vs(9)
   },
   imageContainer: {
-    width: 80,
-    height: 80,
+    width: vs(76),
+    height: '100%',
     justifyContent: 'center'
   },
   text: {
     color: 'white',
-    fontSize: 12,
+    fontSize: vs(10),
     fontWeight: 'bold',
     textAlign: 'center'
   },
@@ -84,7 +84,7 @@ const styles = StyleSheet.create({
     color: BLACK
   }
 })
-interface CardProductBagT {
+interface CardPromoT {
   percentNumber: string
   promocodeText: string
   daysRemainNumber: string
@@ -113,8 +113,7 @@ function CardPromo({
   promocodeText = 'mypromocode2020',
   daysRemainNumber = '6',
   imagePromo
-}: CardProductBagT) {
-  // imagePromo = 'https://demotivation.ru/wp-content/uploads/2020/05/255095-Sepik-2048x1383.jpg'
+}: CardPromoT) {
   const image = { uri: imagePromo }
 
   return (

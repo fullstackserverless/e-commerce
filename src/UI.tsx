@@ -31,7 +31,8 @@ import {
   TagBig,
   Fumi,
   Header,
-  TagSmall
+  TagSmall,
+  CardPromo
 } from './components'
 import Ionicons from 'react-native-vector-icons/Ionicons'
 
@@ -316,6 +317,15 @@ function Home({ navigation, route }: HomeT) {
         <Text title="SettingsScreen" h1 textStyle={textStyle} />
         <Space height={10} />
         <Button onPress={openSettingsScreen} isSmall={false} isOutline={false} title={'Open SettingsScreen!'} />
+        <Space height={25} />
+        <Text title="CardPromo" h1 textStyle={textStyle} />
+        <Space height={10} />
+        <CardPromo
+          imagePromo="https://demotivation.ru/wp-content/uploads/2020/05/255095-Sepik-2048x1383.jpg"
+          percentNumber="10"
+          promocodeText="PROMO"
+          daysRemainNumber="10"
+        />
         <Space height={25} />
       </View>
     </ScrollView>
