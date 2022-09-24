@@ -11,7 +11,8 @@ import {
   FiltersListScreen,
   MyProfileScreen,
   FiltersScreen,
-  MyOrdersScreen
+  MyOrdersScreen,
+  SettingsScreen
 } from './screens'
 
 const Stack = createNativeStackNavigator()
@@ -34,6 +35,7 @@ function Navigation1() {
         <Stack.Screen component={MyProfileScreen} name={'MyProfileScreen'} options={{ animation: 'fade' }} />
         <Stack.Screen component={FiltersScreen} name={'FiltersScreen'} options={{ animation: 'fade' }} />
         <Stack.Screen component={MyOrdersScreen} name={'MyOrdersScreen'} options={{ animation: 'fade' }} />
+        <Stack.Screen component={SettingsScreen} name={'SettingsScreen'} options={{ animation: 'fade' }} />
       </Stack.Navigator>
     </NavigationContainer>
   )

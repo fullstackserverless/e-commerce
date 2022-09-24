@@ -79,7 +79,6 @@ function MyOrdersScreen({ navigation }: any) {
   const [tagValueDelivered, setTagValueDelivered] = useState(true)
   const [tagValueUndelivered, setTagValueUndelivered] = useState(false)
 
-  // const startReload = () => RNRestart.Restart()
   const toggleTagDelivered = () => {
     return (
       setTagValueDelivered(prevState => !prevState),
