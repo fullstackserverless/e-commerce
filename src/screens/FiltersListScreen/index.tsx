@@ -76,6 +76,7 @@ const brandArray = [
   { name: 'nike', id: 'two' },
   { name: 'puma', id: 'three' }
 ]
+
 let countCalls = 0
 function FiltersListScreen({ navigation }: FiltersListScreenT) {
   const {

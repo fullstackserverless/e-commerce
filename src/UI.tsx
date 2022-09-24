@@ -79,6 +79,7 @@ function Home({ navigation, route }: HomeT) {
   const openFilterList = () => navigate('FiltersListScreen')
   const openMyProfile = () => navigate('MyProfileScreen')
   const openFiltersScreen = () => navigate('FiltersScreen')
+  const openMyOrdersScreen = () => navigate('MyOrdersScreen')
 
   return (
     <ScrollView style={container}>
@@ -307,8 +308,9 @@ function Home({ navigation, route }: HomeT) {
         <Space height={10} />
         <Button isOutline={false} isSmall={false} onPress={openFiltersScreen} title={'Open FiltersScreen!'} />
         <Space height={25} />
-        <Text title="" h1 textStyle={textStyle} />
+        <Text title="MyOrdersScreen" h1 textStyle={textStyle} />
         <Space height={10} />
+        <Button onPress={openMyOrdersScreen} isSmall={false} isOutline={false} title={'Open MyOrdersScreen!'} />
       </View>
     </ScrollView>
   )

@@ -9,7 +9,7 @@ import { vs } from 'react-native-size-matters'
 const styles = StyleSheet.create({
   container: {
     height: vs(160),
-    width: winWidth * 0.8,
+    width: winWidth * 0.87,
     borderRadius: vs(6),
     backgroundColor: DARK
   },
