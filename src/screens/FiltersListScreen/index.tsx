@@ -77,7 +77,6 @@ const brandArray = [
   { name: 'puma', id: 'three' }
 ]
 
-let countCalls = 0
 function FiltersListScreen({ navigation }: FiltersListScreenT) {
   const {
     containerView,
@@ -115,8 +114,6 @@ function FiltersListScreen({ navigation }: FiltersListScreenT) {
     setSearchText(text)
   }
   const filterData = useMemo(() => {
-    console.log(countCalls)
-    ++countCalls
     return brandArray.filter(i => i.name.toLowerCase().includes(searchText.toLowerCase()))
   }, [searchText])
   const renderItem = ({ item }: any) => {

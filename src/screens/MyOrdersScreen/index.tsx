@@ -80,18 +80,10 @@ function MyOrdersScreen({ navigation }: any) {
   const [tagValueUndelivered, setTagValueUndelivered] = useState(false)
 
   const toggleTagDelivered = () => {
-    return (
-      setTagValueDelivered(prevState => !prevState),
-      setTagValueUndelivered(prevState => !prevState),
-      console.log((value += 1))
-    )
+    return setTagValueDelivered(prevState => !prevState), setTagValueUndelivered(prevState => !prevState)
   }
   const toggleTagUndelivered = () => {
-    return (
-      setTagValueUndelivered(prevState => !prevState),
-      setTagValueDelivered(prevState => !prevState),
-      console.log((value += 1))
-    )
+    return setTagValueUndelivered(prevState => !prevState), setTagValueDelivered(prevState => !prevState)
   }
   const renderItem = ({ item }: any) => {
     const { renderItemContainer } = styles
@@ -111,9 +103,7 @@ function MyOrdersScreen({ navigation }: any) {
     )
   }
 
-  const a = ordersArray.filter(i => (i.isDelivered === tagValueDelivered ? null : i))
   const renderData = useMemo(() => {
-    console.log(a)
     return ordersArray.filter(i => (i.isDelivered === tagValueUndelivered ? null : i))
   }, [tagValueDelivered])
 
