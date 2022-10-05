@@ -1,7 +1,8 @@
 import React from 'react'
-import { StyleSheet, Text, Pressable, StyleProp, ViewStyle } from 'react-native'
-import { s } from 'react-native-size-matters'
-import { PRIMARY, WHITE } from '../../../constants'
+import { StyleSheet, Pressable, StyleProp, ViewStyle } from 'react-native'
+import { s, vs } from 'react-native-size-matters'
+import { Text } from '../../'
+import { PRIMARY, BLACK } from '../../../constants'
 
 const styles = StyleSheet.create({
   container: {
@@ -9,13 +10,13 @@ const styles = StyleSheet.create({
     borderRadius: s(25),
     width: '80%',
     height: s(28),
-    marginHorizontal: 20,
+    marginHorizontal: vs(16),
     backgroundColor: PRIMARY
   },
   textStyle: {
     alignItems: 'center',
     alignSelf: 'center',
-    color: WHITE
+    color: BLACK
   }
 })
 
@@ -39,7 +40,7 @@ function ButtonApply({ title, onPress, viewStyle }: ButtonT) {
       ]}
       onPress={onPress}
     >
-      <Text style={textStyle}>{title}</Text>
+      <Text textStyle={textStyle} title={title} h3 />
     </Pressable>
   )
 }

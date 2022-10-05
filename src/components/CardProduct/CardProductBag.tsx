@@ -64,6 +64,9 @@ interface CardProductBagT {
   size: string
   price: string
   imageUri: string
+  count: string
+  onPressPlus: () => void
+  onPressMinus: () => void
 }
 
 function CardProductBag({
@@ -71,7 +74,10 @@ function CardProductBag({
   imageUri,
   clothes = 'Undefined',
   size = '0',
-  price = '0'
+  price = '0',
+  count,
+  onPressMinus,
+  onPressPlus
 }: CardProductBagT) {
   const {
     container,
@@ -104,7 +110,7 @@ function CardProductBag({
         </View>
         <Space height={vs(4)} />
         <View style={container1}>
-          <Counter />
+          <Counter count={count} onPressMinus={onPressMinus} onPressPlus={onPressPlus} />
           <View style={containerAbsoluteText}>
             <Text title={`${price}$`} h2 textStyle={priceTextStyle} />
           </View>

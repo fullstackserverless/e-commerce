@@ -12,7 +12,9 @@ import {
   MyProfileScreen,
   FiltersScreen,
   MyOrdersScreen,
-  SettingsScreen
+  SettingsScreen,
+  MyBag,
+  TestScreen
 } from './screens'
 
 const Stack = createNativeStackNavigator()
@@ -20,7 +22,7 @@ const Stack = createNativeStackNavigator()
 function Navigation1() {
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="HomeScreen" screenOptions={{ headerShown: false }}>
+      <Stack.Navigator initialRouteName="TestScreen" screenOptions={{ headerShown: false }}>
         <Stack.Screen
           component={PopUp}
           name={'POPUP'}
@@ -36,6 +38,8 @@ function Navigation1() {
         <Stack.Screen component={FiltersScreen} name={'FiltersScreen'} options={{ animation: 'fade' }} />
         <Stack.Screen component={MyOrdersScreen} name={'MyOrdersScreen'} options={{ animation: 'fade' }} />
         <Stack.Screen component={SettingsScreen} name={'SettingsScreen'} options={{ animation: 'fade' }} />
+        <Stack.Screen component={MyBag} name={'MyBag'} options={{ animation: 'fade' }} />
+        <Stack.Screen component={TestScreen} name={'TestScreen'} options={{ animation: 'fade' }} />
       </Stack.Navigator>
     </NavigationContainer>
   )

@@ -1,6 +1,5 @@
 import React, { useState, useRef } from 'react'
 import { StyleSheet, View, ScrollView } from 'react-native'
-import { Modalize } from 'react-native-modalize'
 import { BLACK, WHITE, PRIMARY, DARK } from './constants'
 import {
   Space,
@@ -67,14 +66,20 @@ function Home({ navigation, route }: HomeT) {
   const [whiteCheckBoxValue, setWhiteCheckBoxValue] = useState(false)
   const [isInvisibleBorder, setIsInvisibleBorder] = useState(false)
   const [isVisibleBorder, setIsVisibleBorder] = useState(false)
+  const [count, setCount] = useState(0)
+  const [isActive, setActive] = useState(false)
   const { navigate } = navigation
 
   const toggleSwitch = () => setIsEnabled(previousState => !previousState)
+  const toggleHeart = () => setActive(previousState => !previousState)
   const toggleRedCheckBox = () => setRedCheckBoxValue(redCheckBoxValue => !redCheckBoxValue)
   const toggleWhiteCheckBox = () => setWhiteCheckBoxValue(whiteCheckBoxValue => !whiteCheckBoxValue)
   const toggleTagBig = () => setIsInvisibleBorder(previousState => !previousState)
   const toggleTagSmall = () => setIsVisibleBorder(previousState => !previousState)
+  const minus1 = () => setCount(count => (count ? count - 1 : count + 0))
+  const plus1 = () => setCount(count + 1)
   const openPopUp = () => navigate('POPUP')
+  const openMyBag = () => navigate('MyBag')
   const openSuccess = () => navigate('SuccessScreen')
   const openAuth = () => navigate('SignUpScreen')
   const openFilterList = () => navigate('FiltersListScreen')
@@ -146,6 +151,9 @@ function Home({ navigation, route }: HomeT) {
         <Text title="CardProduct" h1 textStyle={textStyle} />
         <Space height={10} />
         <CardProductBag
+          count={count.toString()}
+          onPressPlus={plus1}
+          onPressMinus={minus1}
           price={'10'}
           color={'example'}
           imageUri={'https://demotivation.ru/wp-content/uploads/2020/05/255095-Sepik-2048x1383.jpg'}
@@ -154,6 +162,9 @@ function Home({ navigation, route }: HomeT) {
         />
         <Space height={10} />
         <CardProductCatalog
+          onToggle={toggleHeart}
+          onPressHeart={() => {}}
+          isActive={isActive}
           color={'example'}
           clothes={'example'}
           size={'example'}
@@ -326,6 +337,10 @@ function Home({ navigation, route }: HomeT) {
           promocodeText="PROMO"
           daysRemainNumber="10"
         />
+        <Space height={25} />
+        <Text title="My Bag" h1 textStyle={textStyle} />
+        <Space height={10} />
+        <Button onPress={openMyBag} isSmall={false} isOutline={false} title={'Open My Bag!'} />
         <Space height={25} />
       </View>
     </ScrollView>

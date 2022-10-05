@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { StyleSheet, View, Image } from 'react-native'
 import { Text, Space, Rating, HeartButton } from '../index'
 import { DARK, GRAY, WHITE, winWidth } from '../../constants'
@@ -56,6 +56,9 @@ interface CardProductCatalogT {
   brand: string
   ratingList: number[]
   imageUri: string
+  onToggle: () => void
+  onPressHeart: () => void
+  isActive: boolean
 }
 
 function CardProductCatalog({
@@ -63,7 +66,10 @@ function CardProductCatalog({
   price = '0',
   brand = 'Undefined',
   ratingList = [4, 4, 4],
-  imageUri
+  imageUri,
+  onToggle,
+  onPressHeart,
+  isActive
 }: CardProductCatalogT) {
   const {
     container,
@@ -89,7 +95,7 @@ function CardProductCatalog({
         <View style={container1}>
           <Text title={`${price}$`} h2 textStyle={priceTextStyle} />
           <View style={buttonContainer}>
-            <HeartButton onPress={() => {}} />
+            <HeartButton onPress={onPressHeart} onToggle={onToggle} isActive={isActive} />
           </View>
         </View>
         <Space height={vs(4)} />

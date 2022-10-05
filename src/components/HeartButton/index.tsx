@@ -27,12 +27,15 @@ const styles = StyleSheet.create({
 
 interface HeartButtonT {
   onPress: () => void
+  onToggle: () => void
+  isActive: boolean
 }
 
-function HeartButton({ onPress }: HeartButtonT) {
+function HeartButton({ onPress, onToggle, isActive }: HeartButtonT) {
   const { buttonContainer, buttonStyle } = styles
 
-  const [isActive, setActive] = useState(false)
+  // const [isActive, setActive] = useState(false)
+  const heartColor = isActive ? PRIMARY : WHITE
   return (
     <Pressable
       style={({ pressed }) => [
@@ -42,11 +45,11 @@ function HeartButton({ onPress }: HeartButtonT) {
         buttonContainer,
         buttonStyle
       ]}
-      onPress={() => {
-        setActive(pr => !pr), onPress
-      }}
+      // () => setActive(pr => !pr)
+      onPress={onToggle}
+      onPressOut={onPress}
     >
-      <MaterialCommunityIcons name="heart" size={vs(18)} color={isActive ? PRIMARY : WHITE} />
+      <MaterialCommunityIcons name="heart" size={vs(18)} color={heartColor} />
     </Pressable>
   )
 }

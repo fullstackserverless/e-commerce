@@ -72,7 +72,6 @@ const ordersArray = [
   }
 ]
 
-let value = 0
 function MyOrdersScreen({ navigation }: any) {
   const { container, safeAreaViewContainer, flatListContainer } = styles
 
