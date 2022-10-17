@@ -2,7 +2,6 @@ import { Component, createRef } from 'react'
 import PropTypes from 'prop-types'
 
 import { Animated, Text, View, ViewPropTypes } from 'react-native'
-
 export default class BaseInput extends Component {
   static propTypes = {
     label: PropTypes.string,

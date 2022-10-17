@@ -1,0 +1,21 @@
+{
+  "migIndex": 1,
+  "data": [
+    {
+      "path": "src/assets/fonts/Metropolis-Bold.otf",
+      "sha1": "335e5e57450f52a95b5bc3cd03d91071ef389c28"
+    },
+    {
+      "path": "src/assets/fonts/Metropolis-Medium.otf",
+      "sha1": "8d5181b06452ce20ac337391dc60b9dd07b083de"
+    },
+    {
+      "path": "src/assets/fonts/Metropolis-Regular.otf",
+      "sha1": "dc10ba3cd5aea203f7d0f5af99e72163514a55d5"
+    },
+    {
+      "path": "src/assets/fonts/Metropolis-SemiBold.otf",
+      "sha1": "4ebfc059e586c91d024d359f0ed3fc64d9ec4d2c"
+    }
+  ]
+}
