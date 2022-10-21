@@ -5,6 +5,7 @@ import { createNativeStackNavigator, NativeStackNavigationProp } from '@react-na
 
 import { RootStackParamList, RootTabParamList } from './types'
 import { Header, TabBar } from './components'
+import { Header, TabBar } from './components'
 import {
   ExamplesScreen,
   HomeScreen,
